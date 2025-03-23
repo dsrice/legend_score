@@ -1,0 +1,8 @@
+[mysql]
+  dbname     = "legend_score"
+  host       = "ls-db"
+  port       = 3306
+  user       = "docker"
+  pass       = "docker"
+  sslmode    = "false"
+  whitelist = []

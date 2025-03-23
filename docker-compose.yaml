@@ -1,0 +1,53 @@
+services:
+  ls-fe:
+    container_name: ls-fe
+    build:
+      context: ./fe
+      dockerfile: ../docker/fe/Dockerfile
+    volumes:
+      - ./fe:/code
+#      - node_modules_volume:/app/node_modules
+#    command: sh -c "npm run start -- -p 3000"
+#    command: sh -c "npm run dev"
+    tty: true
+    ports:
+      - "3000:3000"
+    environment:
+      - WATCHPACK_POLLING=true
+
+  ls-be:
+    container_name: ls-be
+    build:
+      dockerfile: ./docker/be/Dockerfile
+      context: .
+    volumes:
+      - ./be:/go/src/app
+    tty: true
+    environment:
+      - TZ=Asia/Tokyo
+      - APP_ROOT=/go/src/app
+      - GO_ENV=dev
+      - GOOSE_DRIVER=mysql
+      - GOOSE_DBSTRING=docker:docker@tcp(ls-db:3306)/legend_score
+      - GOOSE_MIGRATION_DIR=./infra/database/migrations
+    depends_on:
+      - ls-db
+    ports:
+      - "1323:1323"
+      - "2345:2345"
+      - "13030:13030"
+
+  ls-db:
+    image: mysql:5.7
+    container_name: ls-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: legend_score
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./database/data:/var/lib/mysql
+    ports:
+      - 3305:3306
