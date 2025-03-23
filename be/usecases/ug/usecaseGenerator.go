@@ -32,18 +32,13 @@ func CreateUsecase(cg *genarator.CreateGenerator) error {
 		return err
 	}
 
-	err = addInterface(cg)
-	if err != nil {
-		return err
-	}
-
 	return nil
 }
 
 func createCi(cg *genarator.CreateGenerator) error {
 	f := jen.NewFile("ui")
 
-	f.Type().Id(cg.In).Interface()
+	f.Type().Id(cg.In + "UseCase").Interface()
 
 	f.Save(path.Join(cg.BasePath, "ui", cg.In+".go"))
 
@@ -56,12 +51,12 @@ func createImp(cg *genarator.CreateGenerator) error {
 	f.ImportName("app/usecases/ui", "ui")
 	f.ImportName("app/repositoriesri", "ri")
 
-	f.Type().Id(cg.Fn).Struct()
+	f.Type().Id(cg.Fn + "UseCase").Struct()
 
-	f.Func().Id("New"+cg.In).Params(
+	f.Func().Id("New"+cg.In+"UseCase").Params(
 		jen.Id("repo").Qual("app/repositories/ri", "InRepository"),
-	).Qual("app/usecases/ui", cg.In).Block(
-		jen.Return(jen.Op("&").Id(cg.Fn).Values()),
+	).Qual("app/usecases/ui", cg.In+"UseCase").Block(
+		jen.Return(jen.Op("&").Id(cg.Fn + "UseCase").Values()),
 	)
 
 	f.Save(path.Join(cg.BasePath, cg.Fn+".go"))

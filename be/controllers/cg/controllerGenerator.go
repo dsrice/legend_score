@@ -30,7 +30,7 @@ func CreateController(cg *genarator.CreateGenerator) error {
 func createCi(cg *genarator.CreateGenerator) error {
 	f := jen.NewFile("ci")
 
-	f.Type().Id(cg.In).Interface()
+	f.Type().Id(cg.In + "Controller").Interface()
 
 	f.Save(path.Join(cg.BasePath, "ci", cg.In+".go"))
 
@@ -43,11 +43,11 @@ func createImp(cg *genarator.CreateGenerator) error {
 	f.ImportName("legend_score/controllers/ci", "ci")
 	f.ImportName("legend_score/usecases/ui", "ui")
 
-	f.Type().Id(cg.Fn).Struct()
+	f.Type().Id(cg.Fn + "Controller").Struct()
 
 	f.Func().Id("New"+cg.In).Params().
-		Qual("app/controllers/ci", cg.In).Block(
-		jen.Return(jen.Op("&").Id(cg.Fn).Values()),
+		Qual("app/controllers/ci", cg.In+"Controller").Block(
+		jen.Return(jen.Op("&").Id(cg.Fn + "Controller").Values()),
 	)
 
 	f.Save(path.Join(cg.BasePath, cg.Fn+".go"))

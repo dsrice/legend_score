@@ -51,7 +51,7 @@ func createImpName(name string) string {
 
 	sName[0] = strings.ToLower(sName[0])
 
-	return strings.Join(sName, "") + "Imp"
+	return strings.Join(sName, "")
 }
 
 func createMockName(name string) string {
