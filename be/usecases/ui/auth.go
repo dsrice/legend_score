@@ -12,5 +12,5 @@ type AuthUseCase interface {
 
 	// Login
 	// 認証処理
-	Login(c echo.Context, e *entities.LoginEntity) (string, error)
+	Login(c echo.Context, e *entities.LoginEntity) (*string, error)
 }

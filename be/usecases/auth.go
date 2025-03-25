@@ -8,6 +8,7 @@ import (
 	"legend_score/consts/ecode"
 	"legend_score/entities"
 	"legend_score/entities/db"
+	"legend_score/infra/database/models"
 	"legend_score/infra/logger"
 	"legend_score/repositories/ri"
 	"legend_score/usecases/ui"
@@ -17,12 +18,14 @@ import (
 )
 
 type authUseCase struct {
-	user ri.UserRepository
+	user      ri.UserRepository
+	userToken ri.UserTokenRepository
 }
 
-func NewAuthUseCase(user ri.UserRepository) ui.AuthUseCase {
+func NewAuthUseCase(user ri.UserRepository, userToken ri.UserTokenRepository) ui.AuthUseCase {
 	return &authUseCase{
-		user: user,
+		user:      user,
+		userToken: userToken,
 	}
 }
 
@@ -80,6 +83,19 @@ func (uc *authUseCase) Login(c echo.Context, e *entities.LoginEntity) (*string, 
 	}
 
 	rt, err := uc.CreateToken(e.User.ID, 2)
+	if err != nil {
+		logger.Error(err.Error())
+		e.Code = ecode.E0001
+		return nil, err
+	}
+
+	ut := models.UserToken{
+		UserID:       e.User.ID,
+		Token:        token,
+		RefreshToken: rt,
+	}
+
+	err = uc.userToken.Insert(c, &ut)
 	if err != nil {
 		logger.Error(err.Error())
 		e.Code = ecode.E0001
