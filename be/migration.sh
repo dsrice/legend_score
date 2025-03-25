@@ -6,13 +6,13 @@ if [ $# -ne 2 ]; then
 fi
 
 case $1 in
-  0 ) echo "migrationファイルを作成"
+  1 ) echo "migrationファイルを作成"
       goose -dir ./infra/database/migrations create $2 sql
       ;;
-  1 ) echo "migrationファイルを適応"
+  2 ) echo "migrationファイルを適応"
       goose -dir ./infra/database/migrations up
       ;;
-  2 ) echo "migrationの最新をロールバック"
+  3 ) echo "migrationの最新をロールバック"
       goose -dir ./infra/database/migrations down
       ;;
   * ) echo "実行引数がおかしい"

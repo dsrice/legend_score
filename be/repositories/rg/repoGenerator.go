@@ -46,17 +46,17 @@ func createImp(cg *genarator.CreateGenerator) error {
 	f := jen.NewFile("repositories")
 
 	f.ImportName("database/sql", "sql")
-	f.ImportName("app/repositories/ri", "ri")
+	f.ImportName("legend_score/repositories/ri", "ri")
 
 	f.Type().Id(cg.Fn + "Repository").Struct(
 		jen.Id("con").Op("*").Qual("database/sql", "DB"),
 	)
 
 	f.Func().Id("New"+cg.In+"Repository").Params(
-		jen.Id("con").Op("*").Qual("app/infra/database/connection", "Connection"),
-	).Qual("app/repositories/ri", cg.In+"Repository").Block(
+		jen.Id("con").Op("*").Qual("legend_score/infra/database/connection", "Connection"),
+	).Qual("legend_score/repositories/ri", cg.In+"Repository").Block(
 		jen.Return(jen.Op("&").Id(cg.Fn + "Repository").Values(
-			jen.Dict{jen.Id("con"): jen.Id("con.Con")}),
+			jen.Dict{jen.Id("con"): jen.Id("con.Conn")}),
 		),
 	)
 
