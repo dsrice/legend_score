@@ -31,7 +31,7 @@ func NewAuthUseCase(user ri.UserRepository, userToken ri.UserTokenRepository) ui
 
 func (uc *authUseCase) ValidateLogin(c echo.Context, entity *entities.LoginEntity) error {
 	logger.Debug("ValidateLogin start")
-	if !validatePassword(entity.Password) {
+	if !uc.ValidatePassword(entity.Password) {
 		entity.Code = ecode.E0001
 		return errors.New("failed to validate password")
 	}
@@ -57,7 +57,7 @@ func (uc *authUseCase) ValidateLogin(c echo.Context, entity *entities.LoginEntit
 	return nil
 }
 
-func validatePassword(password string) bool {
+func (uc *authUseCase) ValidatePassword(password string) bool {
 	// 正規表現をコンパイル
 	regex := regexp.MustCompile(`^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$`)
 	// マッチするかを確認

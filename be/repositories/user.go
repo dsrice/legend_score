@@ -20,6 +20,18 @@ func NewUserRepository(con *connection.Connection) ri.UserRepository {
 	return &userRepository{con: con.Conn}
 }
 
+func (r *userRepository) Get(c echo.Context, condition []qm.QueryMod) ([]*models.User, error) {
+	logger.Debug("Get start")
+	results, err := models.Users(condition...).All(c.Request().Context(), r.con)
+	if err != nil {
+		logger.Error(err.Error())
+		return nil, err
+	}
+
+	logger.Debug("Get end")
+	return results, nil
+}
+
 func (r *userRepository) GetLoginID(c echo.Context, loginID string) (*models.User, error) {
 	logger.Debug("GetLoginID start")
 	mods := []qm.QueryMod{

@@ -46,7 +46,7 @@ func createImp(cg *genarator.CreateGenerator) error {
 	f.Type().Id(cg.Fn + "Controller").Struct()
 
 	f.Func().Id("New"+cg.In).Params().
-		Qual("app/controllers/ci", cg.In+"Controller").Block(
+		Qual("legend_score/controllers/ci", cg.In+"Controller").Block(
 		jen.Return(jen.Op("&").Id(cg.Fn + "Controller").Values()),
 	)
 
