@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="">
+    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: 調整">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/usecases/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/usecases/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +83,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: 調整" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 調整" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
