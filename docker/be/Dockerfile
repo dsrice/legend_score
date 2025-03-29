@@ -18,4 +18,4 @@ WORKDIR /go/src/app
 
 RUN go mod tidy
 
-# CMD ["air"]
+CMD ["air"]

@@ -4,11 +4,13 @@ import (
 	"database/sql"
 	"errors"
 	"github.com/labstack/echo/v4"
+	"github.com/volatiletech/sqlboiler/v4/boil"
 	"github.com/volatiletech/sqlboiler/v4/queries/qm"
 	"legend_score/infra/database/connection"
 	"legend_score/infra/database/models"
 	"legend_score/infra/logger"
 	"legend_score/repositories/ri"
+	"time"
 )
 
 type userRepository struct {
@@ -49,4 +51,18 @@ func (r *userRepository) GetLoginID(c echo.Context, loginID string) (*models.Use
 
 	logger.Debug("GetLoginID end")
 	return results[0], nil
+}
+
+func (r *userRepository) Insert(c echo.Context, ut *models.User) error {
+	logger.Debug("Insert user_token start")
+	ut.CreatedAt = time.Now()
+	ut.UpdatedAt = time.Now()
+	err := ut.Insert(c.Request().Context(), r.con, boil.Infer())
+	if err != nil {
+		logger.Error(err.Error())
+		return err
+	}
+
+	logger.Debug("Insert user_token end")
+	return nil
 }

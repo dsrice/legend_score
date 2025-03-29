@@ -9,4 +9,5 @@ import (
 type UserRepository interface {
 	Get(c echo.Context, condition []qm.QueryMod) ([]*models.User, error)
 	GetLoginID(c echo.Context, loginID string) (*models.User, error)
+	Insert(c echo.Context, ut *models.User) error
 }

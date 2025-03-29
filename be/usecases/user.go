@@ -1,6 +1,7 @@
 package usecases
 
 import (
+	"crypto/sha512"
 	"errors"
 	"github.com/labstack/echo/v4"
 	"github.com/volatiletech/sqlboiler/v4/queries/qm"
@@ -51,5 +52,27 @@ func (uc *userUseCase) ValidateCreateUser(c echo.Context, e *entities.CreateUser
 	}
 
 	logger.Debug("ValidateCreateUser end")
+	return nil
+}
+
+func (uc *userUseCase) CreateUser(c echo.Context, e *entities.CreateUserEntity) error {
+	logger.Debug("CreateUser start")
+
+	ph := sha512.Sum512([]byte(e.Password))
+	user := models.User{
+		LoginID:        e.LoginID,
+		Name:           e.Name,
+		Password:       string(ph[:]),
+		ChangePassFlag: true,
+	}
+
+	err := uc.user.Insert(c, &user)
+	if err != nil {
+		logger.Error("failed insert user")
+		logger.Error(err.Error())
+		return err
+	}
+
+	logger.Debug("CreateUser end")
 	return nil
 }

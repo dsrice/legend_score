@@ -1,2 +1,2 @@
-# game_breaking_news
+# bowling_news
 大会速報サービス

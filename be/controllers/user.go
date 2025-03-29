@@ -18,18 +18,18 @@ func NewUser() ci.UserController {
 func (uc *userController) CreateUser(c echo.Context) error {
 	logger.Debug("Start CreateUser")
 	var req request.CreateUserRequest
-	err := c.Bind(&req)
+	err := c.Bind(req)
 	if err != nil {
 		return ErrorResponse(c, ecode.E0001)
 	}
 
-	err = c.Validate(&req)
+	err = c.Validate(req)
 	if err != nil {
 		return ErrorResponse(c, ecode.E0001)
 	}
 
 	entity := entities.CreateUserEntity{}
-	entity.SetEntity(req)
+	entity.SetEntity(&req)
 
 	logger.Debug("End CreateUser")
 	return nil
