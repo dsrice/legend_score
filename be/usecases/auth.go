@@ -1,10 +1,11 @@
 package usecases
 
 import (
-	"crypto/sha512"
+	"encoding/base64"
 	"github.com/friendsofgo/errors"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/labstack/echo/v4"
+	"golang.org/x/crypto/scrypt"
 	"legend_score/consts/ecode"
 	"legend_score/entities"
 	"legend_score/entities/db"
@@ -58,17 +59,29 @@ func (uc *authUseCase) ValidateLogin(c echo.Context, entity *entities.LoginEntit
 }
 
 func (uc *authUseCase) ValidatePassword(password string) bool {
-	// 正規表現をコンパイル
-	regex := regexp.MustCompile(`^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$`)
-	// マッチするかを確認
-	return regex.MatchString(password)
+	hasMinLength := len(password) >= 6
+
+	// 正規表現でそれぞれ条件を確認
+	hasUpper := regexp.MustCompile(`[A-Z]`).MatchString(password) // 大文字
+	hasLower := regexp.MustCompile(`[a-z]`).MatchString(password) // 小文字
+	hasNumber := regexp.MustCompile(`\d`).MatchString(password)
+
+	isValid := hasMinLength && hasUpper && hasLower && hasNumber
+
+	return isValid
 }
 
 func (uc *authUseCase) Login(c echo.Context, e *entities.LoginEntity) (*string, error) {
 	logger.Debug("Login start")
-	ph := sha512.Sum512([]byte(e.Password))
+	salt := "legend_score_salt_dev"
+	dk, err := scrypt.Key([]byte(e.Password), []byte(salt), 1<<15, 8, 1, 32)
+	if err != nil {
+		logger.Error(err.Error())
+		e.Code = ecode.E9000
+		return nil, err
+	}
 
-	if string(ph[:]) != e.User.Password {
+	if base64.StdEncoding.EncodeToString(dk) != e.User.Password {
 		logger.Error("Login failed")
 		e.Code = ecode.E0001
 		e.User.ErrorCount += 1

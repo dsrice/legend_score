@@ -10,7 +10,7 @@ type CreateUserEntity struct {
 	Code string
 }
 
-func (e CreateUserEntity) SetEntity(req *request.CreateUserRequest) {
+func (e *CreateUserEntity) SetEntity(req *request.CreateUserRequest) {
 	e.LoginID = req.LoginID
 	e.Name = req.Name
 	e.Password = req.Password

@@ -5,9 +5,11 @@ import (
 	"legend_score/consts/ecode"
 	"legend_score/controllers/ci"
 	"legend_score/controllers/request"
+	"legend_score/controllers/response"
 	"legend_score/entities"
 	"legend_score/infra/logger"
 	"legend_score/usecases/ui"
+	"net/http"
 )
 
 type authControllerImp struct {
@@ -46,6 +48,15 @@ func (ci *authControllerImp) Login(c echo.Context) error {
 
 	token, err := ci.auth.Login(c, &entity)
 
+	if err != nil {
+		logger.Error(err.Error())
+		return ErrorResponse(c, ecode.E0001)
+	}
+
+	res := response.LoginResponse{
+		Token:  *token,
+		Result: true,
+	}
 	logger.Debug("Login End")
-	return nil
+	return c.JSON(http.StatusOK, res)
 }

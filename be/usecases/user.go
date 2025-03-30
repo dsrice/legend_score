@@ -1,10 +1,11 @@
 package usecases
 
 import (
-	"crypto/sha512"
+	"encoding/base64"
 	"errors"
 	"github.com/labstack/echo/v4"
 	"github.com/volatiletech/sqlboiler/v4/queries/qm"
+	"golang.org/x/crypto/scrypt"
 	"legend_score/consts/ecode"
 	"legend_score/entities"
 	"legend_score/infra/database/models"
@@ -32,14 +33,14 @@ func (uc *userUseCase) ValidateCreateUser(c echo.Context, e *entities.CreateUser
 		models.UserWhere.LoginID.EQ(e.LoginID),
 	}
 
-	user, err := uc.user.Get(c, condition)
+	users, err := uc.user.Get(c, condition)
 	if err != nil {
 		logger.Error(err.Error())
 		e.Code = ecode.E9000
 		return err
 	}
 
-	if len(user) == 0 {
+	if len(users) > 0 {
 		logger.Error("login_id is used")
 		e.Code = ecode.E2001
 		return errors.New("login_id is used")
@@ -57,19 +58,25 @@ func (uc *userUseCase) ValidateCreateUser(c echo.Context, e *entities.CreateUser
 
 func (uc *userUseCase) CreateUser(c echo.Context, e *entities.CreateUserEntity) error {
 	logger.Debug("CreateUser start")
-
-	ph := sha512.Sum512([]byte(e.Password))
+	salt := "legend_score_salt_dev"
+	dk, err := scrypt.Key([]byte(e.Password), []byte(salt), 1<<15, 8, 1, 32)
+	if err != nil {
+		logger.Error(err.Error())
+		e.Code = ecode.E9000
+		return err
+	}
 	user := models.User{
 		LoginID:        e.LoginID,
 		Name:           e.Name,
-		Password:       string(ph[:]),
+		Password:       base64.StdEncoding.EncodeToString(dk),
 		ChangePassFlag: true,
 	}
 
-	err := uc.user.Insert(c, &user)
+	err = uc.user.Insert(c, &user)
 	if err != nil {
 		logger.Error("failed insert user")
 		logger.Error(err.Error())
+		e.Code = ecode.E9000
 		return err
 	}
 

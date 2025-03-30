@@ -13,8 +13,8 @@ RUN go install github.com/volatiletech/sqlboiler/v4@latest
 RUN go install github.com/volatiletech/sqlboiler/v4/drivers/sqlboiler-mysql@latest
 RUN go install github.com/pressly/goose/v3/cmd/goose@latest
 
-COPY ./be/ /go/src/app
-WORKDIR /go/src/app
+COPY ./be/ /go/src/legend_score
+WORKDIR /go/src/legend_score
 
 RUN go mod tidy
 

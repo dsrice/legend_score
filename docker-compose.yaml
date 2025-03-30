@@ -21,11 +21,11 @@ services:
       dockerfile: ./docker/be/Dockerfile
       context: .
     volumes:
-      - ./be:/go/src/app
+      - ./be:/go/src/legend_score
     tty: true
     environment:
       - TZ=Asia/Tokyo
-      - APP_ROOT=/go/src/app
+      - APP_ROOT=/go/src/legend_score
       - GO_ENV=dev
       - GOOSE_DRIVER=mysql
       - GOOSE_DBSTRING=docker:docker@tcp(ls-db:3306)/legend_score
