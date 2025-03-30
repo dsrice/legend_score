@@ -5,30 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: 調整">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/.air.toml" beforeDir="false" afterPath="$PROJECT_DIR$/be/.air.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/controllers/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/controllers/auth.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/controllers/response/login.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/controllers/response/login.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/controllers/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/controllers/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/dev.env" beforeDir="false" afterPath="$PROJECT_DIR$/be/dev.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/di/controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/di/controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/di/usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/di/usecase.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/entities/create_user.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/entities/create_user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/be/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/be/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/infra/database/connection/conn.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/database/connection/conn.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/infra/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/server/server.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/be/repositories/ri/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/repositories/ri/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/repositories/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/repositories/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/tmp/build-errors.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/tmp/main" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/usecases/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/usecases/auth.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/usecases/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/usecases/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/be/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/be/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/fe/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/fe/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/er.a5er" beforeDir="false" afterPath="$PROJECT_DIR$/er.a5er" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/App.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/App.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
