@@ -8,6 +8,12 @@ import "testing"
 // TestToOne tests cannot be run in parallel
 // or deadlocks can occur.
 func TestToOne(t *testing.T) {
+	t.Run("FrameToUserUsingUser", testFrameToOneUserUsingUser)
+	t.Run("FrameToGameUsingGame", testFrameToOneGameUsingGame)
+	t.Run("GameToUserUsingUser", testGameToOneUserUsingUser)
+	t.Run("ThrowToGameUsingGame", testThrowToOneGameUsingGame)
+	t.Run("ThrowToFrameUsingFrame", testThrowToOneFrameUsingFrame)
+	t.Run("ThrowToUserUsingUser", testThrowToOneUserUsingUser)
 	t.Run("UserTokenToUserUsingUser", testUserTokenToOneUserUsingUser)
 }
 
@@ -18,12 +24,24 @@ func TestOneToOne(t *testing.T) {}
 // TestToMany tests cannot be run in parallel
 // or deadlocks can occur.
 func TestToMany(t *testing.T) {
+	t.Run("FrameToThrows", testFrameToManyThrows)
+	t.Run("GameToFrames", testGameToManyFrames)
+	t.Run("GameToThrows", testGameToManyThrows)
+	t.Run("UserToFrames", testUserToManyFrames)
+	t.Run("UserToGames", testUserToManyGames)
+	t.Run("UserToThrows", testUserToManyThrows)
 	t.Run("UserToUserTokens", testUserToManyUserTokens)
 }
 
 // TestToOneSet tests cannot be run in parallel
 // or deadlocks can occur.
 func TestToOneSet(t *testing.T) {
+	t.Run("FrameToUserUsingFrames", testFrameToOneSetOpUserUsingUser)
+	t.Run("FrameToGameUsingFrames", testFrameToOneSetOpGameUsingGame)
+	t.Run("GameToUserUsingGames", testGameToOneSetOpUserUsingUser)
+	t.Run("ThrowToGameUsingThrows", testThrowToOneSetOpGameUsingGame)
+	t.Run("ThrowToFrameUsingThrows", testThrowToOneSetOpFrameUsingFrame)
+	t.Run("ThrowToUserUsingThrows", testThrowToOneSetOpUserUsingUser)
 	t.Run("UserTokenToUserUsingUserTokens", testUserTokenToOneSetOpUserUsingUser)
 }
 
@@ -42,6 +60,12 @@ func TestOneToOneRemove(t *testing.T) {}
 // TestToManyAdd tests cannot be run in parallel
 // or deadlocks can occur.
 func TestToManyAdd(t *testing.T) {
+	t.Run("FrameToThrows", testFrameToManyAddOpThrows)
+	t.Run("GameToFrames", testGameToManyAddOpFrames)
+	t.Run("GameToThrows", testGameToManyAddOpThrows)
+	t.Run("UserToFrames", testUserToManyAddOpFrames)
+	t.Run("UserToGames", testUserToManyAddOpGames)
+	t.Run("UserToThrows", testUserToManyAddOpThrows)
 	t.Run("UserToUserTokens", testUserToManyAddOpUserTokens)
 }
 

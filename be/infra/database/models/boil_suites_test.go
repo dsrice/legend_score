@@ -12,74 +12,113 @@ import "testing"
 // It does NOT run each operation group in parallel.
 // Separating the tests thusly grants avoidance of Postgres deadlocks.
 func TestParent(t *testing.T) {
+	t.Run("Frames", testFrames)
+	t.Run("Games", testGames)
 	t.Run("GooseDBVersions", testGooseDBVersions)
+	t.Run("Throws", testThrows)
 	t.Run("UserTokens", testUserTokens)
 	t.Run("Users", testUsers)
 }
 
 func TestDelete(t *testing.T) {
+	t.Run("Frames", testFramesDelete)
+	t.Run("Games", testGamesDelete)
 	t.Run("GooseDBVersions", testGooseDBVersionsDelete)
+	t.Run("Throws", testThrowsDelete)
 	t.Run("UserTokens", testUserTokensDelete)
 	t.Run("Users", testUsersDelete)
 }
 
 func TestQueryDeleteAll(t *testing.T) {
+	t.Run("Frames", testFramesQueryDeleteAll)
+	t.Run("Games", testGamesQueryDeleteAll)
 	t.Run("GooseDBVersions", testGooseDBVersionsQueryDeleteAll)
+	t.Run("Throws", testThrowsQueryDeleteAll)
 	t.Run("UserTokens", testUserTokensQueryDeleteAll)
 	t.Run("Users", testUsersQueryDeleteAll)
 }
 
 func TestSliceDeleteAll(t *testing.T) {
+	t.Run("Frames", testFramesSliceDeleteAll)
+	t.Run("Games", testGamesSliceDeleteAll)
 	t.Run("GooseDBVersions", testGooseDBVersionsSliceDeleteAll)
+	t.Run("Throws", testThrowsSliceDeleteAll)
 	t.Run("UserTokens", testUserTokensSliceDeleteAll)
 	t.Run("Users", testUsersSliceDeleteAll)
 }
 
 func TestExists(t *testing.T) {
+	t.Run("Frames", testFramesExists)
+	t.Run("Games", testGamesExists)
 	t.Run("GooseDBVersions", testGooseDBVersionsExists)
+	t.Run("Throws", testThrowsExists)
 	t.Run("UserTokens", testUserTokensExists)
 	t.Run("Users", testUsersExists)
 }
 
 func TestFind(t *testing.T) {
+	t.Run("Frames", testFramesFind)
+	t.Run("Games", testGamesFind)
 	t.Run("GooseDBVersions", testGooseDBVersionsFind)
+	t.Run("Throws", testThrowsFind)
 	t.Run("UserTokens", testUserTokensFind)
 	t.Run("Users", testUsersFind)
 }
 
 func TestBind(t *testing.T) {
+	t.Run("Frames", testFramesBind)
+	t.Run("Games", testGamesBind)
 	t.Run("GooseDBVersions", testGooseDBVersionsBind)
+	t.Run("Throws", testThrowsBind)
 	t.Run("UserTokens", testUserTokensBind)
 	t.Run("Users", testUsersBind)
 }
 
 func TestOne(t *testing.T) {
+	t.Run("Frames", testFramesOne)
+	t.Run("Games", testGamesOne)
 	t.Run("GooseDBVersions", testGooseDBVersionsOne)
+	t.Run("Throws", testThrowsOne)
 	t.Run("UserTokens", testUserTokensOne)
 	t.Run("Users", testUsersOne)
 }
 
 func TestAll(t *testing.T) {
+	t.Run("Frames", testFramesAll)
+	t.Run("Games", testGamesAll)
 	t.Run("GooseDBVersions", testGooseDBVersionsAll)
+	t.Run("Throws", testThrowsAll)
 	t.Run("UserTokens", testUserTokensAll)
 	t.Run("Users", testUsersAll)
 }
 
 func TestCount(t *testing.T) {
+	t.Run("Frames", testFramesCount)
+	t.Run("Games", testGamesCount)
 	t.Run("GooseDBVersions", testGooseDBVersionsCount)
+	t.Run("Throws", testThrowsCount)
 	t.Run("UserTokens", testUserTokensCount)
 	t.Run("Users", testUsersCount)
 }
 
 func TestHooks(t *testing.T) {
+	t.Run("Frames", testFramesHooks)
+	t.Run("Games", testGamesHooks)
 	t.Run("GooseDBVersions", testGooseDBVersionsHooks)
+	t.Run("Throws", testThrowsHooks)
 	t.Run("UserTokens", testUserTokensHooks)
 	t.Run("Users", testUsersHooks)
 }
 
 func TestInsert(t *testing.T) {
+	t.Run("Frames", testFramesInsert)
+	t.Run("Frames", testFramesInsertWhitelist)
+	t.Run("Games", testGamesInsert)
+	t.Run("Games", testGamesInsertWhitelist)
 	t.Run("GooseDBVersions", testGooseDBVersionsInsert)
 	t.Run("GooseDBVersions", testGooseDBVersionsInsertWhitelist)
+	t.Run("Throws", testThrowsInsert)
+	t.Run("Throws", testThrowsInsertWhitelist)
 	t.Run("UserTokens", testUserTokensInsert)
 	t.Run("UserTokens", testUserTokensInsertWhitelist)
 	t.Run("Users", testUsersInsert)
@@ -87,31 +126,46 @@ func TestInsert(t *testing.T) {
 }
 
 func TestReload(t *testing.T) {
+	t.Run("Frames", testFramesReload)
+	t.Run("Games", testGamesReload)
 	t.Run("GooseDBVersions", testGooseDBVersionsReload)
+	t.Run("Throws", testThrowsReload)
 	t.Run("UserTokens", testUserTokensReload)
 	t.Run("Users", testUsersReload)
 }
 
 func TestReloadAll(t *testing.T) {
+	t.Run("Frames", testFramesReloadAll)
+	t.Run("Games", testGamesReloadAll)
 	t.Run("GooseDBVersions", testGooseDBVersionsReloadAll)
+	t.Run("Throws", testThrowsReloadAll)
 	t.Run("UserTokens", testUserTokensReloadAll)
 	t.Run("Users", testUsersReloadAll)
 }
 
 func TestSelect(t *testing.T) {
+	t.Run("Frames", testFramesSelect)
+	t.Run("Games", testGamesSelect)
 	t.Run("GooseDBVersions", testGooseDBVersionsSelect)
+	t.Run("Throws", testThrowsSelect)
 	t.Run("UserTokens", testUserTokensSelect)
 	t.Run("Users", testUsersSelect)
 }
 
 func TestUpdate(t *testing.T) {
+	t.Run("Frames", testFramesUpdate)
+	t.Run("Games", testGamesUpdate)
 	t.Run("GooseDBVersions", testGooseDBVersionsUpdate)
+	t.Run("Throws", testThrowsUpdate)
 	t.Run("UserTokens", testUserTokensUpdate)
 	t.Run("Users", testUsersUpdate)
 }
 
 func TestSliceUpdateAll(t *testing.T) {
+	t.Run("Frames", testFramesSliceUpdateAll)
+	t.Run("Games", testGamesSliceUpdateAll)
 	t.Run("GooseDBVersions", testGooseDBVersionsSliceUpdateAll)
+	t.Run("Throws", testThrowsSliceUpdateAll)
 	t.Run("UserTokens", testUserTokensSliceUpdateAll)
 	t.Run("Users", testUsersSliceUpdateAll)
 }

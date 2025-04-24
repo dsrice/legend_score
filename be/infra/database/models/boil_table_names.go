@@ -4,11 +4,17 @@
 package models
 
 var TableNames = struct {
+	Frames         string
+	Games          string
 	GooseDBVersion string
+	Throws         string
 	UserTokens     string
 	Users          string
 }{
+	Frames:         "frames",
+	Games:          "games",
 	GooseDBVersion: "goose_db_version",
+	Throws:         "throws",
 	UserTokens:     "user_tokens",
 	Users:          "users",
 }
