@@ -2,8 +2,9 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders the App component with router', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  // Check if the Login route is rendered by default
+  const loginElement = screen.getByRole('heading', { name: /sign in to your account/i });
+  expect(loginElement).toBeInTheDocument();
 });
