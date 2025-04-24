@@ -22,6 +22,16 @@ func NewUserController(uc ui.UserUseCase) ci.UserController {
 	}
 }
 
+// CreateUser godoc
+// @Summary Create a new user
+// @Description Create a new user with the provided information
+// @Tags user
+// @Accept json
+// @Produce json
+// @Param user body request.CreateUserRequest true "User information"
+// @Success 200 {object} response.CreateUserResponse
+// @Failure 400 {object} response.CreateUserResponse
+// @Router /user [post]
 func (uc *userController) CreateUser(c echo.Context) error {
 	logger.Debug("Start CreateUser")
 	var req request.CreateUserRequest

@@ -12,6 +12,8 @@ require (
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/spf13/viper v1.18.2
 	github.com/stretchr/testify v1.9.0
+	github.com/swaggo/echo-swagger v1.4.1
+	github.com/swaggo/swag v1.16.3
 	github.com/volatiletech/null/v8 v8.1.2
 	github.com/volatiletech/randomize v0.0.1
 	github.com/volatiletech/sqlboiler/v4 v4.18.0

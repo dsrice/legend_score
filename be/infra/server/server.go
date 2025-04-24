@@ -6,6 +6,7 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/gommon/log"
+	"github.com/swaggo/echo-swagger"
 	"go.uber.org/dig"
 	"legend_score/controllers/ci"
 	"legend_score/infra/logger"
@@ -69,6 +70,9 @@ func (s *Server) Start() {
 }
 
 func (s *Server) routing() {
+	// Swagger endpoint
+	s.echo.GET("/swagger/*", echoSwagger.WrapHandler)
+
 	api := s.echo.Group("/api")
 	v := api.Group("/v1")
 
