@@ -7,7 +7,7 @@ services:
     volumes:
       - ./fe:/code
 #      - node_modules_volume:/app/node_modules
-    command: sh -c "npm run start -- -p 3000"
+#    command: sh -c "npm run start -- -p 3000"
 #    command: sh -c "npm run dev"
     tty: true
     ports:

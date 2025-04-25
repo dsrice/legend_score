@@ -11,7 +11,7 @@ export const getApiBaseUrl = (): string => {
   return import.meta.env.VITE_API_BASE_URL || '';
 };
 
-// Create an axios instance with default configuration
+// Create an axios instance with the default configuration
 const apiClient = axios.create({
   baseURL: getApiBaseUrl(),
   headers: {

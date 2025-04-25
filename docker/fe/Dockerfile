@@ -7,4 +7,4 @@ COPY ls-app/package*.json /code/ls-app
 
 WORKDIR /code/ls-app
 
-# RUN npm install
+RUN npm install
