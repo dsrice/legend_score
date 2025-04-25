@@ -5,6 +5,7 @@ import (
 	"github.com/go-playground/validator/v10"
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 	"github.com/labstack/gommon/log"
 	"github.com/swaggo/echo-swagger"
 	"go.uber.org/dig"
@@ -50,10 +51,11 @@ func (s *Server) Start() {
 	s.echo.Validator = &CustomValidator{validator: validator.New()}
 
 	s.echo.Logger.SetLevel(log.DEBUG)
-	//	s.echo.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-	//		AllowOrigins: []string{"http://localhost:3100"},
-	//		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
-	//	}))
+	s.echo.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"http://localhost:3000"},
+		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept, echo.HeaderAuthorization},
+		AllowMethods: []string{http.MethodGet, http.MethodPut, http.MethodPost, http.MethodDelete, http.MethodOptions},
+	}))
 	s.routing()
 
 	ge := os.Getenv("GO_ENV")
