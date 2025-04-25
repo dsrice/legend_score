@@ -1,4 +1,29 @@
-# Frontend Testing with Jest
+# Legend Score Frontend
+
+## Environment Variables and API Configuration
+
+This project uses environment variables to configure the API base URL. The following files are used:
+
+- `.env.development` - Used during development (`npm start`)
+- `.env.production` - Used during production builds (`npm build`)
+- `.env.local` - Local overrides (not committed to version control)
+
+### API Base URL Configuration
+
+The `REACT_APP_API_BASE_URL` environment variable is used to configure the base URL for API requests:
+
+```
+REACT_APP_API_BASE_URL=http://localhost:1323
+```
+
+If left empty, relative URLs will be used (same origin).
+
+To set up your local environment:
+
+1. Copy `.env.local.example` to `.env.local`
+2. Edit `.env.local` to set your preferred API base URL
+
+## Frontend Testing with Jest
 
 This project uses Jest and React Testing Library for testing React components.
 
@@ -69,7 +94,7 @@ import MyComponent from './MyComponent';
 test('loads data asynchronously', async () => {
   render(<MyComponent />);
   fireEvent.click(screen.getByText('Load Data'));
-  
+
   await waitFor(() => {
     expect(screen.getByText('Data loaded')).toBeInTheDocument();
   });
@@ -92,9 +117,9 @@ jest.mock('../services/api', () => ({
 test('displays fetched data', async () => {
   // Setup the mock return value
   (apiService.fetchData as jest.Mock).mockResolvedValue({ name: 'Test Data' });
-  
+
   render(<MyComponent />);
-  
+
   await waitFor(() => {
     expect(screen.getByText('Test Data')).toBeInTheDocument();
   });

@@ -1,3 +1,5 @@
+import { apiPost } from './apiClient';
+
 interface LoginCredentials {
   login_id: string;
   password: string;
@@ -16,19 +18,7 @@ interface LoginResponse {
  */
 export const login = async (credentials: LoginCredentials): Promise<LoginResponse> => {
   try {
-    const response = await fetch('/api/v1/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(credentials),
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    const data = await response.json();
+    const data = await apiPost('/api/v1/login', credentials);
     return data;
   } catch (error) {
     console.error('Login error:', error);
