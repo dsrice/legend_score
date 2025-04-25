@@ -1,5 +1,6 @@
 // apiClient.ts
 // This file provides a centralized way to make API requests with the base URL from environment variables
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 /**
  * Get the API base URL from environment variables
@@ -7,33 +8,27 @@
  * In production, this will use the value from .env.production
  */
 export const getApiBaseUrl = (): string => {
-  return process.env.REACT_APP_API_BASE_URL || '';
+  return import.meta.env.VITE_API_BASE_URL || '';
 };
+
+// Create an axios instance with default configuration
+const apiClient = axios.create({
+  baseURL: getApiBaseUrl(),
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
 /**
  * Make a GET request to the API
  * @param endpoint The API endpoint (without the base URL)
- * @param options Additional fetch options
+ * @param options Additional axios options
  * @returns A promise that resolves to the response data
  */
-export const apiGet = async (endpoint: string, options?: RequestInit): Promise<any> => {
-  const baseUrl = getApiBaseUrl();
-  const url = `${baseUrl}${endpoint}`;
-  
+export const apiGet = async (endpoint: string, options?: AxiosRequestConfig): Promise<any> => {
   try {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      ...options,
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    return await response.json();
+    const response: AxiosResponse = await apiClient.get(endpoint, options);
+    return response.data;
   } catch (error) {
     console.error(`API GET error for ${endpoint}:`, error);
     throw error;
@@ -44,32 +39,51 @@ export const apiGet = async (endpoint: string, options?: RequestInit): Promise<a
  * Make a POST request to the API
  * @param endpoint The API endpoint (without the base URL)
  * @param data The data to send in the request body
- * @param options Additional fetch options
+ * @param options Additional axios options
  * @returns A promise that resolves to the response data
  */
-export const apiPost = async (endpoint: string, data: any, options?: RequestInit): Promise<any> => {
-  const baseUrl = getApiBaseUrl();
-  const url = `${baseUrl}${endpoint}`;
-  
+export const apiPost = async (endpoint: string, data: any, options?: AxiosRequestConfig): Promise<any> => {
   try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-      ...options,
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    return await response.json();
+    const response: AxiosResponse = await apiClient.post(endpoint, data, options);
+    return response.data;
   } catch (error) {
     console.error(`API POST error for ${endpoint}:`, error);
     throw error;
   }
 };
 
-// Add more methods as needed (PUT, DELETE, etc.)
+/**
+ * Make a PUT request to the API
+ * @param endpoint The API endpoint (without the base URL)
+ * @param data The data to send in the request body
+ * @param options Additional axios options
+ * @returns A promise that resolves to the response data
+ */
+export const apiPut = async (endpoint: string, data: any, options?: AxiosRequestConfig): Promise<any> => {
+  try {
+    const response: AxiosResponse = await apiClient.put(endpoint, data, options);
+    return response.data;
+  } catch (error) {
+    console.error(`API PUT error for ${endpoint}:`, error);
+    throw error;
+  }
+};
+
+/**
+ * Make a DELETE request to the API
+ * @param endpoint The API endpoint (without the base URL)
+ * @param options Additional axios options
+ * @returns A promise that resolves to the response data
+ */
+export const apiDelete = async (endpoint: string, options?: AxiosRequestConfig): Promise<any> => {
+  try {
+    const response: AxiosResponse = await apiClient.delete(endpoint, options);
+    return response.data;
+  } catch (error) {
+    console.error(`API DELETE error for ${endpoint}:`, error);
+    throw error;
+  }
+};
+
+// Export the axios instance for more advanced use cases
+export default apiClient;
