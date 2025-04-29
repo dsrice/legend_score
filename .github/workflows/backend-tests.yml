@@ -1,0 +1,60 @@
+name: Backend Tests
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'be/**'
+
+jobs:
+  test:
+    name: Run Backend Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.23'
+
+      - name: Install dependencies
+        run: |
+          cd be
+          go mod download
+
+      - name: Run tests with coverage
+        run: |
+          cd be
+          go test -v -coverprofile=cover_file.out ./...
+          go tool cover -func=cover_file.out > coverage.txt
+
+      - name: Get coverage percentage
+        id: get-coverage
+        run: |
+          cd be
+          COVERAGE=$(grep "total:" coverage.txt | awk '{print $3}')
+          echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
+
+      - name: Comment PR
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const coverage = '${{ steps.get-coverage.outputs.coverage }}';
+            const { issue: { number: issue_number }, repo: { owner, repo } } = context;
+
+            github.rest.issues.createComment({
+              issue_number,
+              owner,
+              repo,
+              body: `## Backend Test Coverage: ${coverage}
+
+              The backend tests have been run successfully.
+              Total coverage: **${coverage}**
+
+              [View detailed coverage report in the workflow run](https://github.com/${owner}/${repo}/actions/runs/${{ github.run_id }})
+              `
+            });
