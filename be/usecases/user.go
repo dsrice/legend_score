@@ -124,3 +124,35 @@ func (uc *userUseCase) GetUsers(c echo.Context, e *entities.GetUsersEntity) erro
 	logger.Debug("GetUsers end")
 	return nil
 }
+
+func (uc *userUseCase) GetUser(c echo.Context, e *entities.GetUserEntity) error {
+	logger.Debug("GetUser start")
+
+	// Build query condition for user ID
+	conditions := []qm.QueryMod{
+		models.UserWhere.ID.EQ(e.UserID),
+	}
+
+	// Get user from repository
+	users, err := uc.user.Get(c, conditions)
+	if err != nil {
+		logger.Error(err.Error())
+		e.Code = ecode.E9000
+		return err
+	}
+
+	// Check if user exists
+	if len(users) == 0 {
+		logger.Error("user not found")
+		e.Code = ecode.E0001 // Invalid request - user not found
+		return errors.New("user not found")
+	}
+
+	// Convert to entity
+	var userEntity db.UserEntity
+	userEntity.SetEntity(users[0])
+	e.User = userEntity
+
+	logger.Debug("GetUser end")
+	return nil
+}

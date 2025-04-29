@@ -83,4 +83,5 @@ func (s *Server) routing() {
 	u := v.Group("/user")
 	u.POST("", s.User.CreateUser)
 	u.GET("", s.User.GetUsers)
+	u.GET("/:user_id", s.User.GetUser)
 }

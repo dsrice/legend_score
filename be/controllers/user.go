@@ -10,6 +10,7 @@ import (
 	"legend_score/infra/logger"
 	"legend_score/usecases/ui"
 	"net/http"
+	"strconv"
 )
 
 type userController struct {
@@ -119,5 +120,54 @@ func (uc *userController) GetUsers(c echo.Context) error {
 	}
 
 	logger.Debug("End GetUsers")
+	return c.JSON(http.StatusOK, res)
+}
+
+// GetUser godoc
+// @Summary Get user details by ID
+// @Description Get detailed information of a user by their ID
+// @Tags user
+// @Accept json
+// @Produce json
+// @Param user_id path int true "User ID"
+// @Success 200 {object} response.GetUserResponse
+// @Failure 400 {object} response.GetUserResponse
+// @Failure 404 {object} response.GetUserResponse
+// @Router /user/{user_id} [get]
+func (uc *userController) GetUser(c echo.Context) error {
+	logger.Debug("Start GetUser")
+
+	// Parse path parameter
+	userID, err := strconv.Atoi(c.Param("user_id"))
+	if err != nil {
+		logger.Error(err.Error())
+		return ErrorResponse(c, ecode.E0001)
+	}
+
+	// Create entity
+	entity := entities.GetUserEntity{
+		UserID: userID,
+	}
+
+	// Call use case
+	err = uc.uc.GetUser(c, &entity)
+	if err != nil {
+		logger.Error(err.Error())
+		return ErrorResponse(c, entity.Code)
+	}
+
+	// Create response
+	user := response.UserResponse{
+		ID:      entity.User.ID,
+		LoginID: entity.User.LoginID,
+		Name:    entity.User.Name,
+	}
+
+	res := response.GetUserResponse{
+		Result: true,
+		User:   user,
+	}
+
+	logger.Debug("End GetUser")
 	return c.JSON(http.StatusOK, res)
 }
