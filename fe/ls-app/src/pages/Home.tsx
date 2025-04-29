@@ -23,7 +23,13 @@ const Home: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center space-x-4">
+          <button
+            onClick={() => navigate('/users')}
+            className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          >
+            User List
+          </button>
           <button
             onClick={handleLogout}
             className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"

@@ -5,6 +5,7 @@ import './App.scss';
 // Pages
 import Login from './pages/Login';
 import Home from './pages/Home';
+import UserList from './pages/UserList';
 
 // Utils
 import PrivateRoute from './utils/PrivateRoute';
@@ -20,6 +21,14 @@ function App() {
             element={
               <PrivateRoute>
                 <Home />
+              </PrivateRoute>
+            } 
+          />
+          <Route 
+            path="/users" 
+            element={
+              <PrivateRoute>
+                <UserList />
               </PrivateRoute>
             } 
           />
