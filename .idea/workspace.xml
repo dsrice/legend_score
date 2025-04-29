@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: ユーザー詳細取得APIを作成">
-      <change beforePath="$PROJECT_DIR$/be/repositories/mock/player.go" beforeDir="false" />
+    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: Mockを用意">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/controllers/auth_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/controllers/auth_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/controllers/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/controllers/user_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/usecases/auth_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/usecases/auth_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/usecases/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/usecases/user_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +72,7 @@
     "javascript.nodejs.core.library.configured.version": "21.2.0",
     "javascript.nodejs.core.library.typings.version": "22.15.2",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/work/program/legend_score",
+    "last_opened_file_path": "C:/work/program/legend_score/be",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -83,6 +87,11 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\work\program\legend_score\be" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="go test be" type="GoTestRunConfiguration" factoryName="Go Test" nameIsGenerated="true">
       <module name="legend_score" />
@@ -144,7 +153,8 @@
     <MESSAGE value="feat: FEにユーザー一覧画面を用意" />
     <MESSAGE value="feat: Github Actionを追加" />
     <MESSAGE value="feat: ユーザー詳細取得APIを作成" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: ユーザー詳細取得APIを作成" />
+    <MESSAGE value="feat: Mockを用意" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Mockを用意" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

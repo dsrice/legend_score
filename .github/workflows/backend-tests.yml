@@ -11,6 +11,21 @@ jobs:
     name: Run Backend Tests
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_DB: legend_score
+          POSTGRES_USER: docker
+          POSTGRES_PASSWORD: docker
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -26,6 +41,9 @@ jobs:
           go mod download
 
       - name: Run tests with coverage
+        env:
+          GO_ENV: test
+          DATABASE_ADDR: localhost:5432
         run: |
           cd be
           go test -v -coverprofile=cover_file.out ./...

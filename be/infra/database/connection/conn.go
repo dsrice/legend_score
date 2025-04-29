@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/go-sql-driver/mysql"
+	_ "github.com/lib/pq" // PostgreSQL driver
 	"github.com/joho/godotenv"
 )
 
@@ -41,19 +42,28 @@ func getConnection() (*sql.DB, error) {
 		return nil, err
 	}
 
-	conf := mysql.Config{
-		DBName:               os.Getenv("DATABASE_NAME"),
-		User:                 os.Getenv("DATABASE_USER"),
-		Passwd:               os.Getenv("DATABASE_PASS"),
-		Addr:                 os.Getenv("DATABASE_ADDR"),
-		Net:                  "tcp",
-		Collation:            "utf8mb4_unicode_ci",
-		Loc:                  jst,
-		ParseTime:            true,
-		AllowNativePasswords: true,
-	}
+	driver := os.Getenv("GOOSE_DRIVER")
+	var conn *sql.DB
 
-	conn, err := sql.Open("mysql", conf.FormatDSN())
+	if driver == "postgres" {
+		// PostgreSQL connection
+		connStr := os.Getenv("GOOSE_DBSTRING")
+		conn, err = sql.Open("postgres", connStr)
+	} else {
+		// Default to MySQL connection
+		conf := mysql.Config{
+			DBName:               os.Getenv("DATABASE_NAME"),
+			User:                 os.Getenv("DATABASE_USER"),
+			Passwd:               os.Getenv("DATABASE_PASS"),
+			Addr:                 os.Getenv("DATABASE_ADDR"),
+			Net:                  "tcp",
+			Collation:            "utf8mb4_unicode_ci",
+			Loc:                  jst,
+			ParseTime:            true,
+			AllowNativePasswords: true,
+		}
+		conn, err = sql.Open("mysql", conf.FormatDSN())
+	}
 
 	if err != nil {
 		logger.Error(err.Error())
