@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: Github Actionを追加">
-      <change beforePath="$PROJECT_DIR$/be/controllers/ci/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/controllers/ci/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/controllers/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/controllers/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/usecases/ui/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/usecases/ui/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/usecases/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/usecases/user.go" afterDir="false" />
+    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: ユーザー詳細取得APIを作成">
+      <change beforePath="$PROJECT_DIR$/be/repositories/mock/player.go" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +143,8 @@
     <MESSAGE value="feat: ユーザー一覧取得APIを追加" />
     <MESSAGE value="feat: FEにユーザー一覧画面を用意" />
     <MESSAGE value="feat: Github Actionを追加" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Github Actionを追加" />
+    <MESSAGE value="feat: ユーザー詳細取得APIを作成" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: ユーザー詳細取得APIを作成" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
