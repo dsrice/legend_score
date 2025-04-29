@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: 調整">
+    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: ホットリロードの導入など見直し">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/repositories/ri/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/repositories/ri/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/App.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/controllers/ci/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/controllers/ci/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/controllers/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/controllers/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/infra/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/server/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/usecases/ui/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/usecases/ui/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/usecases/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/usecases/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/er.a5er" beforeDir="false" afterPath="$PROJECT_DIR$/er.a5er" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +34,10 @@
     &quot;accountId&quot;: &quot;a07a0818-ac39-4fd8-8939-84589e0f28fa&quot;
   }
 }</component>
+  <component name="GoLinterSelectedExecutable" path="$PROJECT_DIR$/../../../ProgramData/chocolatey/bin/golangci-lint.exe" />
+  <component name="GoVcsConfiguration">
+    <option name="GO_FMT" value="false" />
+  </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -43,38 +47,72 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2uuMFeRnVysqt20VpLE08ec7Vxx" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "git-widget-placeholder": "develop",
-    "go.import.settings.migrated": "true",
-    "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "C:/work/program/legend_score",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.goide.configuration.GoLibrariesConfigurableProvider",
-    "ts.external.directory.path": "C:\\work\\program\\legend_score\\fe\\ls-app\\node_modules\\typescript\\lib"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.GoLinterPluginOnboarding&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.GoLinterPluginStorageMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\fujimoto\\AppData\\Roaming\\JetBrains\\GoLand2024.3\\plugins\\Shell Script\\shellcheck.exe&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;21.2.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.15.2&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/work/program/legend_score&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\work\\program\\legend_score\\fe\\ls-app\\node_modules\\typescript\\lib&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="go test be" type="GoTestRunConfiguration" factoryName="Go Test" nameIsGenerated="true">
+      <module name="legend_score" />
+      <working_directory value="$PROJECT_DIR$/be" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$/be" />
+      <filePath value="$PROJECT_DIR$" />
+      <output_directory value="$PROJECT_DIR$/be/coverage" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-gosdk-d297c17c1fbd-57c114c3cede-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-243.26053.20" />
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-GO-243.26053.20" />
+        <option value="bundled-gosdk-3b128438d3f6-34ac7aa8f6ab-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-251.23774.430" />
+        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-GO-251.23774.430" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="アプリケーションレベル" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="デフォルトタスク">
+      <changelist id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: 調整" />
+      <created>1745503591752</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1745503591752</updated>
+    </task>
+    <servers />
+  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
@@ -91,7 +129,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: 調整" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 調整" />
+    <MESSAGE value="feat: feのgitignore追加" />
+    <MESSAGE value="feat: swagger対応を追加" />
+    <MESSAGE value="feat: gitignoreを見直し" />
+    <MESSAGE value="feat: ログインページを用意" />
+    <MESSAGE value="feat: FEにテストコードにJestを導入" />
+    <MESSAGE value="feat: migrationファイルを追加" />
+    <MESSAGE value="feat: sqlboilerのモデル追加" />
+    <MESSAGE value="feat: 動作確認のため設定見直し" />
+    <MESSAGE value="feat: 画面上でログイン成功まで確認" />
+    <MESSAGE value="feat: CORSの設定を追加" />
+    <MESSAGE value="feat: ホットリロードの導入など見直し" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: ホットリロードの導入など見直し" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

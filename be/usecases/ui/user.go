@@ -8,4 +8,5 @@ import (
 type UserUseCase interface {
 	ValidateCreateUser(c echo.Context, e *entities.CreateUserEntity) error
 	CreateUser(c echo.Context, e *entities.CreateUserEntity) error
+	GetUsers(c echo.Context, e *entities.GetUsersEntity) error  // New method
 }

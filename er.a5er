@@ -53,9 +53,9 @@ LName=ユーザー情報
 Comment=
 TableInnerOption=
 TableOption=
-Page=Main
-Left=600
-Top=500
+Page=MAIN
+Left=200
+Top=600
 Field="ユーザーID","id","int AUTO_INCREMENT","NOT NULL",0,"","",$FFFFFFFF,""
 Field="ログインID","login_id","@VARCHAR(30)","NOT NULL",,"","",$FFFFFFFF,""
 Field="氏名","name","@VARCHAR(50)","NOT NULL",,"","",$FFFFFFFF,""
@@ -68,7 +68,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20250326021502
-Position="Main",600,500
+Position="MAIN",200,600
 ZOrder=58
 
 [Entity]
@@ -77,7 +77,7 @@ LName=ユーザートークン情報
 Comment=
 TableInnerOption=
 TableOption=
-Page=Main
+Page=MAIN
 Left=200
 Top=100
 Field="ID","id","int AUTO_INCREMENT","NOT NULL",0,"","",$FFFFFFFF,""
@@ -88,7 +88,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20250326025554
-Position="Main",200,100
+Position="MAIN",200,100
 ZOrder=59
 
 [Relation]
@@ -100,7 +100,7 @@ Fields1=id
 Fields2=user_id
 Cardinarity1=
 Cardinarity2=
-Position="MAIN",0,757,9243,643,R,R,""
+Position="MAIN",0,757,9243,691,R,R,""
 Dependence=0
 Caption=
 PName=
@@ -110,7 +110,7 @@ ModifiedDateTime=20250326020833
 LineMode=0
 Bar1=76
 Bar2=924
-Bar3=64
+Bar3=69
 TermPos1=R
 TermPos2=R
 ZOrder=60
@@ -121,9 +121,9 @@ LName=ゲーム情報
 Comment=
 TableInnerOption=
 TableOption=
-Page=Main
-Left=1500
-Top=150
+Page=MAIN
+Left=1150
+Top=100
 Field="ゲームID","id","int AUTO_INCREMENT","NOT NULL",0,"","",$FFFFFFFF,""
 Field="ユーザーID","user_id","@INT","NOT NULL",,"","",$FFFFFFFF,""
 Field="ゲーム名称","name","@VARCHAR(100)",,,"","",$FFFFFFFF,""
@@ -134,7 +134,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20250330012939
-Position="Main",1500,150
+Position="MAIN",1150,100
 ZOrder=61
 
 [Relation]
@@ -167,7 +167,7 @@ LName=フレーム情報
 Comment=
 TableInnerOption=
 TableOption=
-Page=Main
+Page=MAIN
 Left=2100
 Top=550
 Field="フレームID","id","int auto_increment","NOT NULL",0,"","",$FFFFFFFF,""
@@ -181,7 +181,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20250330013553
-Position="Main",2100,550
+Position="MAIN",2100,550
 ZOrder=63
 
 [Relation]
@@ -233,14 +233,14 @@ TermPos2=R
 ZOrder=65
 
 [Entity]
-PName=投球情報
-LName=throws
+PName=throws
+LName=投球情報
 Comment=
 TableInnerOption=
 TableOption=
-Page=Main
-Left=1500
-Top=1000
+Page=MAIN
+Left=1050
+Top=1200
 Field="投球ID","id","int auto_increment","NOT NULL",0,"","",$FFFFFFFF,""
 Field="ユーザーID","user_id","@INT","NOT NULL",,"","",$FFFFFFFF,""
 Field="ゲームID","game_id","@INT","NOT NULL",,"","",$FFFFFFFF,""
@@ -263,13 +263,13 @@ Field="10ピン結果","pin_10","@INT","NOT NULL",,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20250330014357
-Position="Main",1500,1000
+ModifiedDateTime=20250424234627
+Position="MAIN",1050,1200
 ZOrder=66
 
 [Relation]
 Entity1=users
-Entity2=投球情報
+Entity2=throws
 RelationType1=2
 RelationType2=3
 Fields1=id
@@ -291,7 +291,7 @@ ZOrder=67
 
 [Relation]
 Entity1=frames
-Entity2=投球情報
+Entity2=throws
 RelationType1=2
 RelationType2=3
 Fields1=id
@@ -313,7 +313,7 @@ ZOrder=68
 
 [Relation]
 Entity1=games
-Entity2=投球情報
+Entity2=throws
 RelationType1=2
 RelationType2=3
 Fields1=id

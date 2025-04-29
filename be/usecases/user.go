@@ -8,6 +8,7 @@ import (
 	"golang.org/x/crypto/scrypt"
 	"legend_score/consts/ecode"
 	"legend_score/entities"
+	"legend_score/entities/db"
 	"legend_score/infra/database/models"
 	"legend_score/infra/logger"
 	"legend_score/repositories/ri"
@@ -81,5 +82,45 @@ func (uc *userUseCase) CreateUser(c echo.Context, e *entities.CreateUserEntity) 
 	}
 
 	logger.Debug("CreateUser end")
+	return nil
+}
+
+func (uc *userUseCase) GetUsers(c echo.Context, e *entities.GetUsersEntity) error {
+	logger.Debug("GetUsers start")
+
+	// Build query conditions based on filters
+	conditions := []qm.QueryMod{}
+
+	if e.UserID != nil {
+		conditions = append(conditions, models.UserWhere.ID.EQ(*e.UserID))
+	}
+
+	if e.LoginID != nil && *e.LoginID != "" {
+		conditions = append(conditions, models.UserWhere.LoginID.EQ(*e.LoginID))
+	}
+
+	if e.Name != nil && *e.Name != "" {
+		conditions = append(conditions, models.UserWhere.Name.LIKE("%"+*e.Name+"%"))
+	}
+
+	// Get users from repository
+	users, err := uc.user.Get(c, conditions)
+	if err != nil {
+		logger.Error(err.Error())
+		e.Code = ecode.E9000
+		return err
+	}
+
+	// Convert to entity
+	userEntities := make([]db.UserEntity, len(users))
+	for i, user := range users {
+		var userEntity db.UserEntity
+		userEntity.SetEntity(user)
+		userEntities[i] = userEntity
+	}
+
+	e.Users = userEntities
+
+	logger.Debug("GetUsers end")
 	return nil
 }

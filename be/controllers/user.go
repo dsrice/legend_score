@@ -69,3 +69,55 @@ func (uc *userController) CreateUser(c echo.Context) error {
 	logger.Debug("End CreateUser")
 	return c.JSON(http.StatusOK, res)
 }
+
+// GetUsers godoc
+// @Summary Get a list of users
+// @Description Get a list of users with optional filtering by user ID, login ID, and name
+// @Tags user
+// @Accept json
+// @Produce json
+// @Param user_id query int false "Filter by user ID"
+// @Param login_id query string false "Filter by login ID"
+// @Param name query string false "Filter by user name"
+// @Success 200 {object} response.GetUsersResponse
+// @Failure 400 {object} response.GetUsersResponse
+// @Router /users [get]
+func (uc *userController) GetUsers(c echo.Context) error {
+	logger.Debug("Start GetUsers")
+
+	// Parse query parameters
+	var req request.GetUsersRequest
+	if err := c.Bind(&req); err != nil {
+		logger.Error(err.Error())
+		return ErrorResponse(c, ecode.E0001)
+	}
+
+	// Create entity and set filters
+	entity := entities.GetUsersEntity{}
+	entity.SetFilters(req.UserID, req.LoginID, req.Name)
+
+	// Call use case
+	err := uc.uc.GetUsers(c, &entity)
+	if err != nil {
+		logger.Error(err.Error())
+		return ErrorResponse(c, entity.Code)
+	}
+
+	// Create response
+	users := make([]response.UserResponse, len(entity.Users))
+	for i, user := range entity.Users {
+		users[i] = response.UserResponse{
+			ID:      user.ID,
+			LoginID: user.LoginID,
+			Name:    user.Name,
+		}
+	}
+
+	res := response.GetUsersResponse{
+		Result: true,
+		Users:  users,
+	}
+
+	logger.Debug("End GetUsers")
+	return c.JSON(http.StatusOK, res)
+}
