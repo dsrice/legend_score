@@ -1,11 +1,13 @@
 package usecases_test
 
 import (
+	"encoding/base64"
 	"errors"
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
 	mocklib "github.com/stretchr/testify/mock"
 	"github.com/volatiletech/null/v8"
+	"golang.org/x/crypto/scrypt"
 	"legend_score/consts/ecode"
 	"legend_score/entities"
 	"legend_score/entities/db"
@@ -35,6 +37,7 @@ func TestAuthUseCase_ValidateLogin(t *testing.T) {
 		password   string
 		setupMock  func()
 		expectError bool
+		expectedCode string
 	}{
 		{
 			name:     "Success",
@@ -51,6 +54,7 @@ func TestAuthUseCase_ValidateLogin(t *testing.T) {
 				mockUserRepo.On("GetLoginID", mocklib.Anything, "testuser").Return(user, nil)
 			},
 			expectError: false,
+			expectedCode: "",
 		},
 		{
 			name:     "Invalid Password",
@@ -60,6 +64,7 @@ func TestAuthUseCase_ValidateLogin(t *testing.T) {
 				// No need to setup mock for repository as validation fails before repository call
 			},
 			expectError: true,
+			expectedCode: ecode.E0001,
 		},
 		{
 			name:     "User Not Found",
@@ -70,6 +75,7 @@ func TestAuthUseCase_ValidateLogin(t *testing.T) {
 				mockUserRepo.On("GetLoginID", mocklib.Anything, "nonexistent").Return(nil, errors.New("user not found"))
 			},
 			expectError: true,
+			expectedCode: ecode.E0001,
 		},
 		{
 			name:     "Account Locked",
@@ -87,11 +93,16 @@ func TestAuthUseCase_ValidateLogin(t *testing.T) {
 				mockUserRepo.On("GetLoginID", mocklib.Anything, "lockeduser").Return(user, nil)
 			},
 			expectError: true,
+			expectedCode: ecode.E1001,
 		},
 	}
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
+			// Reset mocks
+			mockUserRepo.ExpectedCalls = nil
+			mockUserTokenRepo.ExpectedCalls = nil
+
 			// Setup mock expectations
 			tc.setupMock()
 
@@ -107,6 +118,7 @@ func TestAuthUseCase_ValidateLogin(t *testing.T) {
 			// Assert
 			if tc.expectError {
 				assert.Error(t, err)
+				assert.Equal(t, tc.expectedCode, entity.Code)
 			} else {
 				assert.NoError(t, err)
 			}
@@ -188,19 +200,23 @@ func TestAuthUseCase_Login(t *testing.T) {
 		setupMock  func()
 		expectToken bool
 		expectError bool
+		expectedCode string
 	}{
 		{
 			name: "Success",
 			setupEntity: func() *entities.LoginEntity {
-				// This is a simplified test - in reality, the password would be hashed
-				// and compared with the stored hash, but for testing we're using a direct match
+				// Generate the actual hash that would be produced
+				salt := "legend_score_salt_dev"
+				dk, _ := scrypt.Key([]byte("Password123"), []byte(salt), 1<<15, 8, 1, 32)
+				hashedPassword := base64.StdEncoding.EncodeToString(dk)
+
 				return &entities.LoginEntity{
 					LoginID:  "testuser",
 					Password: "Password123",
 					User: db.UserEntity{
 						ID:       1,
 						LoginID:  "testuser",
-						Password: "legend_score_salt_dev", // This would be a hash in reality
+						Password: hashedPassword,
 					},
 				}
 			},
@@ -210,17 +226,23 @@ func TestAuthUseCase_Login(t *testing.T) {
 			},
 			expectToken: true,
 			expectError: false,
+			expectedCode: "",
 		},
 		{
 			name: "Token Creation Error",
 			setupEntity: func() *entities.LoginEntity {
+				// Generate the actual hash that would be produced
+				salt := "legend_score_salt_dev"
+				dk, _ := scrypt.Key([]byte("Password123"), []byte(salt), 1<<15, 8, 1, 32)
+				hashedPassword := base64.StdEncoding.EncodeToString(dk)
+
 				return &entities.LoginEntity{
 					LoginID:  "testuser",
 					Password: "Password123",
 					User: db.UserEntity{
 						ID:       1,
 						LoginID:  "testuser",
-						Password: "legend_score_salt_dev", // This would be a hash in reality
+						Password: hashedPassword,
 					},
 				}
 			},
@@ -230,11 +252,16 @@ func TestAuthUseCase_Login(t *testing.T) {
 			},
 			expectToken: false,
 			expectError: true,
+			expectedCode: ecode.E0001,
 		},
 	}
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
+			// Reset mocks
+			mockUserRepo.ExpectedCalls = nil
+			mockUserTokenRepo.ExpectedCalls = nil
+
 			// Setup mock expectations
 			tc.setupMock()
 
@@ -248,14 +275,15 @@ func TestAuthUseCase_Login(t *testing.T) {
 			if tc.expectError {
 				assert.Error(t, err)
 				assert.Nil(t, token)
-				assert.Equal(t, ecode.E0001, entity.Code)
+				assert.Equal(t, tc.expectedCode, entity.Code)
 			} else {
 				assert.NoError(t, err)
 				assert.NotNil(t, token)
 				assert.NotEmpty(t, *token)
 			}
 
-			// Verify mock expectations
+  	// Verify mock expectations
+			mockUserRepo.AssertExpectations(t)
 			mockUserTokenRepo.AssertExpectations(t)
 		})
 	}

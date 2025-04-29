@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: Mockを用意">
+    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: Mockを導入">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/controllers/auth_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/controllers/auth_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/controllers/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/controllers/user_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/be/usecases/auth_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/usecases/auth_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/usecases/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/usecases/user_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +151,8 @@
     <MESSAGE value="feat: Github Actionを追加" />
     <MESSAGE value="feat: ユーザー詳細取得APIを作成" />
     <MESSAGE value="feat: Mockを用意" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Mockを用意" />
+    <MESSAGE value="feat: Mockを導入" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Mockを導入" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
