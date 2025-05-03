@@ -29,7 +29,7 @@ apiClient.interceptors.request.use(
     // If token exists, add it to the Authorization header
     if (token) {
       config.headers = config.headers || {};
-      config.headers.Authorization = `Bearer ${token}`;
+      config.headers.Authorization = `${token}`;
     }
 
     return config;

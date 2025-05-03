@@ -49,7 +49,7 @@ const UserList: React.FC = () => {
 
       // Make the API request using the new params parameter
       // Token is automatically added by the apiClient interceptor
-      const response = await apiGet('/users', params);
+      const response = await apiGet('/user', params);
 
       // Update state with the response data
       const data = response as GetUsersResponse;
