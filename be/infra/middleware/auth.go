@@ -34,22 +34,22 @@ func JWTMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 		})
 
 		if err != nil {
-			return controllers.ErrorResponse(c, ecode.E0001)
+			return controllers.ErrorResponse(c, ecode.E0000)
 		}
 
 		if !token.Valid {
-			return controllers.ErrorResponse(c, ecode.E0001)
+			return controllers.ErrorResponse(c, ecode.E0000)
 		}
 
 		// Extract user ID from token claims
 		claims, ok := token.Claims.(jwt.MapClaims)
 		if !ok {
-			return controllers.ErrorResponse(c, ecode.E0001)
+			return controllers.ErrorResponse(c, ecode.E0000)
 		}
 
 		userID, err := strconv.Atoi(claims["jti"].(string))
 		if err != nil {
-			return controllers.ErrorResponse(c, ecode.E0001)
+			return controllers.ErrorResponse(c, ecode.E0000)
 		}
 
 		// Set user ID in context for later use
