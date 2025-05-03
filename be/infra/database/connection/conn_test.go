@@ -16,7 +16,7 @@ func (s *ConnectionSuite) TestGetConnection() {
 
 	s.NotNil(s.T(), conn.Conn)
 
-	rows, err := conn.Conn.Query("select count(*) from schema_migrations")
+	rows, err := conn.Conn.Query("select count(*) from goose_db_version")
 	defer func() {
 		err = rows.Close()
 	}()

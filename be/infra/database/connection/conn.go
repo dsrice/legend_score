@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/go-sql-driver/mysql"
-	_ "github.com/lib/pq" // PostgreSQL driver
 	"github.com/joho/godotenv"
+	_ "github.com/lib/pq" // PostgreSQL driver
 )
 
 type Connection struct {
@@ -36,7 +36,7 @@ func getConnection() (*sql.DB, error) {
 		return nil, err
 	}
 
-	err = godotenv.Load(fmt.Sprintf("%s.env", os.Getenv("GO_ENV")))
+	err = godotenv.Load(fmt.Sprintf("/go/src/legend_score/%s.env", os.Getenv("GO_ENV")))
 	if err != nil {
 		logger.Error(err.Error())
 		return nil, err

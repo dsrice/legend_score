@@ -6,7 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: Mockを導入">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/usecases/auth_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/usecases/auth_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/controllers/error.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/controllers/error.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/controllers/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/controllers/user_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/be/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/infra/database/connection/conn.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/database/connection/conn.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/infra/database/connection/conn_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/database/connection/conn_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/test.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/fe/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/fe/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/.env.local.example" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/.env.local.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/pages/UserList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/pages/UserList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/services/apiClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/services/apiClient.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,39 +60,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Go テスト.go test be.executor": "Debug",
-    "Go テスト.go test legend_score.executor": "Debug",
-    "RunOnceActivity.GoLinterPluginOnboarding": "true",
-    "RunOnceActivity.GoLinterPluginStorageMigration": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "SHELLCHECK.PATH": "C:\\Users\\fujimoto\\AppData\\Roaming\\JetBrains\\GoLand2024.3\\plugins\\Shell Script\\shellcheck.exe",
-    "git-widget-placeholder": "feature/user__detail",
-    "go.import.settings.migrated": "true",
-    "go.sdk.automatically.set": "true",
-    "javascript.nodejs.core.library.configured.version": "21.2.0",
-    "javascript.nodejs.core.library.typings.version": "22.15.2",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/work/program/legend_score/be",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "settings.nodejs",
-    "ts.external.directory.path": "C:\\work\\program\\legend_score\\fe\\ls-app\\node_modules\\typescript\\lib"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Go テスト.go test be.executor&quot;: &quot;Debug&quot;,
+    &quot;Go テスト.go test legend_score.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.GoLinterPluginOnboarding&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.GoLinterPluginStorageMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\fujimoto\\AppData\\Roaming\\JetBrains\\GoLand2024.3\\plugins\\Shell Script\\shellcheck.exe&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/user__detail の #1&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;21.2.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.15.2&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/work/program/legend_score/be&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.goide.configuration.GoLibrariesConfigurableProvider&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\work\\program\\legend_score\\fe\\ls-app\\node_modules\\typescript\\lib&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\work\program\legend_score\be" />
@@ -93,9 +102,14 @@
     <configuration name="go test be" type="GoTestRunConfiguration" factoryName="Go Test" nameIsGenerated="true">
       <module name="legend_score" />
       <working_directory value="$PROJECT_DIR$" />
+      <envs>
+        <env name="GO_ENV" value="test" />
+      </envs>
       <kind value="DIRECTORY" />
+      <package value="C:\work\program\legend_score\be" />
       <directory value="$PROJECT_DIR$/be" />
       <filePath value="$PROJECT_DIR$" />
+      <output_directory value="$PROJECT_DIR$/be/coverage" />
       <framework value="gotest" />
       <method v="2" />
     </configuration>

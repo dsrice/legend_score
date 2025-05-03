@@ -20,13 +20,13 @@ import (
 func TestUserController_CreateUser(t *testing.T) {
 	// Setup
 	e := echo.New()
-	
+
 	// Create mock usecase
 	mockUserUseCase := new(mock.UserUseCase)
-	
+
 	// Create controller with mock usecase
 	userController := controllers.NewUserController(mockUserUseCase)
-	
+
 	// Test cases
 	tests := []struct {
 		name           string
@@ -45,16 +45,16 @@ func TestUserController_CreateUser(t *testing.T) {
 			setupMock: func() {
 				// Setup expectations for ValidateCreateUser
 				mockUserUseCase.On("ValidateCreateUser", mocklib.Anything, mocklib.MatchedBy(func(entity *entities.CreateUserEntity) bool {
-					return entity.LoginID == "newuser" && 
-						   entity.Password == "Password123" && 
-						   entity.Name == "New User"
+					return entity.LoginID == "newuser" &&
+						entity.Password == "Password123" &&
+						entity.Name == "New User"
 				})).Return(nil)
-				
+
 				// Setup expectations for CreateUser
 				mockUserUseCase.On("CreateUser", mocklib.Anything, mocklib.MatchedBy(func(entity *entities.CreateUserEntity) bool {
-					return entity.LoginID == "newuser" && 
-						   entity.Password == "Password123" && 
-						   entity.Name == "New User"
+					return entity.LoginID == "newuser" &&
+						entity.Password == "Password123" &&
+						entity.Name == "New User"
 				})).Return(nil)
 			},
 			expectedStatus: http.StatusOK,
@@ -70,9 +70,9 @@ func TestUserController_CreateUser(t *testing.T) {
 			setupMock: func() {
 				// Setup expectations for ValidateCreateUser to return an error
 				mockUserUseCase.On("ValidateCreateUser", mocklib.Anything, mocklib.MatchedBy(func(entity *entities.CreateUserEntity) bool {
-					return entity.LoginID == "newuser" && 
-						   entity.Password == "Password123" && 
-						   entity.Name == "New User"
+					return entity.LoginID == "newuser" &&
+						entity.Password == "Password123" &&
+						entity.Name == "New User"
 				})).Return(assert.AnError)
 			},
 			expectedStatus: http.StatusBadRequest,
@@ -88,47 +88,47 @@ func TestUserController_CreateUser(t *testing.T) {
 			setupMock: func() {
 				// Setup expectations for ValidateCreateUser
 				mockUserUseCase.On("ValidateCreateUser", mocklib.Anything, mocklib.MatchedBy(func(entity *entities.CreateUserEntity) bool {
-					return entity.LoginID == "newuser" && 
-						   entity.Password == "Password123" && 
-						   entity.Name == "New User"
+					return entity.LoginID == "newuser" &&
+						entity.Password == "Password123" &&
+						entity.Name == "New User"
 				})).Return(nil)
-				
+
 				// Setup expectations for CreateUser to return an error
 				mockUserUseCase.On("CreateUser", mocklib.Anything, mocklib.MatchedBy(func(entity *entities.CreateUserEntity) bool {
-					return entity.LoginID == "newuser" && 
-						   entity.Password == "Password123" && 
-						   entity.Name == "New User"
+					return entity.LoginID == "newuser" &&
+						entity.Password == "Password123" &&
+						entity.Name == "New User"
 				})).Return(assert.AnError)
 			},
 			expectedStatus: http.StatusBadRequest,
 			expectedResult: false,
 		},
 	}
-	
+
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			// Setup mock expectations
 			tc.setupMock()
-			
+
 			// Create request
 			req := httptest.NewRequest(http.MethodPost, "/user", strings.NewReader(tc.requestBody))
 			req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 			rec := httptest.NewRecorder()
 			c := e.NewContext(req, rec)
-			
+
 			// Perform request
 			err := userController.CreateUser(c)
-			
+
 			// Assert
 			assert.NoError(t, err)
 			assert.Equal(t, tc.expectedStatus, rec.Code)
-			
+
 			// Parse response
 			var response response.CreateUserResponse
 			err = json.Unmarshal(rec.Body.Bytes(), &response)
 			assert.NoError(t, err)
 			assert.Equal(t, tc.expectedResult, response.Result)
-			
+
 			// Verify mock expectations
 			mockUserUseCase.AssertExpectations(t)
 		})
@@ -138,13 +138,13 @@ func TestUserController_CreateUser(t *testing.T) {
 func TestUserController_GetUsers(t *testing.T) {
 	// Setup
 	e := echo.New()
-	
+
 	// Create mock usecase
 	mockUserUseCase := new(mock.UserUseCase)
-	
+
 	// Create controller with mock usecase
 	userController := controllers.NewUserController(mockUserUseCase)
-	
+
 	// Test cases
 	tests := []struct {
 		name           string
@@ -155,7 +155,7 @@ func TestUserController_GetUsers(t *testing.T) {
 		expectedUsers  int
 	}{
 		{
-			name: "Success - No Filters",
+			name:        "Success - No Filters",
 			queryParams: map[string]string{},
 			setupMock: func() {
 				// Setup expectations for GetUsers
@@ -172,14 +172,14 @@ func TestUserController_GetUsers(t *testing.T) {
 			},
 			expectedStatus: http.StatusOK,
 			expectedResult: true,
-			expectedUsers: 2,
+			expectedUsers:  2,
 		},
 		{
 			name: "Success - With Filters",
 			queryParams: map[string]string{
-				"user_id": "1",
+				"user_id":  "1",
 				"login_id": "user1",
-				"name": "User",
+				"name":     "User",
 			},
 			setupMock: func() {
 				// Setup expectations for GetUsers with filters
@@ -188,8 +188,8 @@ func TestUserController_GetUsers(t *testing.T) {
 					loginID := "user1"
 					name := "User"
 					return entity.UserID != nil && *entity.UserID == userID &&
-						   entity.LoginID != nil && *entity.LoginID == loginID &&
-						   entity.Name != nil && *entity.Name == name
+						entity.LoginID != nil && *entity.LoginID == loginID &&
+						entity.Name != nil && *entity.Name == name
 				})).Run(func(args mocklib.Arguments) {
 					// Set users in the entity
 					entity := args.Get(1).(*entities.GetUsersEntity)
@@ -200,26 +200,26 @@ func TestUserController_GetUsers(t *testing.T) {
 			},
 			expectedStatus: http.StatusOK,
 			expectedResult: true,
-			expectedUsers: 1,
+			expectedUsers:  1,
 		},
 		{
-			name: "Error",
+			name:        "Error",
 			queryParams: map[string]string{},
 			setupMock: func() {
 				// Setup expectations for GetUsers to return an error
 				mockUserUseCase.On("GetUsers", mocklib.Anything, mocklib.Anything).Return(assert.AnError)
 			},
-			expectedStatus: http.StatusBadRequest,
+			expectedStatus: http.StatusInternalServerError,
 			expectedResult: false,
-			expectedUsers: 0,
+			expectedUsers:  0,
 		},
 	}
-	
+
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			// Setup mock expectations
 			tc.setupMock()
-			
+
 			// Create request with query parameters
 			req := httptest.NewRequest(http.MethodGet, "/users", nil)
 			q := req.URL.Query()
@@ -227,24 +227,24 @@ func TestUserController_GetUsers(t *testing.T) {
 				q.Add(key, value)
 			}
 			req.URL.RawQuery = q.Encode()
-			
+
 			rec := httptest.NewRecorder()
 			c := e.NewContext(req, rec)
-			
+
 			// Perform request
 			err := userController.GetUsers(c)
-			
+
 			// Assert
 			assert.NoError(t, err)
 			assert.Equal(t, tc.expectedStatus, rec.Code)
-			
+
 			// Parse response
 			var response response.GetUsersResponse
 			err = json.Unmarshal(rec.Body.Bytes(), &response)
 			assert.NoError(t, err)
 			assert.Equal(t, tc.expectedResult, response.Result)
 			assert.Equal(t, tc.expectedUsers, len(response.Users))
-			
+
 			// Verify mock expectations
 			mockUserUseCase.AssertExpectations(t)
 		})
@@ -254,13 +254,13 @@ func TestUserController_GetUsers(t *testing.T) {
 func TestUserController_GetUser(t *testing.T) {
 	// Setup
 	e := echo.New()
-	
+
 	// Create mock usecase
 	mockUserUseCase := new(mock.UserUseCase)
-	
+
 	// Create controller with mock usecase
 	userController := controllers.NewUserController(mockUserUseCase)
-	
+
 	// Test cases
 	tests := []struct {
 		name           string
@@ -270,7 +270,7 @@ func TestUserController_GetUser(t *testing.T) {
 		expectedResult bool
 	}{
 		{
-			name: "Success",
+			name:   "Success",
 			userID: 1,
 			setupMock: func() {
 				// Setup expectations for GetUser
@@ -280,9 +280,9 @@ func TestUserController_GetUser(t *testing.T) {
 					// Set user in the entity
 					entity := args.Get(1).(*entities.GetUserEntity)
 					entity.User = db.UserEntity{
-						ID: 1,
+						ID:      1,
 						LoginID: "user1",
-						Name: "User One",
+						Name:    "User One",
 					}
 				}).Return(nil)
 			},
@@ -290,7 +290,7 @@ func TestUserController_GetUser(t *testing.T) {
 			expectedResult: true,
 		},
 		{
-			name: "User Not Found",
+			name:   "User Not Found",
 			userID: 999,
 			setupMock: func() {
 				// Setup expectations for GetUser to return an error
@@ -298,36 +298,36 @@ func TestUserController_GetUser(t *testing.T) {
 					return entity.UserID == 999
 				})).Return(assert.AnError)
 			},
-			expectedStatus: http.StatusBadRequest,
+			expectedStatus: http.StatusInternalServerError,
 			expectedResult: false,
 		},
 	}
-	
+
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			// Setup mock expectations
 			tc.setupMock()
-			
+
 			// Create request
 			req := httptest.NewRequest(http.MethodGet, "/user/"+strconv.Itoa(tc.userID), nil)
 			rec := httptest.NewRecorder()
 			c := e.NewContext(req, rec)
 			c.SetParamNames("user_id")
 			c.SetParamValues(strconv.Itoa(tc.userID))
-			
+
 			// Perform request
 			err := userController.GetUser(c)
-			
+
 			// Assert
 			assert.NoError(t, err)
 			assert.Equal(t, tc.expectedStatus, rec.Code)
-			
+
 			// Parse response
 			var response response.GetUserResponse
 			err = json.Unmarshal(rec.Body.Bytes(), &response)
 			assert.NoError(t, err)
 			assert.Equal(t, tc.expectedResult, response.Result)
-			
+
 			// Verify mock expectations
 			mockUserUseCase.AssertExpectations(t)
 		})
