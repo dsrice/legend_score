@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { apiGet } from '../services/apiClient';
-import { getToken } from '../services/auth';
 import CreateUserDialog from '../components/CreateUserDialog';
 
 // Define the User interface based on the backend response
@@ -42,9 +41,6 @@ const UserList: React.FC = () => {
     setError(null);
 
     try {
-      // Get the token for authentication
-      const token = getToken();
-
       // Create params object with non-empty filters
       const params: Record<string, string> = {};
       if (filters.user_id) params.user_id = filters.user_id;
@@ -52,11 +48,8 @@ const UserList: React.FC = () => {
       if (filters.name) params.name = filters.name;
 
       // Make the API request using the new params parameter
-      const response = await apiGet('/users', params, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
+      // Token is automatically added by the apiClient interceptor
+      const response = await apiGet('/users', params);
 
       // Update state with the response data
       const data = response as GetUsersResponse;

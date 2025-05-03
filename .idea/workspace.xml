@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: Mockを導入">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/controllers/error.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/controllers/error.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/controllers/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/controllers/user_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/be/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/infra/database/connection/conn.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/database/connection/conn.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/infra/database/connection/conn_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/database/connection/conn_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/test.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/fe/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/fe/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/.env.local.example" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/.env.local.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/pages/UserList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/pages/UserList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/services/apiClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/services/apiClient.ts" afterDir="false" />
-    </list>
+    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: FEの処理を見直し" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -166,7 +154,8 @@
     <MESSAGE value="feat: ユーザー詳細取得APIを作成" />
     <MESSAGE value="feat: Mockを用意" />
     <MESSAGE value="feat: Mockを導入" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Mockを導入" />
+    <MESSAGE value="feat: FEの処理を見直し" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: FEの処理を見直し" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

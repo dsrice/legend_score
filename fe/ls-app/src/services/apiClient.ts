@@ -1,6 +1,7 @@
 // apiClient.ts
 // This file provides a centralized way to make API requests with the base URL from environment variables
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { getToken } from './auth';
 
 /**
  * Get the API base URL from environment variables
@@ -18,6 +19,25 @@ const apiClient = axios.create({
     'Content-Type': 'application/json',
   },
 });
+
+// Add a request interceptor to include the auth token in all requests
+apiClient.interceptors.request.use(
+  (config) => {
+    // Get the token from localStorage
+    const token = getToken();
+
+    // If token exists, add it to the Authorization header
+    if (token) {
+      config.headers = config.headers || {};
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 /**
  * Make a GET request to the API

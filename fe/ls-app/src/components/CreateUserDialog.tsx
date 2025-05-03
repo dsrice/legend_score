@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { apiPost } from '../services/apiClient';
-import { getToken } from '../services/auth';
 
 // Define the CreateUserRequest interface
 interface CreateUserRequest {
@@ -59,15 +58,9 @@ const CreateUserDialog: React.FC<CreateUserDialogProps> = ({ isOpen, onClose, on
     setCreateUserError(null);
 
     try {
-      // Get the token for authentication
-      const token = getToken();
-
       // Make the API request to create a user
-      const response = await apiPost('/users', newUser, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
+      // Token is automatically added by the apiClient interceptor
+      const response = await apiPost('/users', newUser);
 
       // Handle the response
       const data = response as CreateUserResponse;
