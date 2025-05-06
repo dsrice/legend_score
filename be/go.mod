@@ -3,6 +3,7 @@ module legend_score
 go 1.23
 
 require (
+	github.com/DATA-DOG/go-sqlmock v1.4.1
 	github.com/dave/jennifer v1.7.1
 	github.com/friendsofgo/errors v0.9.2
 	github.com/go-playground/validator/v10 v10.26.0
