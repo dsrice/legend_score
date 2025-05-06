@@ -1,0 +1,10 @@
+[mysql]
+  dbname     = "legend_score"
+  host       = "localhost"
+  port       = 3305
+  user       = "docker"
+  pass       = "docker"
+  sslmode    = "false"
+  whitelist = []
+  skipsqlcmd = true
+  skiptest = true

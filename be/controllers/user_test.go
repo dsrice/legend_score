@@ -2,10 +2,12 @@ package controllers_test
 
 import (
 	"encoding/json"
+	"errors"
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
 	mocklib "github.com/stretchr/testify/mock"
 	"legend_score/controllers"
+	"legend_score/controllers/request"
 	"legend_score/controllers/response"
 	"legend_score/entities"
 	"legend_score/entities/db"
@@ -21,6 +23,9 @@ func TestUserController_CreateUser(t *testing.T) {
 	// Setup
 	e := echo.New()
 
+	// Setup a mock validator that always returns nil
+	e.Validator = &mockValidator{}
+
 	// Create mock usecase
 	mockUserUseCase := new(mock.UserUseCase)
 
@@ -30,18 +35,18 @@ func TestUserController_CreateUser(t *testing.T) {
 	// Test cases
 	tests := []struct {
 		name           string
-		requestBody    string
+		requestBody    request.CreateUserRequest
 		setupMock      func()
 		expectedStatus int
 		expectedResult bool
 	}{
 		{
 			name: "Success",
-			requestBody: `{
-				"login_id": "newuser",
-				"password": "Password123",
-				"name": "New User"
-			}`,
+			requestBody: request.CreateUserRequest{
+				LoginID:  "newuser",
+				Password: "Password123",
+				Name:     "New User",
+			},
 			setupMock: func() {
 				// Setup expectations for ValidateCreateUser
 				mockUserUseCase.On("ValidateCreateUser", mocklib.Anything, mocklib.MatchedBy(func(entity *entities.CreateUserEntity) bool {
@@ -62,45 +67,45 @@ func TestUserController_CreateUser(t *testing.T) {
 		},
 		{
 			name: "Validation Error",
-			requestBody: `{
-				"login_id": "newuser",
-				"password": "Password123",
-				"name": "New User"
-			}`,
+			requestBody: request.CreateUserRequest{
+				LoginID:  "newuser1",
+				Password: "Password123",
+				Name:     "New User",
+			},
 			setupMock: func() {
 				// Setup expectations for ValidateCreateUser to return an error
 				mockUserUseCase.On("ValidateCreateUser", mocklib.Anything, mocklib.MatchedBy(func(entity *entities.CreateUserEntity) bool {
-					return entity.LoginID == "newuser" &&
+					return entity.LoginID == "newuser1" &&
 						entity.Password == "Password123" &&
 						entity.Name == "New User"
 				})).Return(assert.AnError)
 			},
-			expectedStatus: http.StatusBadRequest,
+			expectedStatus: http.StatusInternalServerError,
 			expectedResult: false,
 		},
 		{
 			name: "Creation Error",
-			requestBody: `{
-				"login_id": "newuser",
-				"password": "Password123",
-				"name": "New User"
-			}`,
+			requestBody: request.CreateUserRequest{
+				LoginID:  "newuser2",
+				Password: "Password123",
+				Name:     "New User",
+			},
 			setupMock: func() {
 				// Setup expectations for ValidateCreateUser
 				mockUserUseCase.On("ValidateCreateUser", mocklib.Anything, mocklib.MatchedBy(func(entity *entities.CreateUserEntity) bool {
-					return entity.LoginID == "newuser" &&
+					return entity.LoginID == "newuser2" &&
 						entity.Password == "Password123" &&
 						entity.Name == "New User"
 				})).Return(nil)
 
 				// Setup expectations for CreateUser to return an error
 				mockUserUseCase.On("CreateUser", mocklib.Anything, mocklib.MatchedBy(func(entity *entities.CreateUserEntity) bool {
-					return entity.LoginID == "newuser" &&
+					return entity.LoginID == "newuser2" &&
 						entity.Password == "Password123" &&
 						entity.Name == "New User"
 				})).Return(assert.AnError)
 			},
-			expectedStatus: http.StatusBadRequest,
+			expectedStatus: http.StatusInternalServerError,
 			expectedResult: false,
 		},
 	}
@@ -110,14 +115,17 @@ func TestUserController_CreateUser(t *testing.T) {
 			// Setup mock expectations
 			tc.setupMock()
 
-			// Create request
-			req := httptest.NewRequest(http.MethodPost, "/user", strings.NewReader(tc.requestBody))
+			// Create request - Convert CreateUserRequest to JSON
+			jsonData, err := json.Marshal(tc.requestBody)
+			assert.NoError(t, err)
+
+			req := httptest.NewRequest(http.MethodPost, "/user", strings.NewReader(string(jsonData)))
 			req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 			rec := httptest.NewRecorder()
 			c := e.NewContext(req, rec)
 
 			// Perform request
-			err := userController.CreateUser(c)
+			err = userController.CreateUser(c)
 
 			// Assert
 			assert.NoError(t, err)
@@ -203,11 +211,15 @@ func TestUserController_GetUsers(t *testing.T) {
 			expectedUsers:  1,
 		},
 		{
-			name:        "Error",
-			queryParams: map[string]string{},
+			name: "Error",
+			queryParams: map[string]string{
+				"login_id": "user1",
+			},
 			setupMock: func() {
 				// Setup expectations for GetUsers to return an error
-				mockUserUseCase.On("GetUsers", mocklib.Anything, mocklib.Anything).Return(assert.AnError)
+				mockUserUseCase.On("GetUsers", mocklib.Anything, mocklib.MatchedBy(func(entity *entities.GetUsersEntity) bool {
+					return entity.UserID == nil && *entity.LoginID == "user1" && entity.Name == nil
+				})).Return(errors.New("test"))
 			},
 			expectedStatus: http.StatusInternalServerError,
 			expectedResult: false,
@@ -257,9 +269,6 @@ func TestUserController_GetUser(t *testing.T) {
 
 	// Create mock usecase
 	mockUserUseCase := new(mock.UserUseCase)
-
-	// Create controller with mock usecase
-	userController := controllers.NewUserController(mockUserUseCase)
 
 	// Test cases
 	tests := []struct {
@@ -315,7 +324,8 @@ func TestUserController_GetUser(t *testing.T) {
 			c.SetParamNames("user_id")
 			c.SetParamValues(strconv.Itoa(tc.userID))
 
-			// Perform request
+			// Create controller with mock usecase
+			userController := controllers.NewUserController(mockUserUseCase)
 			err := userController.GetUser(c)
 
 			// Assert

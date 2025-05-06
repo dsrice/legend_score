@@ -36,7 +36,7 @@ func getConnection() (*sql.DB, error) {
 		return nil, err
 	}
 
-	err = godotenv.Load(fmt.Sprintf("/go/src/legend_score/%s.env", os.Getenv("GO_ENV")))
+	err = godotenv.Load(fmt.Sprintf("%s/%s.env", os.Getenv("ROOT_PATH"), os.Getenv("GO_ENV")))
 	if err != nil {
 		logger.Error(err.Error())
 		return nil, err
