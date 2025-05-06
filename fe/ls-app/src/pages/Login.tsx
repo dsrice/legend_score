@@ -19,8 +19,8 @@ const Login: React.FC = () => {
   // Check if user is already authenticated
   useEffect(() => {
     if (isAuthenticated()) {
-      // Redirect to home page if already authenticated
-      navigate('/home');
+      // Redirect to user list page if already authenticated
+      navigate('/users');
     }
   }, [navigate]);
 
@@ -45,8 +45,8 @@ const Login: React.FC = () => {
         // Store token in localStorage
         storeToken(response.token);
 
-        // Redirect to home page
-        navigate('/home');
+        // Redirect to user list page
+        navigate('/users');
       } else {
         setError(response.code || 'Login failed. Please check your credentials and try again.');
       }

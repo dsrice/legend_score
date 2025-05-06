@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { apiGet } from '../services/apiClient';
-import { getToken } from '../services/auth';
+import CreateUserDialog from '../components/CreateUserDialog';
 
 // Define the User interface based on the backend response
 interface User {
@@ -27,6 +27,9 @@ const UserList: React.FC = () => {
   const [loginIdFilter, setLoginIdFilter] = useState<string>('');
   const [nameFilter, setNameFilter] = useState<string>('');
 
+  // Create user dialog state
+  const [isCreateDialogOpen, setIsCreateDialogOpen] = useState<boolean>(false);
+
   // Fetch users on component mount
   useEffect(() => {
     fetchUsers();
@@ -38,21 +41,15 @@ const UserList: React.FC = () => {
     setError(null);
 
     try {
-      // Prepare query parameters
-      const params = new URLSearchParams();
-      if (filters.user_id) params.append('user_id', filters.user_id);
-      if (filters.login_id) params.append('login_id', filters.login_id);
-      if (filters.name) params.append('name', filters.name);
+      // Create params object with non-empty filters
+      const params: Record<string, string> = {};
+      if (filters.user_id) params.user_id = filters.user_id;
+      if (filters.login_id) params.login_id = filters.login_id;
+      if (filters.name) params.name = filters.name;
 
-      // Get the token for authentication
-      const token = getToken();
-
-      // Make the API request
-      const response = await apiGet(`/users?${params.toString()}`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
+      // Make the API request using the new params parameter
+      // Token is automatically added by the apiClient interceptor
+      const response = await apiGet('/user', params);
 
       // Update state with the response data
       const data = response as GetUsersResponse;
@@ -92,17 +89,40 @@ const UserList: React.FC = () => {
     navigate('/home');
   };
 
+  // Open create user dialog
+  const openCreateDialog = () => {
+    setIsCreateDialogOpen(true);
+  };
+
+  // Close create user dialog
+  const closeCreateDialog = () => {
+    setIsCreateDialogOpen(false);
+  };
+
+  // Handle user created event
+  const handleUserCreated = () => {
+    fetchUsers(); // Refresh the user list
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold text-gray-900">User List</h1>
-          <button
-            onClick={handleBackToHome}
-            className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          >
-            Back to Home
-          </button>
+          <div className="flex space-x-4">
+            <button
+              onClick={openCreateDialog}
+              className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+            >
+              Create User
+            </button>
+            <button
+              onClick={handleBackToHome}
+              className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              Back to Home
+            </button>
+          </div>
         </div>
 
         {/* Filter Form */}
@@ -217,6 +237,13 @@ const UserList: React.FC = () => {
           )}
         </div>
       </div>
+
+      {/* Create User Dialog Component */}
+      <CreateUserDialog
+        isOpen={isCreateDialogOpen}
+        onClose={closeCreateDialog}
+        onUserCreated={handleUserCreated}
+      />
     </div>
   );
 };

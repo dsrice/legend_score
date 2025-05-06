@@ -11,6 +11,7 @@ import (
 	"go.uber.org/dig"
 	"legend_score/controllers/ci"
 	"legend_score/infra/logger"
+	customMiddleware "legend_score/infra/middleware"
 	"net/http"
 	"os"
 )
@@ -78,9 +79,12 @@ func (s *Server) routing() {
 	api := s.echo.Group("/api")
 	v := api.Group("/v1")
 
+	// Login route - no authentication required
 	v.POST("/login", s.Auth.Login)
 
-	u := v.Group("/user")
+	// User routes - authentication required
+	u := v.Group("/user", customMiddleware.JWTMiddleware)
 	u.POST("", s.User.CreateUser)
 	u.GET("", s.User.GetUsers)
+	u.GET("/:user_id", s.User.GetUser)
 }

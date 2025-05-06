@@ -1,11 +1,12 @@
 // apiClient.ts
 // This file provides a centralized way to make API requests with the base URL from environment variables
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { getToken } from './auth';
 
 /**
  * Get the API base URL from environment variables
- * In development, this will use the value from .env.development or .env.local
- * In production, this will use the value from .env.production
+ * In development, this will use the value from test.env.development or test.env.local
+ * In production, this will use the value from test.env.production
  */
 export const getApiBaseUrl = (): string => {
   return import.meta.env.VITE_API_BASE_URL || '';
@@ -19,15 +20,39 @@ const apiClient = axios.create({
   },
 });
 
+// Add a request interceptor to include the auth token in all requests
+apiClient.interceptors.request.use(
+  (config) => {
+    // Get the token from localStorage
+    const token = getToken();
+
+    // If token exists, add it to the Authorization header
+    if (token) {
+      config.headers = config.headers || {};
+      config.headers.Authorization = `${token}`;
+    }
+
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
 /**
  * Make a GET request to the API
  * @param endpoint The API endpoint (without the base URL)
+ * @param params Optional object to be converted to query parameters
  * @param options Additional axios options
  * @returns A promise that resolves to the response data
  */
-export const apiGet = async (endpoint: string, options?: AxiosRequestConfig): Promise<any> => {
+export const apiGet = async (endpoint: string, params?: Record<string, any>, options?: AxiosRequestConfig): Promise<any> => {
   try {
-    const response: AxiosResponse = await apiClient.get(endpoint, options);
+    const config: AxiosRequestConfig = { ...options };
+    if (params) {
+      config.params = params;
+    }
+    const response: AxiosResponse = await apiClient.get(endpoint, config);
     return response.data;
   } catch (error) {
     console.error(`API GET error for ${endpoint}:`, error);

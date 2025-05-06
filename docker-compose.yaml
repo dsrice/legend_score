@@ -27,6 +27,7 @@ services:
       - TZ=Asia/Tokyo
       - APP_ROOT=/go/src/legend_score
       - GO_ENV=dev
+      - ROOT_PATH=/go/src/legend_score
       - GOOSE_DRIVER=mysql
       - GOOSE_DBSTRING=docker:docker@tcp(ls-db:3306)/legend_score
       - GOOSE_MIGRATION_DIR=./infra/database/migrations

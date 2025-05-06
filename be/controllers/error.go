@@ -7,6 +7,10 @@ import (
 )
 
 func ErrorResponse(c echo.Context, code string) error {
+	if code == "" {
+		code = ecode.E9000
+	}
+
 	res := response.ErrorResponse{
 		Code: code,
 	}

@@ -30,7 +30,7 @@ jobs:
       - name: Run tests with coverage
         run: |
           cd fe/ls-app
-          npm test -- --coverage --watchAll=false
+          npm run test:coverage
         env:
           CI: true
 
