@@ -1,10 +1,8 @@
 [mysql]
-  dbname     = "legend_score"
+  dbname     = "legend_score_test"
   host       = "localhost"
-  port       = 3305
-  user       = "docker"
-  pass       = "docker"
+  port       = 13306
+  user       = "root"
+  pass       = "root"
   sslmode    = "false"
   whitelist = []
-  skipsqlcmd = true
-  skiptest = true

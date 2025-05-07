@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: FEのテストコードを実行コマンドを見直し">
+    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: repositoryのテストコードを修正">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/infra/middleware/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/middleware/auth.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/infra/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/server/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/dev.env" beforeDir="false" afterPath="$PROJECT_DIR$/be/dev.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/sqlboiler.toml" beforeDir="false" afterPath="$PROJECT_DIR$/be/sqlboiler.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,8 +54,19 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Go テスト.go test be.executor&quot;: &quot;Debug&quot;,
+    &quot;Go テスト.TestAuthController_Login (legend_score/controllers 内).executor&quot;: &quot;Run&quot;,
+    &quot;Go テスト.TestGetConnection (legend_score/infra/database/connection 内).executor&quot;: &quot;Debug&quot;,
+    &quot;Go テスト.TestToOne (legend_score/infra/database/models 内).executor&quot;: &quot;Run&quot;,
+    &quot;Go テスト.TestToOne/FrameToUserUsingUser (legend_score/infra/database/models 内).executor&quot;: &quot;Run&quot;,
+    &quot;Go テスト.TestUserController_GetUsers (legend_score/controllers 内).executor&quot;: &quot;Run&quot;,
+    &quot;Go テスト.TestUserRepository_Insert (legend_score/repositories 内) (1).executor&quot;: &quot;Run&quot;,
+    &quot;Go テスト.TestUserRepository_Insert (legend_score/repositories 内).executor&quot;: &quot;Run&quot;,
+    &quot;Go テスト.TestUserTokenRepository_Insert (legend_score/repositories 内).executor&quot;: &quot;Run&quot;,
+    &quot;Go テスト.go test be.executor&quot;: &quot;Run&quot;,
+    &quot;Go テスト.go test controllers.executor&quot;: &quot;Run&quot;,
     &quot;Go テスト.go test legend_score.executor&quot;: &quot;Debug&quot;,
+    &quot;Go テスト.go test models.executor&quot;: &quot;Run&quot;,
+    &quot;Go テスト.go test repositories.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.GoLinterPluginOnboarding&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.GoLinterPluginStorageMigration&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -64,7 +75,7 @@
     &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
     &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\fujimoto\\AppData\\Roaming\\JetBrains\\GoLand2024.3\\plugins\\Shell Script\\shellcheck.exe&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/user__detail の #1&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/user__detail&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;21.2.0&quot;,
@@ -76,7 +87,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.goide.configuration.GoLibrariesConfigurableProvider&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\work\\program\\legend_score\\fe\\ls-app\\node_modules\\typescript\\lib&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -90,12 +101,92 @@
       <recent name="C:\work\program\legend_score\be" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Go テスト.go test models">
+    <configuration name="TestToOne (legend_score/infra/database/models 内)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="legend_score" />
+      <working_directory value="$PROJECT_DIR$/be/infra/database/models" />
+      <envs>
+        <env name="DATABASE_ADDR" value="localhost:3305" />
+        <env name="DATABASE_NAME" value="legend_score" />
+        <env name="DATABASE_PASS" value="docker" />
+        <env name="DATABASE_USER" value="docker" />
+        <env name="GO_ENV" value="test" />
+        <env name="mysql.dbname" value="legend_score" />
+        <env name="mysql.host" value="localhost" />
+        <env name="mysql.pass" value="docker" />
+        <env name="mysql.port" value="3305" />
+        <env name="mysql.skipsqlcmd" value="true" />
+        <env name="mysql.skiptest" value="true" />
+        <env name="mysql.sslmode" value="false" />
+        <env name="mysql.testdbname" value="legend_score_test" />
+        <env name="mysql.user" value="docker" />
+        <env name="ROOT_PATH" value="$PROJECT_DIR$/be" />
+        <env name="SKIP_SQLBOILER_TESTS" value="true" />
+        <env name="SQLBOILER_DBNAME" value="legend_score_test" />
+      </envs>
+      <root_directory value="$PROJECT_DIR$/be" />
+      <kind value="PACKAGE" />
+      <package value="legend_score/infra/database/models" />
+      <directory value="$PROJECT_DIR$/be/infra/database/models" />
+      <filePath value="$PROJECT_DIR$" />
+      <output_directory value="$PROJECT_DIR$/be/coverage" />
+      <framework value="gotest" />
+      <pattern value="^\QTestToOne\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestToOne/FrameToUserUsingUser (legend_score/infra/database/models 内)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="legend_score" />
+      <working_directory value="$PROJECT_DIR$/be/infra/database/models" />
+      <envs>
+        <env name="DATABASE_ADDR" value="localhost:3305" />
+        <env name="DATABASE_NAME" value="legend_score" />
+        <env name="DATABASE_PASS" value="docker" />
+        <env name="DATABASE_USER" value="docker" />
+        <env name="GO_ENV" value="test" />
+        <env name="mysql.dbname" value="legend_score" />
+        <env name="mysql.host" value="localhost" />
+        <env name="mysql.pass" value="docker" />
+        <env name="mysql.port" value="3305" />
+        <env name="mysql.skipsqlcmd" value="true" />
+        <env name="mysql.skiptest" value="true" />
+        <env name="mysql.sslmode" value="false" />
+        <env name="mysql.testdbname" value="legend_score_test" />
+        <env name="mysql.user" value="docker" />
+        <env name="ROOT_PATH" value="$PROJECT_DIR$/be" />
+        <env name="SKIP_SQLBOILER_TESTS" value="true" />
+        <env name="SQLBOILER_DBNAME" value="legend_score_test" />
+      </envs>
+      <root_directory value="$PROJECT_DIR$/be" />
+      <kind value="PACKAGE" />
+      <package value="legend_score/infra/database/models" />
+      <directory value="$PROJECT_DIR$/be/infra/database/models" />
+      <filePath value="$PROJECT_DIR$" />
+      <output_directory value="$PROJECT_DIR$/be/coverage" />
+      <framework value="gotest" />
+      <pattern value="^\QTestToOne\E$/^\QFrameToUserUsingUser\E$" />
+      <method v="2" />
+    </configuration>
     <configuration name="go test be" type="GoTestRunConfiguration" factoryName="Go Test" nameIsGenerated="true">
       <module name="legend_score" />
-      <working_directory value="$PROJECT_DIR$" />
+      <working_directory value="$PROJECT_DIR$/be" />
       <envs>
+        <env name="DATABASE_ADDR" value="localhost:3305" />
+        <env name="DATABASE_NAME" value="legend_score" />
+        <env name="DATABASE_PASS" value="docker" />
+        <env name="DATABASE_USER" value="docker" />
         <env name="GO_ENV" value="test" />
+        <env name="mysql.dbname" value="legend_score" />
+        <env name="mysql.host" value="localhost" />
+        <env name="mysql.pass" value="docker" />
+        <env name="mysql.port" value="3305" />
+        <env name="mysql.skipsqlcmd" value="true" />
+        <env name="mysql.skiptest" value="true" />
+        <env name="mysql.sslmode" value="false" />
+        <env name="mysql.testdbname" value="legend_score_test" />
+        <env name="mysql.user" value="docker" />
+        <env name="ROOT_PATH" value="$PROJECT_DIR$/be" />
+        <env name="SKIP_SQLBOILER_TESTS" value="true" />
+        <env name="SQLBOILER_DBNAME" value="legend_score_test" />
       </envs>
       <kind value="DIRECTORY" />
       <package value="C:\work\program\legend_score\be" />
@@ -105,6 +196,50 @@
       <framework value="gotest" />
       <method v="2" />
     </configuration>
+    <configuration name="go test models" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="legend_score" />
+      <working_directory value="$PROJECT_DIR$/be/infra/database/models" />
+      <envs>
+        <env name="DATABASE_ADDR" value="localhost:3305" />
+        <env name="DATABASE_NAME" value="legend_score" />
+        <env name="DATABASE_PASS" value="docker" />
+        <env name="DATABASE_USER" value="docker" />
+        <env name="GO_ENV" value="test" />
+        <env name="mysql.dbname" value="legend_score" />
+        <env name="mysql.host" value="localhost" />
+        <env name="mysql.pass" value="docker" />
+        <env name="mysql.port" value="3305" />
+        <env name="mysql.skipsqlcmd" value="true" />
+        <env name="mysql.skiptest" value="true" />
+        <env name="mysql.sslmode" value="false" />
+        <env name="mysql.testdbname" value="legend_score_test" />
+        <env name="mysql.user" value="docker" />
+        <env name="ROOT_PATH" value="$PROJECT_DIR$/be" />
+        <env name="SKIP_SQLBOILER_TESTS" value="true" />
+        <env name="SQLBOILER_DBNAME" value="legend_score_test" />
+      </envs>
+      <root_directory value="$PROJECT_DIR$/be" />
+      <kind value="DIRECTORY" />
+      <package value="C:\work\program\legend_score\be" />
+      <directory value="$PROJECT_DIR$/be/infra/database/models" />
+      <filePath value="$PROJECT_DIR$" />
+      <output_directory value="$PROJECT_DIR$/be/coverage" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Go テスト.go test be" />
+      <item itemvalue="Go テスト.TestToOne (legend_score/infra/database/models 内)" />
+      <item itemvalue="Go テスト.TestToOne/FrameToUserUsingUser (legend_score/infra/database/models 内)" />
+      <item itemvalue="Go テスト.go test models" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go テスト.go test models" />
+        <item itemvalue="Go テスト.TestToOne/FrameToUserUsingUser (legend_score/infra/database/models 内)" />
+        <item itemvalue="Go テスト.TestToOne (legend_score/infra/database/models 内)" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -140,7 +275,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: 調整" />
     <MESSAGE value="feat: feのgitignore追加" />
     <MESSAGE value="feat: swagger対応を追加" />
     <MESSAGE value="feat: gitignoreを見直し" />
@@ -162,9 +296,16 @@
     <MESSAGE value="feat: APIの利用にトークン付与を追加" />
     <MESSAGE value="feat: ユーザー一覧の取得から表示まで対応" />
     <MESSAGE value="feat: FEのテストコードを実行コマンドを見直し" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: FEのテストコードを実行コマンドを見直し" />
+    <MESSAGE value="feat: APIの利用条件見直し" />
+    <MESSAGE value="feat: テストコードの実装修正" />
+    <MESSAGE value="feat: repositoryのテストコードを追加" />
+    <MESSAGE value="feat: repositoryのテストコードを修正" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: repositoryのテストコードを修正" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/legend_score$go_test_be.out" NAME="go test be のカバレッジ結果" MODIFIED="1746638447839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
