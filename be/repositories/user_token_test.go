@@ -47,8 +47,8 @@ func TestUserTokenRepository_Insert(t *testing.T) {
 	mock.ExpectExec("INSERT INTO").WillReturnResult(sqlmock.NewResult(1, 1))
 
 	// Expect a SELECT query to populate default values
-	rows := sqlmock.NewRows([]string{"id", "user_id", "token", "refresh_token", "deleted_flg"}).
-		AddRow(1, 1, "test-token", "test-refresh-token", false)
+	rows := sqlmock.NewRows([]string{"id", "user_id"}).
+		AddRow(1, 1)
 	mock.ExpectQuery("SELECT").
 		WithArgs(1).
 		WillReturnRows(rows)
