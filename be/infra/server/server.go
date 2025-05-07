@@ -36,11 +36,11 @@ func NewServer(s inServer) *Server {
 }
 
 type CustomValidator struct {
-	validator *validator.Validate
+	Validator *validator.Validate
 }
 
 func (cv *CustomValidator) Validate(i interface{}) error {
-	if err := cv.validator.Struct(i); err != nil {
+	if err := cv.Validator.Struct(i); err != nil {
 		// Optionally, you could return the error to give each route more control over the status code
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
@@ -49,7 +49,7 @@ func (cv *CustomValidator) Validate(i interface{}) error {
 
 func (s *Server) Start() {
 	s.echo = echo.New()
-	s.echo.Validator = &CustomValidator{validator: validator.New()}
+	s.echo.Validator = &CustomValidator{Validator: validator.New()}
 
 	s.echo.Logger.SetLevel(log.DEBUG)
 	s.echo.Use(middleware.CORSWithConfig(middleware.CORSConfig{

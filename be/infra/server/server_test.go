@@ -1,6 +1,7 @@
 package server_test
 
 import (
+	"github.com/go-playground/validator/v10"
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
@@ -68,6 +69,9 @@ func TestNewServer(t *testing.T) {
 func TestCustomValidator_Validate(t *testing.T) {
 	// Create a new echo instance
 	e := echo.New()
+
+	// Set up the validator for the echo instance
+	e.Validator = &server.CustomValidator{Validator: validator.New()}
 
 	// Create a new server
 	s := server.NewServer(struct {
