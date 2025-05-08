@@ -1,7 +1,7 @@
 [mysql]
-  dbname     = "legend_score_test"
+  dbname     = "legend_score"
   host       = "localhost"
-  port       = 13306
+  port       = 3306
   user       = "root"
   pass       = "root"
   sslmode    = "false"
