@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: なかったレイヤーのテストコードを追加">
+    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: テストコードを実行できるように宣言見直し">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/backend-tests.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/backend-tests.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/dev.env" beforeDir="false" afterPath="$PROJECT_DIR$/be/dev.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/infra/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/server/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/infra/server/server_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/server/server_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/infra/database/connection/conn.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/database/connection/conn.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/infra/database/connection/conn_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/database/connection/conn_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +63,7 @@
     "Go テスト.TestUserRepository_Insert (legend_score/repositories 内) (1).executor": "Run",
     "Go テスト.TestUserRepository_Insert (legend_score/repositories 内).executor": "Run",
     "Go テスト.TestUserTokenRepository_Insert (legend_score/repositories 内).executor": "Run",
-    "Go テスト.go test be.executor": "Coverage",
+    "Go テスト.go test be.executor": "Run",
     "Go テスト.go test controllers.executor": "Run",
     "Go テスト.go test legend_score.executor": "Debug",
     "Go テスト.go test models.executor": "Run",
@@ -76,7 +76,7 @@
     "RunOnceActivity.go.migrated.go.modules.settings": "true",
     "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
     "SHELLCHECK.PATH": "C:\\Users\\fujimoto\\AppData\\Roaming\\JetBrains\\GoLand2024.3\\plugins\\Shell Script\\shellcheck.exe",
-    "git-widget-placeholder": "feature/user__detail",
+    "git-widget-placeholder": "feature/user__detail の #2",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
     "javascript.nodejs.core.library.configured.version": "21.2.0",
@@ -276,7 +276,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: gitignoreを見直し" />
     <MESSAGE value="feat: ログインページを用意" />
     <MESSAGE value="feat: FEにテストコードにJestを導入" />
     <MESSAGE value="feat: migrationファイルを追加" />
@@ -301,12 +300,13 @@
     <MESSAGE value="feat: repositoryのテストコードを修正" />
     <MESSAGE value="feat: 開発環境で全テストコードを実行できるように調整" />
     <MESSAGE value="feat: なかったレイヤーのテストコードを追加" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: なかったレイヤーのテストコードを追加" />
+    <MESSAGE value="feat: テストコードを実行できるように宣言見直し" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: テストコードを実行できるように宣言見直し" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/legend_score$go_test_be.out" NAME="go test be のカバレッジ結果" MODIFIED="1746640826766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/legend_score$go_test_be.out" NAME="go test be のカバレッジ結果" MODIFIED="1746641135710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
