@@ -6,3 +6,5 @@
   pass       = "root"
   sslmode    = "false"
   whitelist = []
+[mysql.addtional-flags]
+  tls = "false"
