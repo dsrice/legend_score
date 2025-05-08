@@ -12,19 +12,20 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      postgres:
-        image: postgres:latest
+      mysql:
+        image: mysql
         env:
-          POSTGRES_DB: legend_score
-          POSTGRES_USER: docker
-          POSTGRES_PASSWORD: docker
-        ports:
-          - 3305:5432
+          MYSQL_ROOT_PASSWORD: pass
+          MYSQL_DATABASE: legend_score
+          MYSQL_USER: docker
+          MYSQL_PASSWORD: docker
         options: >-
-          --health-cmd pg_isready
+          --health-cmd="mysqladmin ping"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+        ports:
+          - 3306:3306
 
     steps:
       - name: Checkout code
@@ -42,8 +43,17 @@ jobs:
 
       - name: Run tests with coverage
         env:
-          GO_ENV: test
-          DATABASE_ADDR: localhost:5432
+          GO_ENV: test_action
+          ROOT_PATH: /home/runner/work/legend_score/legend_score/be
+          GOOSE_DRIVER: mysql
+          GOOSE_DBSTRING: docker:docker@tcp(localhost:3306)/legend_score
+          GOOSE_MIGRATION_DIR: ./infra/database/migrations
+          DATABASE_NAME: legend_score
+          DATABASE_USER: docker
+          DATABASE_PASS: docker
+          DATABASE_ADDR: localhost:3306
+          CHANNEL_TOKEN: trh1/DNfclUER97PlFlUcRwLMr4X73UYZZhiAFYPRcOzkiWvZQFNGhgIO8C0AACpTYpg5I/JRHPWsX4FM8ouDbtTbRdZ1L7ONg2wXsjQ7i5W+RmGFy+cAG8IJzADex0nMolQ+GtUsjEQQ/8ebfX2AwdB04t89/1O/w1cDnyilFU=
+          CHANNEL_SECRET: 0d58d9edddacd171d7eaa56f1274c977
         run: |
           cd be
           go test -v -coverprofile=cover_file.out ./...
