@@ -24,7 +24,6 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-        command: --default-authentication-plugin=mysql_native_password --ssl=0
         ports:
           - 3306:3306
 
@@ -42,6 +41,12 @@ jobs:
           cd be
           go mod download
 
+      - name: Wait for MySQL & Set native_password
+        run: |
+          until mysqladmin ping -h"127.0.0.1" --silent; do sleep 1; done
+          mysql -h127.0.0.1 -u docker -pdocker -e \
+            "ALTER USER 'docker'@'%' IDENTIFIED WITH mysql_native_password BY 'docker'; FLUSH PRIVILEGES;"
+      
       - name: Run database migrations
         env:
           GO_ENV: test_action
