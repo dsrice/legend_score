@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: Github Action対応">
-      <change beforePath="$PROJECT_DIR$/be/infra/database/connection/conn.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/database/connection/conn.go" afterDir="false" />
+    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: Github Actionの設定変更">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/backend-tests.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/sqlboiler.toml" beforeDir="false" afterPath="$PROJECT_DIR$/be/sqlboiler.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +62,7 @@
     "Go テスト.TestUserRepository_Insert (legend_score/repositories 内) (1).executor": "Run",
     "Go テスト.TestUserRepository_Insert (legend_score/repositories 内).executor": "Run",
     "Go テスト.TestUserTokenRepository_Insert (legend_score/repositories 内).executor": "Run",
-    "Go テスト.go test be.executor": "Run",
+    "Go テスト.go test be.executor": "Coverage",
     "Go テスト.go test controllers.executor": "Run",
     "Go テスト.go test legend_score.executor": "Debug",
     "Go テスト.go test models.executor": "Run",
@@ -273,11 +275,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: FEにテストコードにJestを導入" />
-    <MESSAGE value="feat: migrationファイルを追加" />
-    <MESSAGE value="feat: sqlboilerのモデル追加" />
-    <MESSAGE value="feat: 動作確認のため設定見直し" />
-    <MESSAGE value="feat: 画面上でログイン成功まで確認" />
     <MESSAGE value="feat: CORSの設定を追加" />
     <MESSAGE value="feat: ホットリロードの導入など見直し" />
     <MESSAGE value="feat: ユーザー一覧取得APIを追加" />
@@ -298,12 +295,17 @@
     <MESSAGE value="feat: なかったレイヤーのテストコードを追加" />
     <MESSAGE value="feat: テストコードを実行できるように宣言見直し" />
     <MESSAGE value="feat: Github Action対応" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Github Action対応" />
+    <MESSAGE value="feat: Github Actionに事前マイグレーションを追加" />
+    <MESSAGE value="feat: Github Action用に設定変更" />
+    <MESSAGE value="feat: envの取得先を見直し" />
+    <MESSAGE value="feat: connの設定見直し" />
+    <MESSAGE value="feat: Github Actionの設定変更" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Github Actionの設定変更" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/legend_score$go_test_be.out" NAME="go test be のカバレッジ結果" MODIFIED="1746641135710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/legend_score$go_test_be.out" NAME="go test be のカバレッジ結果" MODIFIED="1746720720458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
