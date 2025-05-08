@@ -64,7 +64,7 @@ func (s *Server) Start() {
 		ge = "dev"
 	}
 
-	err := godotenv.Load(fmt.Sprintf("%s.env", ge))
+	err := godotenv.Load(fmt.Sprintf("%s/%s.env", os.Getenv("ROOT_PATH"), os.Getenv("GO_ENV")))
 	if err != nil {
 		logger.Error(err.Error())
 	}
