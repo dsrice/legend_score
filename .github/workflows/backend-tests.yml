@@ -41,6 +41,22 @@ jobs:
           cd be
           go mod download
 
+      - name: Run database migrations
+        env:
+          GO_ENV: test_action
+          ROOT_PATH: /home/runner/work/legend_score/legend_score/be
+          GOOSE_DRIVER: mysql
+          GOOSE_DBSTRING: docker:docker@tcp(localhost:3306)/legend_score
+          GOOSE_MIGRATION_DIR: ./infra/database/migrations
+          DATABASE_NAME: legend_score
+          DATABASE_USER: docker
+          DATABASE_PASS: docker
+          DATABASE_ADDR: localhost:3306
+        run: |
+          cd be
+          go install github.com/pressly/goose/v3/cmd/goose@latest
+          goose -dir ./infra/database/migrations up
+
       - name: Run tests with coverage
         env:
           GO_ENV: test_action
