@@ -43,10 +43,10 @@ jobs:
 
       - name: Wait for MySQL & Set native_password
         run: |
-          until mysqladmin ping -h"127.0.0.1" --silent; do sleep 1; done
-          mysql -h127.0.0.1 -u docker -pdocker -e \
+          until mysqladmin ping -h"localhost" --silent; do sleep 1; done
+          mysql -h localhost -u docker -pdocker -e \
             "ALTER USER 'docker'@'%' IDENTIFIED WITH mysql_native_password BY 'docker'; FLUSH PRIVILEGES;"
-      
+
       - name: Run database migrations
         env:
           GO_ENV: test_action
