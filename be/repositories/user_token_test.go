@@ -44,9 +44,14 @@ func TestUserTokenRepository_Insert(t *testing.T) {
 	}
 
 	// Set up the mock to expect any query
-	mock.ExpectBegin()
 	mock.ExpectExec("INSERT INTO").WillReturnResult(sqlmock.NewResult(1, 1))
-	mock.ExpectCommit()
+
+	// Expect a SELECT query to populate default values
+	rows := sqlmock.NewRows([]string{"id", "user_id"}).
+		AddRow(1, 1)
+	mock.ExpectQuery("SELECT").
+		WithArgs(1).
+		WillReturnRows(rows)
 
 	// Call the Insert method
 	err = repo.Insert(c, userToken)
@@ -92,9 +97,7 @@ func TestUserTokenRepository_Insert_Error(t *testing.T) {
 	}
 
 	// Set up the mock to expect any query and return an error
-	mock.ExpectBegin()
 	mock.ExpectExec("INSERT INTO").WillReturnError(sql.ErrConnDone)
-	mock.ExpectRollback()
 
 	// Call the Insert method
 	err = repo.Insert(c, userToken)

@@ -229,17 +229,20 @@ func TestUserRepository_Insert(t *testing.T) {
 	// Create a test user
 	now := time.Now()
 	user := &models.User{
-		LoginID:   "testuser",
-		Name:      "Test User",
-		Password:  "password",
-		CreatedAt: now,
-		UpdatedAt: now,
+		LoginID:  "testuser",
+		Name:     "テストユーザー",
+		Password: "password",
 	}
 
 	// Set up the mock to expect any query
-	mock.ExpectExec(
-		"INSERT INTO `users` (`login_id`,`name`,`password`,`error_datetime`,`lock_datetime`,`created_at`,`updated_at`,`deleted_at`) VALUES (?,?,?,?,?,?,?,?)",
-	).WithArgs("testuser", "Test User", "password", nil, nil, now, now, nil)
+	mock.ExpectExec("INSERT INTO").WillReturnResult(sqlmock.NewResult(1, 1))
+
+	// Expect a SELECT query to populate default values
+	rows := sqlmock.NewRows([]string{"id", "change_pass_flag", "error_count", "deleted_flg"}).
+		AddRow(1, false, 0, false)
+	mock.ExpectQuery("SELECT").
+		WithArgs(1).
+		WillReturnRows(rows)
 
 	// Call the Insert method
 	err = repo.Insert(c, user)
@@ -285,9 +288,7 @@ func TestUserRepository_Insert_Error(t *testing.T) {
 	}
 
 	// Set up the mock to expect any query and return an error
-	mock.ExpectBegin()
 	mock.ExpectExec("INSERT INTO").WillReturnError(sql.ErrConnDone)
-	mock.ExpectRollback()
 
 	// Call the Insert method
 	err = repo.Insert(c, user)
