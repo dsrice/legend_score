@@ -41,29 +41,22 @@ func getConnection() (*sql.DB, error) {
 		logger.Error(err.Error())
 		return nil, err
 	}
-
-	driver := os.Getenv("GOOSE_DRIVER")
 	var conn *sql.DB
 
-	if driver == "postgres" {
-		// PostgreSQL connection
-		connStr := os.Getenv("GOOSE_DBSTRING")
-		conn, err = sql.Open("postgres", connStr)
-	} else {
-		// Default to MySQL connection
-		conf := mysql.Config{
-			DBName:               os.Getenv("DATABASE_NAME"),
-			User:                 os.Getenv("DATABASE_USER"),
-			Passwd:               os.Getenv("DATABASE_PASS"),
-			Addr:                 os.Getenv("DATABASE_ADDR"),
-			Net:                  "tcp",
-			Collation:            "utf8mb4_unicode_ci",
-			Loc:                  jst,
-			ParseTime:            true,
-			AllowNativePasswords: true,
-		}
-		conn, err = sql.Open("mysql", conf.FormatDSN())
+	// Default to MySQL connection
+	conf := mysql.Config{
+		DBName:               os.Getenv("DATABASE_NAME"),
+		User:                 os.Getenv("DATABASE_USER"),
+		Passwd:               os.Getenv("DATABASE_PASS"),
+		Addr:                 os.Getenv("DATABASE_ADDR"),
+		Net:                  "tcp",
+		Collation:            "utf8mb4_unicode_ci",
+		Loc:                  jst,
+		ParseTime:            true,
+		AllowNativePasswords: true,
+		TLSConfig:            "false",
 	}
+	conn, err = sql.Open("mysql", conf.FormatDSN())
 
 	if err != nil {
 		logger.Error(err.Error())
