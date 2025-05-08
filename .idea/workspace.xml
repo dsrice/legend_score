@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: テストコードを実行できるように宣言見直し">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/backend-tests.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/backend-tests.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: Github Action対応">
       <change beforePath="$PROJECT_DIR$/be/infra/database/connection/conn.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/database/connection/conn.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/infra/database/connection/conn_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/database/connection/conn_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +273,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: ログインページを用意" />
     <MESSAGE value="feat: FEにテストコードにJestを導入" />
     <MESSAGE value="feat: migrationファイルを追加" />
     <MESSAGE value="feat: sqlboilerのモデル追加" />
@@ -301,7 +297,8 @@
     <MESSAGE value="feat: 開発環境で全テストコードを実行できるように調整" />
     <MESSAGE value="feat: なかったレイヤーのテストコードを追加" />
     <MESSAGE value="feat: テストコードを実行できるように宣言見直し" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: テストコードを実行できるように宣言見直し" />
+    <MESSAGE value="feat: Github Action対応" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Github Action対応" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
