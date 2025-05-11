@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: JWT認証周りがおかしいので見直し">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/App.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/pages/Login.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/pages/Login.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/services/apiClient.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/services/apiClient.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/services/apiClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/services/apiClient.ts" afterDir="false" />
+    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: FEのテストコード追加">
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/components/CreateUserDialog.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/components/CreateUserDialog.test.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,7 +279,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: ユーザー一覧取得APIを追加" />
     <MESSAGE value="feat: FEにユーザー一覧画面を用意" />
     <MESSAGE value="feat: Github Actionを追加" />
     <MESSAGE value="feat: ユーザー詳細取得APIを作成" />
@@ -308,7 +303,8 @@
     <MESSAGE value="feat: Github Actionの設定変更" />
     <MESSAGE value="feat: BEのテストコード実行を一旦あきらめる" />
     <MESSAGE value="feat: JWT認証周りがおかしいので見直し" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: JWT認証周りがおかしいので見直し" />
+    <MESSAGE value="feat: FEのテストコード追加" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: FEのテストコード追加" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
