@@ -13,6 +13,7 @@ import (
 	"legend_score/infra/logger"
 	"legend_score/repositories/ri"
 	"legend_score/usecases/ui"
+	"os"
 	"regexp"
 	"strconv"
 	"time"
@@ -137,7 +138,7 @@ func (uc *authUseCase) CreateToken(id, exec int) (string, error) {
 		ID:        strconv.Itoa(id),
 	})
 
-	secretKey := []byte("legend_score")
+	secretKey := []byte(os.Getenv("JWT_SECRET"))
 	tokenString, err := token.SignedString(secretKey)
 	if err != nil {
 		return "", err

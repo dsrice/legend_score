@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: Github Action対応">
-      <change beforePath="$PROJECT_DIR$/be/infra/database/connection/conn.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/database/connection/conn.go" afterDir="false" />
-    </list>
+    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: FEのテストコード追加" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,7 +14,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="feature/user_detail" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,6 +63,7 @@
     "Go テスト.go test legend_score.executor": "Debug",
     "Go テスト.go test models.executor": "Run",
     "Go テスト.go test repositories.executor": "Run",
+    "Go リモート.delve.executor": "Debug",
     "RunOnceActivity.GoLinterPluginOnboarding": "true",
     "RunOnceActivity.GoLinterPluginStorageMigration": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -73,7 +72,7 @@
     "RunOnceActivity.go.migrated.go.modules.settings": "true",
     "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
     "SHELLCHECK.PATH": "C:\\Users\\fujimoto\\AppData\\Roaming\\JetBrains\\GoLand2024.3\\plugins\\Shell Script\\shellcheck.exe",
-    "git-widget-placeholder": "feature/user__detail の #2",
+    "git-widget-placeholder": "feature/user__register",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
     "javascript.nodejs.core.library.configured.version": "21.2.0",
@@ -85,7 +84,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.standard": "",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "ml.llm.LLMConfigurable",
+    "settings.editor.selected.configurable": "preference.GoLinterConfigurable",
     "ts.external.directory.path": "C:\\work\\program\\legend_score\\fe\\ls-app\\node_modules\\typescript\\lib"
   },
   "keyToStringList": {
@@ -99,7 +98,11 @@
       <recent name="C:\work\program\legend_score\be" />
     </key>
   </component>
-  <component name="RunManager" selected="Go テスト.go test be">
+  <component name="RunManager" selected="Go リモート.delve">
+    <configuration name="delve" type="GoRemoteDebugConfigurationType" factoryName="Go Remote">
+      <option name="disconnectOption" value="ASK" />
+      <method v="2" />
+    </configuration>
     <configuration name="TestToOne (legend_score/infra/database/models 内)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="legend_score" />
       <working_directory value="$PROJECT_DIR$/be/infra/database/models" />
@@ -230,6 +233,7 @@
       <item itemvalue="Go テスト.TestToOne (legend_score/infra/database/models 内)" />
       <item itemvalue="Go テスト.TestToOne/FrameToUserUsingUser (legend_score/infra/database/models 内)" />
       <item itemvalue="Go テスト.go test models" />
+      <item itemvalue="Go リモート.delve" />
     </list>
     <recent_temporary>
       <list>
@@ -273,14 +277,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: FEにテストコードにJestを導入" />
-    <MESSAGE value="feat: migrationファイルを追加" />
-    <MESSAGE value="feat: sqlboilerのモデル追加" />
-    <MESSAGE value="feat: 動作確認のため設定見直し" />
-    <MESSAGE value="feat: 画面上でログイン成功まで確認" />
-    <MESSAGE value="feat: CORSの設定を追加" />
-    <MESSAGE value="feat: ホットリロードの導入など見直し" />
-    <MESSAGE value="feat: ユーザー一覧取得APIを追加" />
     <MESSAGE value="feat: FEにユーザー一覧画面を用意" />
     <MESSAGE value="feat: Github Actionを追加" />
     <MESSAGE value="feat: ユーザー詳細取得APIを作成" />
@@ -298,12 +294,36 @@
     <MESSAGE value="feat: なかったレイヤーのテストコードを追加" />
     <MESSAGE value="feat: テストコードを実行できるように宣言見直し" />
     <MESSAGE value="feat: Github Action対応" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Github Action対応" />
+    <MESSAGE value="feat: Github Actionに事前マイグレーションを追加" />
+    <MESSAGE value="feat: Github Action用に設定変更" />
+    <MESSAGE value="feat: envの取得先を見直し" />
+    <MESSAGE value="feat: connの設定見直し" />
+    <MESSAGE value="feat: Github Actionの設定変更" />
+    <MESSAGE value="feat: BEのテストコード実行を一旦あきらめる" />
+    <MESSAGE value="feat: JWT認証周りがおかしいので見直し" />
+    <MESSAGE value="feat: FEのテストコード追加" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: FEのテストコード追加" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/be/infra/middleware/auth.go</url>
+          <line>18</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/be/infra/middleware/auth.go</url>
+          <line>29</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/legend_score$go_test_be.out" NAME="go test be のカバレッジ結果" MODIFIED="1746641135710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/legend_score$go_test_be.out" NAME="go test be のカバレッジ結果" MODIFIED="1746722870300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

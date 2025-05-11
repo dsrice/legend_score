@@ -5,7 +5,9 @@ import (
 	"github.com/labstack/echo/v4"
 	"legend_score/consts/ecode"
 	"legend_score/controllers"
+	"legend_score/infra/logger"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -15,13 +17,13 @@ func JWTMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		authHeader := c.Request().Header.Get("Authorization")
 		if authHeader == "" {
-			return controllers.ErrorResponse(c, ecode.E0001)
+			return controllers.ErrorResponse(c, ecode.E0000)
 		}
 
 		// Check if the Authorization header has the Bearer prefix
 		parts := strings.Split(authHeader, " ")
 		if len(parts) != 2 || parts[0] != "Bearer" {
-			return controllers.ErrorResponse(c, ecode.E0001)
+			return controllers.ErrorResponse(c, ecode.E0000)
 		}
 
 		tokenString := parts[1]
@@ -30,10 +32,11 @@ func JWTMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 				return nil, echo.NewHTTPError(http.StatusUnauthorized, "invalid token")
 			}
-			return []byte("legend_score"), nil
+			return []byte(os.Getenv("JWT_SECRET")), nil
 		})
 
 		if err != nil {
+			logger.Error(err.Error())
 			return controllers.ErrorResponse(c, ecode.E0000)
 		}
 

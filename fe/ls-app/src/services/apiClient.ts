@@ -8,9 +8,8 @@ import { getToken } from './auth';
  * In development, this will use the value from test.env.development or test.env.local
  * In production, this will use the value from test.env.production
  */
-export const getApiBaseUrl = (): string => {
-  return import.meta.env.VITE_API_BASE_URL || '';
-};
+// Import the getApiBaseUrl function from the env module
+import { getApiBaseUrl } from './env';
 
 // Create an axios instance with the default configuration
 const apiClient = axios.create({
@@ -29,7 +28,7 @@ apiClient.interceptors.request.use(
     // If token exists, add it to the Authorization header
     if (token) {
       config.headers = config.headers || {};
-      config.headers.Authorization = `${token}`;
+      config.headers.Authorization = `Bearer ${token}`;
     }
 
     return config;
