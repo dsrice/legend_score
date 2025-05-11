@@ -1,14 +1,11 @@
-import { getApiBaseUrl } from './apiClient';
+import { getApiBaseUrl } from './env';
+import { apiGet, apiPost, apiPut, apiDelete } from './apiClient';
 
-// Mock the Vite import.meta.env
-// We need to mock this before importing the module
-jest.mock('./apiClient', () => {
-  const originalModule = jest.requireActual('./apiClient');
-  return {
-    ...originalModule,
-    getApiBaseUrl: jest.fn(),
-  };
-});
+// Mock the env module
+jest.mock('./env', () => ({
+  getApiBaseUrl: jest.fn(),
+  setApiBaseUrl: jest.fn()
+}));
 
 describe('apiClient', () => {
   // Reset mocks before each test
