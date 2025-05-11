@@ -4,7 +4,7 @@ tmp_dir = "tmp"
 
 [build]
   args_bin = []
-  bin = "GO_ENV=dev APP_USER=air ./tmp/legend_score"
+  # bin = "GO_ENV=dev APP_USER=air ./tmp/legend_score"
   cmd = "go build -o ./tmp/legend_score ."
   delay = 1000
   exclude_dir = ["assets", "tmp", "vendor", "testdata"]
@@ -12,7 +12,7 @@ tmp_dir = "tmp"
   exclude_regex = ["_test.go"]
   exclude_unchanged = false
   follow_symlink = false
-  full_bin = "dlv --listen=:2345 --headless=true --api-version=2 --accept-multiclient exec --continue ./tmp/legend_score"
+  full_bin = "GO_ENV=dev APP_USER=air dlv --listen=:2345 --headless=true --api-version=2 --accept-multiclient exec --continue ./tmp/legend_score"
   include_dir = []
   include_ext = ["go", "tpl", "tmpl", "html"]
   include_file = []

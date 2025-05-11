@@ -18,7 +18,7 @@ interface LoginResponse {
  */
 export const login = async (credentials: LoginCredentials): Promise<LoginResponse> => {
   try {
-    const data = await apiPost('/api/v1/login', credentials);
+    const data = await apiPost('/login', credentials);
     return data;
   } catch (error) {
     console.error('Login error:', error);

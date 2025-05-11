@@ -6,6 +6,7 @@ import (
 	"legend_score/consts/ecode"
 	"legend_score/controllers"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -30,7 +31,7 @@ func JWTMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 				return nil, echo.NewHTTPError(http.StatusUnauthorized, "invalid token")
 			}
-			return []byte("legend_score"), nil
+			return []byte(os.Getenv("JWT_SECRET")), nil
 		})
 
 		if err != nil {
