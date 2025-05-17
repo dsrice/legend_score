@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: API周りを見直し">
+    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: CSS修正">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/components/AuthenticatedLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/components/AuthenticatedLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/components/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/components/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/components/Sidebar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fe/ls-app/src/pages/UserList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/pages/UserList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/utils/PrivateRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/utils/PrivateRoute.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,7 +283,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: ユーザー詳細取得APIを作成" />
     <MESSAGE value="feat: Mockを用意" />
     <MESSAGE value="feat: Mockを導入" />
     <MESSAGE value="feat: FEの処理を見直し" />
@@ -309,7 +307,8 @@
     <MESSAGE value="feat: FEのテストコード追加" />
     <MESSAGE value="feat: 権限修正" />
     <MESSAGE value="feat: API周りを見直し" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: API周りを見直し" />
+    <MESSAGE value="feat: CSS修正" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: CSS修正" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

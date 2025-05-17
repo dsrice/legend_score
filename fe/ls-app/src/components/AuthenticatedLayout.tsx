@@ -23,17 +23,17 @@ const AuthenticatedLayout: React.FC<AuthenticatedLayoutProps> = ({ children }) =
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Header Area */}
-      <div className="header-area">
-        <Header pageName={getPageName()} />
+    <div className="min-h-screen flex">
+      {/* Side Menu */}
+      <div className="side-menu-container">
+        <Sidebar />
       </div>
 
-      {/* Screen Area - with horizontal layout */}
-      <div className="screen-area flex flex-grow">
-        {/* Side Menu */}
-        <div className="side-menu-container">
-          <Sidebar />
+      {/* Screen Area - with vertical layout */}
+      <div className="screen-area flex flex-col flex-grow">
+        {/* Header inside screen area */}
+        <div className="header-container">
+          <Header pageName={getPageName()} />
         </div>
 
         {/* Main Content */}

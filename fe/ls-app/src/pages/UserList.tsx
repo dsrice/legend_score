@@ -118,7 +118,7 @@ const UserList: React.FC = () => {
 
         {/* Filter Form */}
         <div className="bg-white shadow rounded-lg mb-6 p-4">
-          <h2 className="text-lg font-medium mb-4">Filter Users</h2>
+          <h2 className="text-lg font-medium mb-4">検索条件</h2>
           <form onSubmit={handleFilterSubmit} className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div>
               <label htmlFor="user-id" className="block text-sm font-medium text-gray-700">User ID</label>
