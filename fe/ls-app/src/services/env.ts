@@ -6,12 +6,11 @@ let apiBaseUrl = '';
 
 // In a browser environment, try to get the API base URL from Vite's import.meta.env
 // This code will only run in the browser, not in Jest
-if (typeof window !== 'undefined') {
+if (typeof import.meta !== 'undefined') {
   try {
-    // @ts-ignore - Ignore TypeScript error for dynamic access to import.meta
-    const viteEnv = (window as any).__VITE_ENV__;
-    if (viteEnv && viteEnv.VITE_API_BASE_URL) {
-      apiBaseUrl = viteEnv.VITE_API_BASE_URL;
+    // Access the environment variable directly from import.meta.env
+    if (import.meta.env.VITE_API_BASE_URL) {
+      apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
     }
   } catch (error) {
     console.warn('Failed to access Vite environment variables:', error);
