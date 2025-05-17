@@ -1,0 +1,10 @@
+[mysql]
+  dbname     = "legend_score_test"
+  host       = "localhost"
+  port       = 13306
+  user       = "root"
+  pass       = "root"
+  sslmode    = "false"
+  whitelist = []
+[mysql.addtional-flags]
+  tls = "false"

@@ -6,7 +6,13 @@ package models
 import "testing"
 
 func TestUpsert(t *testing.T) {
+	t.Run("Frames", testFramesUpsert)
+
+	t.Run("Games", testGamesUpsert)
+
 	t.Run("GooseDBVersions", testGooseDBVersionsUpsert)
+
+	t.Run("Throws", testThrowsUpsert)
 
 	t.Run("UserTokens", testUserTokensUpsert)
 

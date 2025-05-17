@@ -1,10 +1,10 @@
 FROM node:21-alpine
 
 WORKDIR /code
-RUN mkdir /code/myapp
+RUN mkdir /code/ls-app
 # 先にpackage.jsonとpackage-lock.jsonをマウントさせる
-COPY ls_app/package*.json /code/myapp
+COPY ls-app/package*.json /code/ls-app
 
-WORKDIR /code/myapp
+WORKDIR /code/ls-app
 
-# RUN npm install
+RUN npm install

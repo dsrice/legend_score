@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-sql-driver/mysql"
 	"github.com/joho/godotenv"
+	_ "github.com/lib/pq" // PostgreSQL driver
 )
 
 type Connection struct {
@@ -35,12 +36,14 @@ func getConnection() (*sql.DB, error) {
 		return nil, err
 	}
 
-	err = godotenv.Load(fmt.Sprintf("/go/src/app/%s.env", os.Getenv("GO_ENV")))
+	err = godotenv.Load(fmt.Sprintf("%s/%s.env", os.Getenv("ROOT_PATH"), os.Getenv("GO_ENV")))
 	if err != nil {
 		logger.Error(err.Error())
 		return nil, err
 	}
+	var conn *sql.DB
 
+	// Default to MySQL connection
 	conf := mysql.Config{
 		DBName:               os.Getenv("DATABASE_NAME"),
 		User:                 os.Getenv("DATABASE_USER"),
@@ -51,9 +54,9 @@ func getConnection() (*sql.DB, error) {
 		Loc:                  jst,
 		ParseTime:            true,
 		AllowNativePasswords: true,
+		TLSConfig:            "false",
 	}
-
-	conn, err := sql.Open("mysql", conf.FormatDSN())
+	conn, err = sql.Open("mysql", conf.FormatDSN())
 
 	if err != nil {
 		logger.Error(err.Error())

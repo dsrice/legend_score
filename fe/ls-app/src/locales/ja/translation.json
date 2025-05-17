@@ -1,0 +1,41 @@
+{
+  "appName": "Legend Score",
+  "navigation": {
+    "home": "ホーム",
+    "userManagement": "ユーザー管理",
+    "logout": "ログアウト"
+  },
+  "header": {
+    "home": "ホーム",
+    "userManagement": "ユーザー管理"
+  },
+  "userList": {
+    "createUser": "ユーザー作成",
+    "searchConditions": "検索条件",
+    "userId": "ユーザーID",
+    "loginId": "ログインID",
+    "name": "名前",
+    "reset": "リセット",
+    "applyFilters": "検索",
+    "loadingUsers": "ユーザーを読み込み中...",
+    "noUsersFound": "ユーザーが見つかりません",
+    "error": {
+      "fetchFailed": "ユーザーの取得に失敗しました",
+      "generalError": "ユーザーの取得中にエラーが発生しました"
+    }
+  },
+  "createUserDialog": {
+    "title": "新規ユーザー作成",
+    "loginId": "ログインID",
+    "name": "名前",
+    "password": "パスワード",
+    "cancel": "キャンセル",
+    "create": "ユーザー作成",
+    "creating": "作成中...",
+    "error": {
+      "createFailed": "ユーザーの作成に失敗しました",
+      "generalError": "ユーザーの作成中にエラーが発生しました",
+      "allFieldsRequired": "すべての必須項目を入力してください"
+    }
+  }
+}

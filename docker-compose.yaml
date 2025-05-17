@@ -14,6 +14,7 @@ services:
       - "3000:3000"
     environment:
       - WATCHPACK_POLLING=true
+      - NODE_ENV=development
 
   ls-be:
     container_name: ls-be
@@ -21,15 +22,17 @@ services:
       dockerfile: ./docker/be/Dockerfile
       context: .
     volumes:
-      - ./be:/go/src/app
+      - ./be:/go/src/legend_score
     tty: true
     environment:
       - TZ=Asia/Tokyo
-      - APP_ROOT=/go/src/app
+      - APP_ROOT=/go/src/legend_score
       - GO_ENV=dev
+      - ROOT_PATH=/go/src/legend_score
       - GOOSE_DRIVER=mysql
       - GOOSE_DBSTRING=docker:docker@tcp(ls-db:3306)/legend_score
       - GOOSE_MIGRATION_DIR=./infra/database/migrations
+      - JWT_SECRET=legend_score
     depends_on:
       - ls-db
     ports:
