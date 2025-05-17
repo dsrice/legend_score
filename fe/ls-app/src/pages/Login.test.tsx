@@ -23,7 +23,7 @@ describe('Login Component', () => {
     jest.clearAllMocks();
   });
 
-  test.skip('renders login form correctly', async () => {
+  test('renders login form correctly', async () => {
     await act(async () => {
       render(
         <BrowserRouter>
@@ -43,7 +43,7 @@ describe('Login Component', () => {
     expect(screen.getByRole('button', { name: /sign in/i })).toBeInTheDocument();
   });
 
-  test.skip('redirects to home if already authenticated', async () => {
+  test('redirects to home if already authenticated', async () => {
     // Mock isAuthenticated to return true
     (authService.isAuthenticated as jest.Mock).mockReturnValue(true);
 
@@ -59,7 +59,7 @@ describe('Login Component', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/users');
   });
 
-  test.skip('handles form submission correctly', async () => {
+  test('handles form submission correctly', async () => {
     // Mock successful login
     (authService.login as jest.Mock).mockResolvedValue({
       result: true,
@@ -108,7 +108,7 @@ describe('Login Component', () => {
     });
   });
 
-  test.skip('displays error message on login failure', async () => {
+  test('displays error message on login failure', async () => {
     // Mock failed login
     (authService.login as jest.Mock).mockResolvedValue({
       result: false,

@@ -1,42 +1,18 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { removeToken } from '../services/auth';
 
 const Home: React.FC = () => {
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    removeToken();
-    // Redirect to login page
-    navigate('/');
-  };
-
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
+    <div className="py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md mx-auto space-y-8">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          <h2 className="text-center text-3xl font-extrabold text-gray-900">
             Welcome to Legend Score
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             You are successfully logged in!
           </p>
         </div>
-
-        <div className="flex justify-center space-x-4">
-          <button
-            onClick={() => navigate('/users')}
-            className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          >
-            User List
-          </button>
-          <button
-            onClick={handleLogout}
-            className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-          >
-            Logout
-          </button>
-        </div>
+        {/* Rest of the content */}
       </div>
     </div>
   );

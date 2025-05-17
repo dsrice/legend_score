@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Dialog } from '@headlessui/react';
+import {Dialog, DialogPanel, DialogTitle} from '@headlessui/react';
 import { apiPost } from '../services/apiClient';
+import { useTranslation } from 'react-i18next';
 
 // Define the CreateUserRequest interface
 interface CreateUserRequest {
@@ -22,6 +23,8 @@ interface CreateUserDialogProps {
 }
 
 const CreateUserDialog: React.FC<CreateUserDialogProps> = ({ isOpen, onClose, onUserCreated }) => {
+  const { t } = useTranslation(); // Initialize translation function
+
   const [newUser, setNewUser] = useState<CreateUserRequest>({
     login_id: '',
     name: '',
@@ -57,10 +60,17 @@ const CreateUserDialog: React.FC<CreateUserDialogProps> = ({ isOpen, onClose, on
     setCreateUserLoading(true);
     setCreateUserError(null);
 
+    // Check if all required fields have values
+    if (!newUser.login_id || !newUser.name || !newUser.password) {
+      setCreateUserError(t('createUserDialog.error.allFieldsRequired') || 'All fields are required');
+      setCreateUserLoading(false);
+      return;
+    }
+
     try {
       // Make the API request to create a user
       // Token is automatically added by the apiClient interceptor
-      const response = await apiPost('/users', newUser);
+      const response = await apiPost('/user', newUser);
 
       // Handle the response
       const data = response as CreateUserResponse;
@@ -69,32 +79,37 @@ const CreateUserDialog: React.FC<CreateUserDialogProps> = ({ isOpen, onClose, on
         onClose();
         onUserCreated();
       } else {
-        setCreateUserError(data.message || 'Failed to create user');
+        setCreateUserError(data.message || t('createUserDialog.error.createFailed'));
       }
     } catch (err: any) {
       console.error('Error creating user:', err);
-      setCreateUserError(err.response?.data?.message || 'An error occurred while creating user');
+      setCreateUserError(err.response?.data?.message || t('createUserDialog.error.generalError'));
     } finally {
       setCreateUserLoading(false);
     }
   };
 
+  // Create a no-op function to prevent dialog from closing when clicking outside or pressing Escape
+  const handleDialogClose = () => {
+    // Do nothing, only allow closing via the Cancel button
+  };
+
   return (
     <Dialog
       open={isOpen}
-      onClose={onClose}
+      onClose={handleDialogClose}
       className="fixed inset-0 z-10 overflow-y-auto"
     >
       <div className="flex items-center justify-center min-h-screen">
-        <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+        <DialogPanel className="fixed inset-0 bg-black opacity-30" />
 
         <div className="relative bg-white rounded-lg max-w-md w-full mx-auto p-6 shadow-xl">
-          <Dialog.Title className="text-lg font-medium text-gray-900 mb-4">
-            Create New User
-          </Dialog.Title>
+          <DialogTitle className="text-lg font-medium text-gray-900 mb-4">
+            {t('createUserDialog.title')}
+          </DialogTitle>
 
           {createUserError && (
-            <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-4">
+            <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-4" data-testid="error-message">
               <div className="flex">
                 <div className="flex-shrink-0">
                   <svg className="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -112,7 +127,7 @@ const CreateUserDialog: React.FC<CreateUserDialogProps> = ({ isOpen, onClose, on
             <div className="space-y-4">
               <div>
                 <label htmlFor="login_id" className="block text-sm font-medium text-gray-700">
-                  Login ID
+                  {t('createUserDialog.loginId')}
                 </label>
                 <input
                   type="text"
@@ -126,7 +141,7 @@ const CreateUserDialog: React.FC<CreateUserDialogProps> = ({ isOpen, onClose, on
               </div>
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                  Name
+                  {t('createUserDialog.name')}
                 </label>
                 <input
                   type="text"
@@ -140,7 +155,7 @@ const CreateUserDialog: React.FC<CreateUserDialogProps> = ({ isOpen, onClose, on
               </div>
               <div>
                 <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                  Password
+                  {t('createUserDialog.password')}
                 </label>
                 <input
                   type="password"
@@ -161,14 +176,14 @@ const CreateUserDialog: React.FC<CreateUserDialogProps> = ({ isOpen, onClose, on
                 className="py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                 disabled={createUserLoading}
               >
-                Cancel
+                {t('createUserDialog.cancel')}
               </button>
               <button
                 type="submit"
                 className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                 disabled={createUserLoading}
               >
-                {createUserLoading ? 'Creating...' : 'Create User'}
+                {createUserLoading ? t('createUserDialog.creating') : t('createUserDialog.create')}
               </button>
             </div>
           </form>

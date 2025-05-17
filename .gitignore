@@ -6,3 +6,4 @@ be/tmp
 /fe/ls-app/node_modules/
 /fe/.idea/
 /fe/ls-app/.idea/
+/fe/ls-app/coverage/

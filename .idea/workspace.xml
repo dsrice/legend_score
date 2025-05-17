@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: FEのテストコード追加" />
+    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: テストコードを追加">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/components/CreateUserDialog.test.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/components/CreateUserDialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/components/CreateUserDialog.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,51 +52,51 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Go テスト.TestAuthController_Login (legend_score/controllers 内).executor": "Run",
-    "Go テスト.TestGetConnection (legend_score/infra/database/connection 内).executor": "Debug",
-    "Go テスト.TestToOne (legend_score/infra/database/models 内).executor": "Run",
-    "Go テスト.TestToOne/FrameToUserUsingUser (legend_score/infra/database/models 内).executor": "Run",
-    "Go テスト.TestUserController_GetUsers (legend_score/controllers 内).executor": "Run",
-    "Go テスト.TestUserRepository_Insert (legend_score/repositories 内) (1).executor": "Run",
-    "Go テスト.TestUserRepository_Insert (legend_score/repositories 内).executor": "Run",
-    "Go テスト.TestUserTokenRepository_Insert (legend_score/repositories 内).executor": "Run",
-    "Go テスト.go test be.executor": "Run",
-    "Go テスト.go test controllers.executor": "Run",
-    "Go テスト.go test legend_score.executor": "Debug",
-    "Go テスト.go test models.executor": "Run",
-    "Go テスト.go test repositories.executor": "Run",
-    "Go リモート.delve.executor": "Debug",
-    "RunOnceActivity.GoLinterPluginOnboarding": "true",
-    "RunOnceActivity.GoLinterPluginStorageMigration": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "SHELLCHECK.PATH": "C:\\Users\\fujimoto\\AppData\\Roaming\\JetBrains\\GoLand2024.3\\plugins\\Shell Script\\shellcheck.exe",
-    "git-widget-placeholder": "feature/user__register",
-    "go.import.settings.migrated": "true",
-    "go.sdk.automatically.set": "true",
-    "javascript.nodejs.core.library.configured.version": "21.2.0",
-    "javascript.nodejs.core.library.typings.version": "22.15.2",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/work/program/legend_score/be",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preference.GoLinterConfigurable",
-    "ts.external.directory.path": "C:\\work\\program\\legend_score\\fe\\ls-app\\node_modules\\typescript\\lib"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Go テスト.TestAuthController_Login (legend_score/controllers 内).executor&quot;: &quot;Run&quot;,
+    &quot;Go テスト.TestGetConnection (legend_score/infra/database/connection 内).executor&quot;: &quot;Debug&quot;,
+    &quot;Go テスト.TestToOne (legend_score/infra/database/models 内).executor&quot;: &quot;Run&quot;,
+    &quot;Go テスト.TestToOne/FrameToUserUsingUser (legend_score/infra/database/models 内).executor&quot;: &quot;Run&quot;,
+    &quot;Go テスト.TestUserController_GetUsers (legend_score/controllers 内).executor&quot;: &quot;Run&quot;,
+    &quot;Go テスト.TestUserRepository_Insert (legend_score/repositories 内) (1).executor&quot;: &quot;Run&quot;,
+    &quot;Go テスト.TestUserRepository_Insert (legend_score/repositories 内).executor&quot;: &quot;Run&quot;,
+    &quot;Go テスト.TestUserTokenRepository_Insert (legend_score/repositories 内).executor&quot;: &quot;Run&quot;,
+    &quot;Go テスト.go test be.executor&quot;: &quot;Run&quot;,
+    &quot;Go テスト.go test controllers.executor&quot;: &quot;Run&quot;,
+    &quot;Go テスト.go test legend_score.executor&quot;: &quot;Debug&quot;,
+    &quot;Go テスト.go test models.executor&quot;: &quot;Run&quot;,
+    &quot;Go テスト.go test repositories.executor&quot;: &quot;Run&quot;,
+    &quot;Go リモート.delve.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.GoLinterPluginOnboarding&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.GoLinterPluginStorageMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\fujimoto\\AppData\\Roaming\\JetBrains\\GoLand2024.3\\plugins\\Shell Script\\shellcheck.exe&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/user__register&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;21.2.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.15.2&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/work/program/legend_score/be&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preference.GoLinterConfigurable&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\work\\program\\legend_score\\fe\\ls-app\\node_modules\\typescript\\lib&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\work\program\legend_score\be" />
@@ -277,14 +281,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: FEにユーザー一覧画面を用意" />
-    <MESSAGE value="feat: Github Actionを追加" />
-    <MESSAGE value="feat: ユーザー詳細取得APIを作成" />
-    <MESSAGE value="feat: Mockを用意" />
-    <MESSAGE value="feat: Mockを導入" />
-    <MESSAGE value="feat: FEの処理を見直し" />
-    <MESSAGE value="feat: APIの利用にトークン付与を追加" />
-    <MESSAGE value="feat: ユーザー一覧の取得から表示まで対応" />
     <MESSAGE value="feat: FEのテストコードを実行コマンドを見直し" />
     <MESSAGE value="feat: APIの利用条件見直し" />
     <MESSAGE value="feat: テストコードの実装修正" />
@@ -302,7 +298,15 @@
     <MESSAGE value="feat: BEのテストコード実行を一旦あきらめる" />
     <MESSAGE value="feat: JWT認証周りがおかしいので見直し" />
     <MESSAGE value="feat: FEのテストコード追加" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: FEのテストコード追加" />
+    <MESSAGE value="feat: 権限修正" />
+    <MESSAGE value="feat: API周りを見直し" />
+    <MESSAGE value="feat: CSS修正" />
+    <MESSAGE value="feat: 表示内容調整" />
+    <MESSAGE value="feat: 英語表示対応" />
+    <MESSAGE value="feat: ユーザー作成ダイヤログ表示" />
+    <MESSAGE value="feat: ユーザー作成処理を実行" />
+    <MESSAGE value="feat: テストコードを追加" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: テストコードを追加" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
