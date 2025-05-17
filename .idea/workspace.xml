@@ -7,10 +7,7 @@
     <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: テストコードを追加">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fe/ls-app/src/components/CreateUserDialog.test.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/components/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/pages/UserList.test.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/pages/UserList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/pages/UserList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/services/apiClient.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/components/CreateUserDialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/components/CreateUserDialog.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
