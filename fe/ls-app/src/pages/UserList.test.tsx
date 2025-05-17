@@ -56,7 +56,7 @@ describe('UserList Component', () => {
     jest.useRealTimers();
   });
 
-  test.skip('renders user list page correctly', async () => {
+  test('renders user list page correctly', async () => {
     await act(async () => {
       render(
         <BrowserRouter>
@@ -81,7 +81,7 @@ describe('UserList Component', () => {
     });
   });
 
-  test.skip('displays users in the table', async () => {
+  test('displays users in the table', async () => {
     await act(async () => {
       render(
         <BrowserRouter>
@@ -107,7 +107,7 @@ describe('UserList Component', () => {
     });
   });
 
-  test.skip('displays loading state while fetching users', async () => {
+  test('displays loading state while fetching users', async () => {
     // Delay the API response
     (apiClient.apiGet as jest.Mock).mockImplementation(() => {
       return new Promise(resolve => {
@@ -137,7 +137,7 @@ describe('UserList Component', () => {
     });
   });
 
-  test.skip('displays error message when API request fails', async () => {
+  test('displays error message when API request fails', async () => {
     // Mock failed API response
     (apiClient.apiGet as jest.Mock).mockResolvedValue({
       result: false
@@ -157,7 +157,7 @@ describe('UserList Component', () => {
     });
   });
 
-  test.skip('navigates back to home when Back to Home button is clicked', async () => {
+  test('navigates back to home when Back to Home button is clicked', async () => {
     await act(async () => {
       render(
         <BrowserRouter>
@@ -173,7 +173,7 @@ describe('UserList Component', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/home');
   });
 
-  test.skip('opens create user dialog when Create User button is clicked', async () => {
+  test('opens create user dialog when Create User button is clicked', async () => {
     await act(async () => {
       render(
         <BrowserRouter>
@@ -193,7 +193,7 @@ describe('UserList Component', () => {
     });
   });
 
-  test.skip('applies filters when filter form is submitted', async () => {
+  test('applies filters when filter form is submitted', async () => {
     await act(async () => {
       render(
         <BrowserRouter>
@@ -236,7 +236,7 @@ describe('UserList Component', () => {
     });
   });
 
-  test.skip('resets filters when Reset button is clicked', async () => {
+  test('resets filters when Reset button is clicked', async () => {
     await act(async () => {
       render(
         <BrowserRouter>
@@ -266,7 +266,7 @@ describe('UserList Component', () => {
     });
   });
 
-  test.skip('refreshes user list when a user is created', async () => {
+  test('refreshes user list when a user is created', async () => {
     await act(async () => {
       render(
         <BrowserRouter>

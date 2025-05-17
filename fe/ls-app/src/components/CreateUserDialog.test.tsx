@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import CreateUserDialog from './CreateUserDialog';
 import * as apiClient from '../services/apiClient';
+import { JSX } from 'react/jsx-runtime';
 
 // Mock the apiClient
 jest.mock('../services/apiClient', () => ({
@@ -19,7 +20,7 @@ describe('CreateUserDialog Component', () => {
     jest.clearAllMocks();
   });
 
-  test.skip('renders dialog when isOpen is true', async () => {
+  test('renders dialog when isOpen is true', async () => {
     await act(async () => {
       render(<CreateUserDialog {...mockProps} />);
     });
@@ -33,34 +34,34 @@ describe('CreateUserDialog Component', () => {
     expect(screen.getByLabelText(/password/i)).toBeInTheDocument();
 
     // Check if buttons are rendered
-    expect(screen.getByRole('button', { name: /cancel/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /create user/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', {name: /cancel/i})).toBeInTheDocument();
+    expect(screen.getByRole('button', {name: /create user/i})).toBeInTheDocument();
   });
 
-  test.skip('does not render dialog when isOpen is false', async () => {
+  test('does not render dialog when isOpen is false', async () => {
     await act(async () => {
-      render(<CreateUserDialog {...mockProps} isOpen={false} />);
+      render(<CreateUserDialog {...mockProps} isOpen={false}/>);
     });
 
     // Check if the dialog is not rendered
     expect(screen.queryByText(/create new user/i)).not.toBeInTheDocument();
   });
 
-  test.skip('calls onClose when Cancel button is clicked', async () => {
+  test('calls onClose when Cancel button is clicked', async () => {
     await act(async () => {
       render(<CreateUserDialog {...mockProps} />);
     });
 
     // Click the Cancel button
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: /cancel/i }));
+      fireEvent.click(screen.getByRole('button', {name: /cancel/i}));
     });
 
     // Check if onClose was called
     expect(mockProps.onClose).toHaveBeenCalled();
   });
 
-  test.skip('handles form submission correctly', async () => {
+  test('handles form submission correctly', async () => {
     // Mock successful API response
     (apiClient.apiPost as jest.Mock).mockResolvedValue({
       result: true
@@ -73,25 +74,25 @@ describe('CreateUserDialog Component', () => {
     // Fill in the form
     await act(async () => {
       fireEvent.change(screen.getByLabelText(/login id/i), {
-        target: { value: 'testuser' }
+        target: {value: 'testuser'}
       });
     });
 
     await act(async () => {
       fireEvent.change(screen.getByLabelText(/name/i), {
-        target: { value: 'Test User' }
+        target: {value: 'Test User'}
       });
     });
 
     await act(async () => {
       fireEvent.change(screen.getByLabelText(/password/i), {
-        target: { value: 'password123' }
+        target: {value: 'password123'}
       });
     });
 
     // Submit the form
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: /create user/i }));
+      fireEvent.click(screen.getByRole('button', {name: /create user/i}));
     });
 
     // Wait for the API call to complete
@@ -109,7 +110,7 @@ describe('CreateUserDialog Component', () => {
     });
   });
 
-  test.skip('displays error message on API failure', async () => {
+  test('displays error message on API failure', async () => {
     // Mock failed API response
     (apiClient.apiPost as jest.Mock).mockResolvedValue({
       result: false,
@@ -123,25 +124,25 @@ describe('CreateUserDialog Component', () => {
     // Fill in the form
     await act(async () => {
       fireEvent.change(screen.getByLabelText(/login id/i), {
-        target: { value: 'existinguser' }
+        target: {value: 'existinguser'}
       });
     });
 
     await act(async () => {
       fireEvent.change(screen.getByLabelText(/name/i), {
-        target: { value: 'Existing User' }
+        target: {value: 'Existing User'}
       });
     });
 
     await act(async () => {
       fireEvent.change(screen.getByLabelText(/password/i), {
-        target: { value: 'password123' }
+        target: {value: 'password123'}
       });
     });
 
     // Submit the form
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: /create user/i }));
+      fireEvent.click(screen.getByRole('button', {name: /create user/i}));
     });
 
     // Wait for the error message to appear
@@ -154,7 +155,7 @@ describe('CreateUserDialog Component', () => {
     expect(mockProps.onUserCreated).not.toHaveBeenCalled();
   });
 
-  test.skip('handles API exceptions', async () => {
+  test('handles API exceptions', async () => {
     // Mock API exception
     (apiClient.apiPost as jest.Mock).mockRejectedValue({
       response: {
@@ -171,25 +172,25 @@ describe('CreateUserDialog Component', () => {
     // Fill in the form
     await act(async () => {
       fireEvent.change(screen.getByLabelText(/login id/i), {
-        target: { value: 'testuser' }
+        target: {value: 'testuser'}
       });
     });
 
     await act(async () => {
       fireEvent.change(screen.getByLabelText(/name/i), {
-        target: { value: 'Test User' }
+        target: {value: 'Test User'}
       });
     });
 
     await act(async () => {
       fireEvent.change(screen.getByLabelText(/password/i), {
-        target: { value: 'password123' }
+        target: {value: 'password123'}
       });
     });
 
     // Submit the form
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: /create user/i }));
+      fireEvent.click(screen.getByRole('button', {name: /create user/i}));
     });
 
     // Wait for the error message to appear
@@ -199,7 +200,7 @@ describe('CreateUserDialog Component', () => {
   });
 
   test.skip('resets form when dialog is opened', async () => {
-    let rerenderFn;
+    let rerenderFn: ((ui: React.ReactNode) => void) | ((arg0: JSX.Element) => void);
 
     await act(async () => {
       const { rerender } = render(<CreateUserDialog {...mockProps} isOpen={false} />);
