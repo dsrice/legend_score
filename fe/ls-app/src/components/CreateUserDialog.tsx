@@ -60,10 +60,17 @@ const CreateUserDialog: React.FC<CreateUserDialogProps> = ({ isOpen, onClose, on
     setCreateUserLoading(true);
     setCreateUserError(null);
 
+    // Check if all required fields have values
+    if (!newUser.login_id || !newUser.name || !newUser.password) {
+      setCreateUserError(t('createUserDialog.error.allFieldsRequired') || 'All fields are required');
+      setCreateUserLoading(false);
+      return;
+    }
+
     try {
       // Make the API request to create a user
       // Token is automatically added by the apiClient interceptor
-      const response = await apiPost('/users', newUser);
+      const response = await apiPost('/user', newUser);
 
       // Handle the response
       const data = response as CreateUserResponse;
@@ -82,10 +89,15 @@ const CreateUserDialog: React.FC<CreateUserDialogProps> = ({ isOpen, onClose, on
     }
   };
 
+  // Create a no-op function to prevent dialog from closing when clicking outside or pressing Escape
+  const handleDialogClose = () => {
+    // Do nothing, only allow closing via the Cancel button
+  };
+
   return (
     <Dialog
       open={isOpen}
-      onClose={onClose}
+      onClose={handleDialogClose}
       className="fixed inset-0 z-10 overflow-y-auto"
     >
       <div className="flex items-center justify-center min-h-screen">

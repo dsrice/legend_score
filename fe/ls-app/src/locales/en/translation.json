@@ -34,7 +34,8 @@
     "creating": "Creating...",
     "error": {
       "createFailed": "Failed to create user",
-      "generalError": "An error occurred while creating user"
+      "generalError": "An error occurred while creating user",
+      "allFieldsRequired": "Please fill in all required fields"
     }
   }
 }

@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: 英語表示対応">
+    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: ユーザー作成ダイヤログ表示">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fe/ls-app/src/components/CreateUserDialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/components/CreateUserDialog.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fe/ls-app/src/locales/en/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/locales/en/translation.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fe/ls-app/src/locales/ja/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/locales/ja/translation.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/pages/UserList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/pages/UserList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,7 +282,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: FEの処理を見直し" />
     <MESSAGE value="feat: APIの利用にトークン付与を追加" />
     <MESSAGE value="feat: ユーザー一覧の取得から表示まで対応" />
     <MESSAGE value="feat: FEのテストコードを実行コマンドを見直し" />
@@ -310,7 +306,8 @@
     <MESSAGE value="feat: CSS修正" />
     <MESSAGE value="feat: 表示内容調整" />
     <MESSAGE value="feat: 英語表示対応" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 英語表示対応" />
+    <MESSAGE value="feat: ユーザー作成ダイヤログ表示" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: ユーザー作成ダイヤログ表示" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

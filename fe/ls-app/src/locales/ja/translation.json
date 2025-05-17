@@ -34,7 +34,8 @@
     "creating": "作成中...",
     "error": {
       "createFailed": "ユーザーの作成に失敗しました",
-      "generalError": "ユーザーの作成中にエラーが発生しました"
+      "generalError": "ユーザーの作成中にエラーが発生しました",
+      "allFieldsRequired": "すべての必須項目を入力してください"
     }
   }
 }
