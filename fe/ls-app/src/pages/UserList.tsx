@@ -86,11 +86,6 @@ const UserList: React.FC = () => {
     fetchUsers();
   };
 
-  // Navigate back to home
-  const handleBackToHome = () => {
-    navigate('/home');
-  };
-
   // Open create user dialog
   const openCreateDialog = () => {
     setIsCreateDialogOpen(true);

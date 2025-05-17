@@ -12,11 +12,6 @@ const Header: React.FC<HeaderProps> = ({ pageName }) => {
   const navigate = useNavigate();
   const { t } = useTranslation(); // Initialize translation function
 
-  const handleLogout = () => {
-    removeToken();
-    navigate('/');
-  };
-
   // Translate the page name based on the current route
   const getTranslatedPageName = () => {
     if (pageName === 'Home') return t('header.home');
