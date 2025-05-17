@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: CSS修正">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/components/AuthenticatedLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/components/AuthenticatedLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/components/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/components/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/components/Sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/pages/UserList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/pages/UserList.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: 表示内容調整" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -283,7 +277,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Mockを用意" />
     <MESSAGE value="feat: Mockを導入" />
     <MESSAGE value="feat: FEの処理を見直し" />
     <MESSAGE value="feat: APIの利用にトークン付与を追加" />
@@ -308,7 +301,8 @@
     <MESSAGE value="feat: 権限修正" />
     <MESSAGE value="feat: API周りを見直し" />
     <MESSAGE value="feat: CSS修正" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: CSS修正" />
+    <MESSAGE value="feat: 表示内容調整" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 表示内容調整" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

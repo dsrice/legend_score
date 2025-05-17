@@ -1,0 +1,12 @@
+{
+  "appName": "Legend Score",
+  "navigation": {
+    "home": "ホーム",
+    "userManagement": "ユーザー管理",
+    "logout": "ログアウト"
+  },
+  "header": {
+    "home": "ホーム",
+    "userManagement": "ユーザー管理"
+  }
+}
