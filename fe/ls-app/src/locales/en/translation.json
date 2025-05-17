@@ -8,5 +8,33 @@
   "header": {
     "home": "Home",
     "userManagement": "User Management"
+  },
+  "userList": {
+    "createUser": "Create User",
+    "searchConditions": "Search Conditions",
+    "userId": "User ID",
+    "loginId": "Login ID",
+    "name": "Name",
+    "reset": "Reset",
+    "applyFilters": "Apply Filters",
+    "loadingUsers": "Loading users...",
+    "noUsersFound": "No users found",
+    "error": {
+      "fetchFailed": "Failed to fetch users",
+      "generalError": "An error occurred while fetching users"
+    }
+  },
+  "createUserDialog": {
+    "title": "Create New User",
+    "loginId": "Login ID",
+    "name": "Name",
+    "password": "Password",
+    "cancel": "Cancel",
+    "create": "Create User",
+    "creating": "Creating...",
+    "error": {
+      "createFailed": "Failed to create user",
+      "generalError": "An error occurred while creating user"
+    }
   }
 }

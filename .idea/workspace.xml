@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: 英語表示対応">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fe/ls-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fe/ls-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/components/CreateUserDialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/components/CreateUserDialog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/locales/en/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/locales/en/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/locales/ja/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/locales/ja/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/pages/UserList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/pages/UserList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

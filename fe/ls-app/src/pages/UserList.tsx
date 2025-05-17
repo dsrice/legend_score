@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { apiGet } from '../services/apiClient';
 import CreateUserDialog from '../components/CreateUserDialog';
+import { useTranslation } from 'react-i18next';
 
 // Define the User interface based on the backend response
 interface User {
@@ -18,6 +19,7 @@ interface GetUsersResponse {
 
 const UserList: React.FC = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation(); // Initialize translation function
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -56,11 +58,11 @@ const UserList: React.FC = () => {
       if (data.result) {
         setUsers(data.users);
       } else {
-        setError('Failed to fetch users');
+        setError(t('userList.error.fetchFailed'));
       }
     } catch (err) {
       console.error('Error fetching users:', err);
-      setError('An error occurred while fetching users');
+      setError(t('userList.error.generalError'));
     } finally {
       setLoading(false);
     }
@@ -112,16 +114,16 @@ const UserList: React.FC = () => {
             onClick={openCreateDialog}
             className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
           >
-            Create User
+            {t('userList.createUser')}
           </button>
         </div>
 
         {/* Filter Form */}
         <div className="bg-white shadow rounded-lg mb-6 p-4">
-          <h2 className="text-lg font-medium mb-4">検索条件</h2>
+          <h2 className="text-lg font-medium mb-4">{t('userList.searchConditions')}</h2>
           <form onSubmit={handleFilterSubmit} className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div>
-              <label htmlFor="user-id" className="block text-sm font-medium text-gray-700">User ID</label>
+              <label htmlFor="user-id" className="block text-sm font-medium text-gray-700">{t('userList.userId')}</label>
               <input
                 type="text"
                 id="user-id"
@@ -131,7 +133,7 @@ const UserList: React.FC = () => {
               />
             </div>
             <div>
-              <label htmlFor="login-id" className="block text-sm font-medium text-gray-700">Login ID</label>
+              <label htmlFor="login-id" className="block text-sm font-medium text-gray-700">{t('userList.loginId')}</label>
               <input
                 type="text"
                 id="login-id"
@@ -141,7 +143,7 @@ const UserList: React.FC = () => {
               />
             </div>
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700">{t('userList.name')}</label>
               <input
                 type="text"
                 id="name"
@@ -156,13 +158,13 @@ const UserList: React.FC = () => {
                 onClick={handleFilterReset}
                 className="py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
-                Reset
+                {t('userList.reset')}
               </button>
               <button
                 type="submit"
                 className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
-                Apply Filters
+                {t('userList.applyFilters')}
               </button>
             </div>
           </form>
@@ -188,11 +190,11 @@ const UserList: React.FC = () => {
         <div className="bg-white shadow overflow-hidden rounded-lg">
           {loading ? (
             <div className="p-6 text-center">
-              <p className="text-gray-500">Loading users...</p>
+              <p className="text-gray-500">{t('userList.loadingUsers')}</p>
             </div>
           ) : users.length === 0 ? (
             <div className="p-6 text-center">
-              <p className="text-gray-500">No users found</p>
+              <p className="text-gray-500">{t('userList.noUsersFound')}</p>
             </div>
           ) : (
             <table className="min-w-full divide-y divide-gray-200">
@@ -202,10 +204,10 @@ const UserList: React.FC = () => {
                     ID
                   </th>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Login ID
+                    {t('userList.loginId')}
                   </th>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Name
+                    {t('userList.name')}
                   </th>
                 </tr>
               </thead>
