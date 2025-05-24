@@ -4,23 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: ゲーム一覧画面を追加">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/di/controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/di/controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/di/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/di/repository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/di/usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/di/usecase.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/entities/game.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/entities/game.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/infra/middleware/auth_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/middleware/auth_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/infra/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/server/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/infra/server/server_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/server/server_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/repositories/game.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/repositories/game.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/repositories/mock/game.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/repositories/mock/game.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/repositories/ri/game.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/repositories/ri/game.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/sqlboiler.toml" beforeDir="false" afterPath="$PROJECT_DIR$/be/sqlboiler.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/usecases/mock/example_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/usecases/mock/example_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/usecases/mock/game.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/usecases/mock/game.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/be/usecases/ui/game.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/usecases/ui/game.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: テストコード追加">
+      <change beforePath="$PROJECT_DIR$/be/di/mock_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/di/mock_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +61,7 @@
     "Go テスト.TestUserRepository_Insert (legend_score/repositories 内) (1).executor": "Run",
     "Go テスト.TestUserRepository_Insert (legend_score/repositories 内).executor": "Run",
     "Go テスト.TestUserTokenRepository_Insert (legend_score/repositories 内).executor": "Run",
-    "Go テスト.go test be.executor": "Coverage",
+    "Go テスト.go test be.executor": "Run",
     "Go テスト.go test controllers.executor": "Run",
     "Go テスト.go test legend_score.executor": "Debug",
     "Go テスト.go test models.executor": "Run",
@@ -309,8 +294,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: APIの利用条件見直し" />
-    <MESSAGE value="feat: テストコードの実装修正" />
     <MESSAGE value="feat: repositoryのテストコードを追加" />
     <MESSAGE value="feat: repositoryのテストコードを修正" />
     <MESSAGE value="feat: 開発環境で全テストコードを実行できるように調整" />
@@ -334,7 +317,9 @@
     <MESSAGE value="feat: ユーザー作成処理を実行" />
     <MESSAGE value="feat: テストコードを追加" />
     <MESSAGE value="feat: ゲーム一覧画面を追加" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: ゲーム一覧画面を追加" />
+    <MESSAGE value="feat: ゲーム一覧取得APIを用意" />
+    <MESSAGE value="feat: テストコード追加" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: テストコード追加" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
@@ -356,6 +341,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/legend_score$go_test_be.out" NAME="go test be のカバレッジ結果" MODIFIED="1748096286716" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/legend_score$go_test_be.out" NAME="go test be のカバレッジ結果" MODIFIED="1748097074283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
