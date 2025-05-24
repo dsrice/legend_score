@@ -19,9 +19,26 @@
     "applyFilters": "検索",
     "loadingUsers": "ユーザーを読み込み中...",
     "noUsersFound": "ユーザーが見つかりません",
+    "actions": "アクション",
+    "viewGames": "ゲーム一覧を表示",
     "error": {
       "fetchFailed": "ユーザーの取得に失敗しました",
       "generalError": "ユーザーの取得中にエラーが発生しました"
+    }
+  },
+  "gameList": {
+    "games": "ゲーム一覧",
+    "gamesFor": "のゲーム一覧",
+    "backToUsers": "ユーザー一覧に戻る",
+    "name": "ゲーム名",
+    "score": "スコア",
+    "count": "回数",
+    "date": "日付",
+    "loadingGames": "ゲームを読み込み中...",
+    "noGamesFound": "ゲームが見つかりません",
+    "error": {
+      "fetchFailed": "ゲームの取得に失敗しました",
+      "generalError": "ゲームの取得中にエラーが発生しました"
     }
   },
   "createUserDialog": {
