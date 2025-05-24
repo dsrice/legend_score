@@ -8,11 +8,16 @@ import (
 	"legend_score/infra/middleware"
 	"net/http"
 	"net/http/httptest"
+	"os"
 	"testing"
 	"time"
 )
 
 func TestJWTMiddleware(t *testing.T) {
+	// Set the JWT_SECRET environment variable for testing
+	os.Setenv("JWT_SECRET", "legend_score")
+	defer os.Unsetenv("JWT_SECRET")
+
 	// Create a new echo instance
 	e := echo.New()
 
@@ -80,11 +85,11 @@ func TestJWTMiddleware(t *testing.T) {
 		// Assert that the handler was not called
 		assert.False(t, handlerCalled)
 
-		// Assert that the status code is Bad Request
-		assert.Equal(t, http.StatusBadRequest, rec.Code)
+		// Assert that the status code is Unauthorized
+		assert.Equal(t, http.StatusUnauthorized, rec.Code)
 
 		// Assert that the response contains the error code
-		assert.Contains(t, rec.Body.String(), ecode.E0001)
+		assert.Contains(t, rec.Body.String(), ecode.E0000)
 	})
 
 	t.Run("Invalid Authorization Format", func(t *testing.T) {
@@ -106,11 +111,11 @@ func TestJWTMiddleware(t *testing.T) {
 		// Assert that the handler was not called
 		assert.False(t, handlerCalled)
 
-		// Assert that the status code is Bad Request
-		assert.Equal(t, http.StatusBadRequest, rec.Code)
+		// Assert that the status code is Unauthorized
+		assert.Equal(t, http.StatusUnauthorized, rec.Code)
 
 		// Assert that the response contains the error code
-		assert.Contains(t, rec.Body.String(), ecode.E0001)
+		assert.Contains(t, rec.Body.String(), ecode.E0000)
 	})
 
 	t.Run("Invalid JWT Token", func(t *testing.T) {

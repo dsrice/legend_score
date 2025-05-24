@@ -15,24 +15,20 @@ type GameUseCase struct {
 // Ensure GameUseCase implements ui.GameUseCase
 var _ ui.GameUseCase = (*GameUseCase)(nil)
 
-// GetGamesByUserID mocks the GetGamesByUserID method
-func (m *GameUseCase) GetGamesByUserID(c echo.Context, userID int) (*entities.GamesEntity, error) {
-	args := m.Called(c, userID)
-	
-	if args.Get(0) == nil {
-		return nil, args.Error(1)
-	}
-	
-	return args.Get(0).(*entities.GamesEntity), args.Error(1)
+// GetGames mocks the GetGames method
+func (m *GameUseCase) GetGames(c echo.Context, e *entities.GetGamesEntity) error {
+	args := m.Called(c, e)
+	return args.Error(0)
 }
 
-// GetGameDetails mocks the GetGameDetails method
-func (m *GameUseCase) GetGameDetails(c echo.Context, gameID int, userID int) (*entities.GameDetailEntity, error) {
-	args := m.Called(c, gameID, userID)
-	
-	if args.Get(0) == nil {
-		return nil, args.Error(1)
-	}
-	
-	return args.Get(0).(*entities.GameDetailEntity), args.Error(1)
+// GetGamesByUserID mocks the GetGamesByUserID method
+func (m *GameUseCase) GetGamesByUserID(c echo.Context, e *entities.GetGamesByUserIDEntity) error {
+	args := m.Called(c, e)
+	return args.Error(0)
+}
+
+// GetGameWithDetails mocks the GetGameWithDetails method
+func (m *GameUseCase) GetGameWithDetails(c echo.Context, e *entities.GetGameWithDetailsEntity) error {
+	args := m.Called(c, e)
+	return args.Error(0)
 }

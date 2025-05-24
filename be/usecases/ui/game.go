@@ -5,11 +5,8 @@ import (
 	"legend_score/entities"
 )
 
-// GameUseCase defines the interface for game-related business logic
 type GameUseCase interface {
-	// GetGamesByUserID retrieves all games for the current user
-	GetGamesByUserID(c echo.Context, userID int) (*entities.GamesEntity, error)
-
-	// GetGameDetails retrieves a game with its frames and throws
-	GetGameDetails(c echo.Context, gameID int, userID int) (*entities.GameDetailEntity, error)
+	GetGames(c echo.Context, e *entities.GetGamesEntity) error
+	GetGamesByUserID(c echo.Context, e *entities.GetGamesByUserIDEntity) error
+	GetGameWithDetails(c echo.Context, e *entities.GetGameWithDetailsEntity) error
 }

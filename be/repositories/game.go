@@ -37,6 +37,23 @@ func (r *gameRepository) GetByUserID(c echo.Context, userID int) ([]*models.Game
 	return games, nil
 }
 
+// GetAll retrieves all games
+func (r *gameRepository) GetAll(c echo.Context) ([]*models.Game, error) {
+	logger.Debug("GetAll start")
+	games, err := models.Games(
+		qm.Where("deleted_flg = ?", false),
+		qm.OrderBy("game_date DESC"),
+	).All(c.Request().Context(), r.con)
+
+	if err != nil {
+		logger.Error(err.Error())
+		return nil, err
+	}
+
+	logger.Debug("GetAll end")
+	return games, nil
+}
+
 // GetWithDetails retrieves a game with its frames and throws
 func (r *gameRepository) GetWithDetails(c echo.Context, gameID int) (*models.Game, error) {
 	logger.Debug("GetWithDetails start")

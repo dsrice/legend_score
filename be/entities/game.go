@@ -2,8 +2,29 @@ package entities
 
 import (
 	"legend_score/infra/database/models"
+	"legend_score/entities/db"
 	"time"
 )
+
+// GetGamesEntity represents a request to get all games
+type GetGamesEntity struct {
+	Code  string
+	Games []db.GameEntity
+}
+
+// GetGamesByUserIDEntity represents a request to get games by user ID
+type GetGamesByUserIDEntity struct {
+	Code   string
+	UserID int
+	Games  []db.GameEntity
+}
+
+// GetGameWithDetailsEntity represents a request to get a game with details
+type GetGameWithDetailsEntity struct {
+	Code   string
+	GameID int
+	Game   db.GameEntity
+}
 
 // GameEntity represents a single game
 type GameEntity struct {

@@ -9,4 +9,5 @@ import (
 func provideController(c *dig.Container) {
 	setProvide(c, controllers.NewAuthController)
 	setProvide(c, controllers.NewUserController)
+	setProvide(c, controllers.NewGameController)
 }

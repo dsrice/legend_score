@@ -7,6 +7,9 @@ import (
 
 // GameRepository defines the interface for game-related database operations
 type GameRepository interface {
+	// GetAll retrieves all games
+	GetAll(c echo.Context) ([]*models.Game, error)
+
 	// GetByUserID retrieves all games for a specific user
 	GetByUserID(c echo.Context, userID int) ([]*models.Game, error)
 

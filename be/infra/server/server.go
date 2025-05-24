@@ -20,18 +20,21 @@ type Server struct {
 	echo *echo.Echo
 	Auth ci.AuthController
 	User ci.UserController
+	Game ci.GameController
 }
 
 type inServer struct {
 	dig.In
 	Auth ci.AuthController
 	User ci.UserController
+	Game ci.GameController
 }
 
 func NewServer(s inServer) *Server {
 	return &Server{
 		Auth: s.Auth,
 		User: s.User,
+		Game: s.Game,
 	}
 }
 
@@ -87,4 +90,10 @@ func (s *Server) routing() {
 	u.POST("", s.User.CreateUser)
 	u.GET("", s.User.GetUsers)
 	u.GET("/:user_id", s.User.GetUser)
+	u.GET("/:user_id/game", s.Game.GetGamesByUserID)
+
+	// Game routes - authentication required
+	g := v.Group("/game", customMiddleware.JWTMiddleware)
+	g.GET("", s.Game.GetGames)
+	g.GET("/:game_id", s.Game.GetGameWithDetails)
 }

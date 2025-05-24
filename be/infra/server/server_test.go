@@ -43,19 +43,42 @@ func (m *MockUserController) GetUser(c echo.Context) error {
 	return args.Error(0)
 }
 
+// MockGameController is a mock implementation of the GameController interface
+type MockGameController struct {
+	mock.Mock
+}
+
+func (m *MockGameController) GetGames(c echo.Context) error {
+	args := m.Called(c)
+	return args.Error(0)
+}
+
+func (m *MockGameController) GetGamesByUserID(c echo.Context) error {
+	args := m.Called(c)
+	return args.Error(0)
+}
+
+func (m *MockGameController) GetGameWithDetails(c echo.Context) error {
+	args := m.Called(c)
+	return args.Error(0)
+}
+
 func TestNewServer(t *testing.T) {
 	// Create mock controllers
 	mockAuthController := new(MockAuthController)
 	mockUserController := new(MockUserController)
+	mockGameController := new(MockGameController)
 
 	// Create a new server
 	s := server.NewServer(struct {
 		dig.In
 		Auth ci.AuthController
 		User ci.UserController
+		Game ci.GameController
 	}{
 		Auth: mockAuthController,
 		User: mockUserController,
+		Game: mockGameController,
 	})
 
 	// Assert that the server is not nil
@@ -64,6 +87,7 @@ func TestNewServer(t *testing.T) {
 	// Assert that the controllers are set correctly
 	assert.Equal(t, mockAuthController, s.Auth)
 	assert.Equal(t, mockUserController, s.User)
+	assert.Equal(t, mockGameController, s.Game)
 }
 
 func TestCustomValidator_Validate(t *testing.T) {
@@ -78,9 +102,11 @@ func TestCustomValidator_Validate(t *testing.T) {
 		dig.In
 		Auth ci.AuthController
 		User ci.UserController
+		Game ci.GameController
 	}{
 		Auth: new(MockAuthController),
 		User: new(MockUserController),
+		Game: new(MockGameController),
 	})
 
 	// Start the server (this will initialize the validator)
@@ -154,21 +180,27 @@ func TestServer_routing(t *testing.T) {
 	// Create mock controllers
 	mockAuthController := new(MockAuthController)
 	mockUserController := new(MockUserController)
+	mockGameController := new(MockGameController)
 
 	// Set up expectations for the controllers
 	mockAuthController.On("Login", mock.Anything).Return(nil)
 	mockUserController.On("CreateUser", mock.Anything).Return(nil)
 	mockUserController.On("GetUsers", mock.Anything).Return(nil)
 	mockUserController.On("GetUser", mock.Anything).Return(nil)
+	mockGameController.On("GetGames", mock.Anything).Return(nil)
+	mockGameController.On("GetGamesByUserID", mock.Anything).Return(nil)
+	mockGameController.On("GetGameWithDetails", mock.Anything).Return(nil)
 
 	// Create a new server
 	s := server.NewServer(struct {
 		dig.In
 		Auth ci.AuthController
 		User ci.UserController
+		Game ci.GameController
 	}{
 		Auth: mockAuthController,
 		User: mockUserController,
+		Game: mockGameController,
 	})
 
 	// Start the server (this will set up the routes)
@@ -243,5 +275,57 @@ func TestServer_routing(t *testing.T) {
 
 		// Assert that the get user method was called
 		mockUserController.AssertCalled(t, "GetUser", c)
+	})
+
+	// Test the get games by user ID route
+	t.Run("Get Games By User ID Route", func(t *testing.T) {
+		req := httptest.NewRequest(http.MethodGet, "/api/v1/user/1/game", nil)
+		rec := httptest.NewRecorder()
+		c := e.NewContext(req, rec)
+		c.SetParamNames("user_id")
+		c.SetParamValues("1")
+
+		// Call the get games by user ID handler
+		err := mockGameController.GetGamesByUserID(c)
+
+		// Assert that there was no error
+		assert.NoError(t, err)
+
+		// Assert that the get games by user ID method was called
+		mockGameController.AssertCalled(t, "GetGamesByUserID", c)
+	})
+
+	// Test the get games route
+	t.Run("Get Games Route", func(t *testing.T) {
+		req := httptest.NewRequest(http.MethodGet, "/api/v1/game", nil)
+		rec := httptest.NewRecorder()
+		c := e.NewContext(req, rec)
+
+		// Call the get games handler
+		err := mockGameController.GetGames(c)
+
+		// Assert that there was no error
+		assert.NoError(t, err)
+
+		// Assert that the get games method was called
+		mockGameController.AssertCalled(t, "GetGames", c)
+	})
+
+	// Test the get game with details route
+	t.Run("Get Game With Details Route", func(t *testing.T) {
+		req := httptest.NewRequest(http.MethodGet, "/api/v1/game/1", nil)
+		rec := httptest.NewRecorder()
+		c := e.NewContext(req, rec)
+		c.SetParamNames("game_id")
+		c.SetParamValues("1")
+
+		// Call the get game with details handler
+		err := mockGameController.GetGameWithDetails(c)
+
+		// Assert that there was no error
+		assert.NoError(t, err)
+
+		// Assert that the get game with details method was called
+		mockGameController.AssertCalled(t, "GetGameWithDetails", c)
 	})
 }
