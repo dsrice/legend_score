@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: テストコード追加">
       <change beforePath="$PROJECT_DIR$/be/di/mock_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/di/mock_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/locales/ja/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/locales/ja/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/pages/GameList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/pages/GameList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -30,6 +30,7 @@
     "games": "ゲーム一覧",
     "gamesFor": "のゲーム一覧",
     "backToUsers": "ユーザー一覧に戻る",
+    "registerGame": "ゲーム登録",
     "name": "ゲーム名",
     "score": "スコア",
     "count": "回数",
@@ -40,6 +41,11 @@
       "fetchFailed": "ゲームの取得に失敗しました",
       "generalError": "ゲームの取得中にエラーが発生しました"
     }
+  },
+  "gameRegistration": {
+    "title": "ゲーム登録",
+    "backToGames": "ゲーム一覧に戻る",
+    "register": "登録"
   },
   "createUserDialog": {
     "title": "新規ユーザー作成",

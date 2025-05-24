@@ -63,6 +63,11 @@ const GameList: React.FC = () => {
     navigate('/users');
   };
 
+  // Function to navigate to game registration page
+  const handleRegisterGame = () => {
+    navigate(`/games/${userId}/register`);
+  };
+
   return (
     <div className="py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -70,12 +75,21 @@ const GameList: React.FC = () => {
           <h1 className="text-2xl font-bold text-gray-900">
             {userName ? `${userName}${t('gameList.gamesFor')}` : t('gameList.games')}
           </h1>
-          <button
-            onClick={handleBackToUsers}
-            className="py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          >
-            {t('gameList.backToUsers')}
-          </button>
+          <div className="flex space-x-4">
+            {/* Game Registration Button */}
+            <button
+              onClick={handleRegisterGame}
+              className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              {t('gameList.registerGame')}
+            </button>
+            <button
+              onClick={handleBackToUsers}
+              className="py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              {t('gameList.backToUsers')}
+            </button>
+          </div>
         </div>
 
         {/* Error Message */}

@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import UserList from './pages/UserList';
 import GameList from './pages/GameList';
+import GameRegistration from './pages/GameRegistration';
 
 // Utils
 import PrivateRoute from './utils/PrivateRoute';
@@ -54,6 +55,15 @@ function App() {
               element={
                 <PrivateRoute>
                   <GameList />
+                </PrivateRoute>
+              } 
+            />
+            {/* Game Registration Route */}
+            <Route 
+              path="/games/:userId/register" 
+              element={
+                <PrivateRoute>
+                  <GameRegistration />
                 </PrivateRoute>
               } 
             />
