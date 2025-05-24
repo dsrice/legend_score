@@ -61,7 +61,7 @@
     "Go テスト.TestUserRepository_Insert (legend_score/repositories 内) (1).executor": "Run",
     "Go テスト.TestUserRepository_Insert (legend_score/repositories 内).executor": "Run",
     "Go テスト.TestUserTokenRepository_Insert (legend_score/repositories 内).executor": "Run",
-    "Go テスト.go test be.executor": "Run",
+    "Go テスト.go test be.executor": "Coverage",
     "Go テスト.go test controllers.executor": "Run",
     "Go テスト.go test legend_score.executor": "Debug",
     "Go テスト.go test models.executor": "Run",
@@ -341,6 +341,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/legend_score$go_test_be.out" NAME="go test be のカバレッジ結果" MODIFIED="1748097074283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/legend_score$go_test_be.out" NAME="go test be のカバレッジ結果" MODIFIED="1748097341612" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
