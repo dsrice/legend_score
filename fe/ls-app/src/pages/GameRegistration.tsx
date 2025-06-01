@@ -417,6 +417,53 @@ const GameRegistration: React.FC = () => {
     );
   };
 
+  // Function to check if a frame's score is confirmed
+  const isFrameScoreConfirmed = (frameIndex) => {
+    const frame = frames[frameIndex];
+
+    // If no throws in this frame, score is not confirmed
+    if (frame.throws.length === 0) return false;
+
+    // For the 10th frame
+    if (frameIndex === 9) {
+      // 10th frame needs all throws completed
+      if (frame.isStrike || frame.isSpare) {
+        return frame.throws.length === 3;
+      } else {
+        return frame.throws.length === 2;
+      }
+    }
+
+    // For frames 1-9
+    if (frame.isStrike) {
+      // Strike needs next two throws
+      let nextThrowsCount = 0;
+
+      // Check next frame
+      if (frameIndex < 9 && frames[frameIndex + 1].throws.length > 0) {
+        nextThrowsCount++;
+
+        if (frames[frameIndex + 1].isStrike) {
+          // If next frame is a strike, we need one throw from the frame after that
+          if (frameIndex < 8 && frames[frameIndex + 2].throws.length > 0) {
+            nextThrowsCount++;
+          }
+        } else if (frames[frameIndex + 1].throws.length > 1) {
+          // If next frame is not a strike, we need the second throw from that frame
+          nextThrowsCount++;
+        }
+      }
+
+      return nextThrowsCount === 2;
+    } else if (frame.isSpare) {
+      // Spare needs one throw from next frame
+      return frameIndex < 9 && frames[frameIndex + 1].throws.length > 0;
+    } else {
+      // Regular frame needs both throws
+      return frame.throws.length === 2;
+    }
+  };
+
   // Render the scorecard
   const renderScorecard = () => {
     return (
@@ -449,9 +496,9 @@ const GameRegistration: React.FC = () => {
               ))}
             </tr>
             <tr>
-              {frames.map((frame) => (
+              {frames.map((frame, index) => (
                 <td key={`score-${frame.frameNumber}`} className="px-3 py-4 text-center text-sm font-bold text-gray-900 border">
-                  {frame.cumulativeScore > 0 ? frame.cumulativeScore : ''}
+                  {isFrameScoreConfirmed(index) ? frame.cumulativeScore : ''}
                 </td>
               ))}
             </tr>
