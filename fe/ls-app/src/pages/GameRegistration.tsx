@@ -80,10 +80,12 @@ const GameRegistration: React.FC = () => {
     // Update frame data
     // If it's a regular frame (not the 10th) and has 2 throws, treat the sum as 10
     if (currentFrame < 9 && frame.throws.length === 2) {
-      frame.score = 10;
       // If it's the second throw and the total is 10, set isSpare to true
       if (currentThrow === 1 && frame.throws[0].throwScore + pins === 10) {
         newThrow.isSpare = true;
+        frame.score = 10;
+      }else{
+        frame.score += pins - frame.throws[0].throwScore;
       }
     } else {
       frame.score = frame.throws.reduce((sum, t) => sum + t.throwScore, 0);
@@ -92,6 +94,7 @@ const GameRegistration: React.FC = () => {
     frame.isSpare = newThrow.isSpare || frame.isSpare;
 
     // Calculate scores
+    console.log(3)
     calculateScores(newFrames);
 
     // Move to next throw or frame
@@ -486,7 +489,7 @@ const GameRegistration: React.FC = () => {
                     {frame.throws.map((t, idx) => (
                       <div key={idx} className={`p-1 ${t.isStrike ? 'bg-green-100' : t.isSpare ? 'bg-blue-100' : ''}`}>
                         {t.isStrike ? 'X':
-                         (t.isSpare ? '/' : (idx == 0 ? t.throwScore: 10 - t.throwScore))}
+                         (t.isSpare ? '/' : (idx === 0 ? t.throwScore: t.pins[1]))}
                       </div>
                     ))}
                     {frame.throws.length === 0 && <div className="p-1">-</div>}
