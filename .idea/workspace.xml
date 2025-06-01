@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: ゲーム登録に細かい設定を追加">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fe/ls-app/src/pages/GameRegistration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/pages/GameRegistration.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
