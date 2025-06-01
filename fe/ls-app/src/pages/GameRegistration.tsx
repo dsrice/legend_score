@@ -78,7 +78,12 @@ const GameRegistration: React.FC = () => {
     frame.throws.push(newThrow);
 
     // Update frame data
-    frame.score = frame.throws.reduce((sum, t) => sum + t.throwScore, 0);
+    // If it's a regular frame (not the 10th) and has 2 throws, treat the sum as 10
+    if (currentFrame < 9 && frame.throws.length === 2) {
+      frame.score = 10;
+    } else {
+      frame.score = frame.throws.reduce((sum, t) => sum + t.throwScore, 0);
+    }
     frame.isStrike = newThrow.isStrike || frame.isStrike;
     frame.isSpare = newThrow.isSpare || frame.isSpare;
 
@@ -313,9 +318,10 @@ const GameRegistration: React.FC = () => {
                 key={pinIndex}
                 onClick={() => handlePinClick(pinIndex)}
                 className={`bowling-pin ${
-                  // If it's the second throw and this pin was already knocked down, show it as knocked down and disabled
+                  // If it's the second throw and this pin was already knocked down in the first throw, disable it
+                  // but only show as knocked down if it was knocked down in the current throw
                   currentThrow === 1 && firstThrowKnockedDownPins[pinIndex] === 1
-                    ? 'knocked-down disabled'
+                    ? 'disabled'
                     : currentPins[pinIndex] === 1 
                       ? 'knocked-down' 
                       : 'standing'
@@ -334,7 +340,7 @@ const GameRegistration: React.FC = () => {
                 onClick={() => handlePinClick(pinIndex)}
                 className={`bowling-pin ${
                   currentThrow === 1 && firstThrowKnockedDownPins[pinIndex] === 1
-                    ? 'knocked-down disabled'
+                    ? 'disabled'
                     : currentPins[pinIndex] === 1 
                       ? 'knocked-down' 
                       : 'standing'
@@ -353,7 +359,7 @@ const GameRegistration: React.FC = () => {
                 onClick={() => handlePinClick(pinIndex)}
                 className={`bowling-pin ${
                   currentThrow === 1 && firstThrowKnockedDownPins[pinIndex] === 1
-                    ? 'knocked-down disabled'
+                    ? 'disabled'
                     : currentPins[pinIndex] === 1 
                       ? 'knocked-down' 
                       : 'standing'
@@ -370,7 +376,7 @@ const GameRegistration: React.FC = () => {
               onClick={() => handlePinClick(0)}
               className={`bowling-pin ${
                 currentThrow === 1 && firstThrowKnockedDownPins[0] === 1
-                  ? 'knocked-down disabled'
+                  ? 'disabled'
                   : currentPins[0] === 1 
                     ? 'knocked-down' 
                     : 'standing'
@@ -428,7 +434,9 @@ const GameRegistration: React.FC = () => {
                   <div className="grid grid-cols-2 gap-1">
                     {frame.throws.map((t, idx) => (
                       <div key={idx} className={`p-1 ${t.isStrike ? 'bg-green-100' : t.isSpare ? 'bg-blue-100' : ''}`}>
-                        {t.isStrike ? 'X' : t.isSpare ? '/' : t.throwScore}
+                        {t.isStrike ? 'X' : 
+                         (t.isSpare || (idx === 1 && t.throwScore + frame.throws[0]?.throwScore === 10)) ? '/' : 
+                         t.throwScore}
                       </div>
                     ))}
                     {frame.throws.length === 0 && <div className="p-1">-</div>}
