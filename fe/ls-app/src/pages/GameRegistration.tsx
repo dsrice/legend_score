@@ -255,8 +255,19 @@ const GameRegistration: React.FC = () => {
                           (currentFrame === 9 && (frame.isStrike || frame.isSpare)) ? maxPins : 
                           maxPins - (frame.throws[0]?.throwScore || 0);
 
+    // Get pins that were knocked down in the first throw (for second throw)
+    // In the backend, 1 means knocked down, 0 means standing
+    const firstThrowKnockedDownPins = currentThrow === 1 && frame.throws.length > 0
+      ? frame.throws[0].pins
+      : Array(10).fill(0);
+
     // Function to handle individual pin clicks
     const handlePinClick = (pinIndex: number) => {
+      // If it's the second throw and this pin was already knocked down in the first throw, do nothing
+      if (currentThrow === 1 && firstThrowKnockedDownPins[pinIndex] === 1) {
+        return;
+      }
+
       const newPins = [...currentPins];
       newPins[pinIndex] = newPins[pinIndex] === 0 ? 1 : 0;
 
@@ -301,7 +312,14 @@ const GameRegistration: React.FC = () => {
               <div 
                 key={pinIndex}
                 onClick={() => handlePinClick(pinIndex)}
-                className={`bowling-pin ${currentPins[pinIndex] === 1 ? 'knocked-down' : 'standing'}`}
+                className={`bowling-pin ${
+                  // If it's the second throw and this pin was already knocked down, show it as knocked down and disabled
+                  currentThrow === 1 && firstThrowKnockedDownPins[pinIndex] === 1
+                    ? 'knocked-down disabled'
+                    : currentPins[pinIndex] === 1 
+                      ? 'knocked-down' 
+                      : 'standing'
+                }`}
               >
                 {pinIndex + 1}
               </div>
@@ -314,7 +332,13 @@ const GameRegistration: React.FC = () => {
               <div 
                 key={pinIndex}
                 onClick={() => handlePinClick(pinIndex)}
-                className={`bowling-pin ${currentPins[pinIndex] === 1 ? 'knocked-down' : 'standing'}`}
+                className={`bowling-pin ${
+                  currentThrow === 1 && firstThrowKnockedDownPins[pinIndex] === 1
+                    ? 'knocked-down disabled'
+                    : currentPins[pinIndex] === 1 
+                      ? 'knocked-down' 
+                      : 'standing'
+                }`}
               >
                 {pinIndex + 1}
               </div>
@@ -327,7 +351,13 @@ const GameRegistration: React.FC = () => {
               <div 
                 key={pinIndex}
                 onClick={() => handlePinClick(pinIndex)}
-                className={`bowling-pin ${currentPins[pinIndex] === 1 ? 'knocked-down' : 'standing'}`}
+                className={`bowling-pin ${
+                  currentThrow === 1 && firstThrowKnockedDownPins[pinIndex] === 1
+                    ? 'knocked-down disabled'
+                    : currentPins[pinIndex] === 1 
+                      ? 'knocked-down' 
+                      : 'standing'
+                }`}
               >
                 {pinIndex + 1}
               </div>
@@ -338,7 +368,13 @@ const GameRegistration: React.FC = () => {
           <div className="bowling-pins-row">
             <div 
               onClick={() => handlePinClick(0)}
-              className={`bowling-pin ${currentPins[0] === 1 ? 'knocked-down' : 'standing'}`}
+              className={`bowling-pin ${
+                currentThrow === 1 && firstThrowKnockedDownPins[0] === 1
+                  ? 'knocked-down disabled'
+                  : currentPins[0] === 1 
+                    ? 'knocked-down' 
+                    : 'standing'
+              }`}
             >
               1
             </div>

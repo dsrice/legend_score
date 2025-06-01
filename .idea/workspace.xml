@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: ゲーム登録画面を追加">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/locales/ja/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/locales/ja/translation.json" afterDir="false" />
+    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: ゲーム登録に細かい設定を追加">
       <change beforePath="$PROJECT_DIR$/fe/ls-app/src/pages/GameRegistration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/pages/GameRegistration.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/pages/styles/BowlingPins.css" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/pages/styles/BowlingPins.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,7 +287,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: repositoryのテストコードを修正" />
     <MESSAGE value="feat: 開発環境で全テストコードを実行できるように調整" />
     <MESSAGE value="feat: なかったレイヤーのテストコードを追加" />
     <MESSAGE value="feat: テストコードを実行できるように宣言見直し" />
@@ -314,7 +311,8 @@
     <MESSAGE value="feat: ゲーム一覧取得APIを用意" />
     <MESSAGE value="feat: テストコード追加" />
     <MESSAGE value="feat: ゲーム登録画面を追加" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: ゲーム登録画面を追加" />
+    <MESSAGE value="feat: ゲーム登録に細かい設定を追加" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: ゲーム登録に細かい設定を追加" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
