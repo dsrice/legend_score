@@ -1,0 +1,40 @@
+.bowling-pins-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.bowling-pins-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.bowling-pin {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f3f4f6;
+  border: 2px solid #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: bold;
+}
+
+.bowling-pin.knocked-down {
+  background-color: #ef4444;
+  border-color: #dc2626;
+  color: white;
+  transform: rotate(45deg);
+}
+
+.bowling-pin.standing {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+  color: black;
+}

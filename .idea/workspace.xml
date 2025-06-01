@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: テストコード追加">
-      <change beforePath="$PROJECT_DIR$/be/di/mock_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/di/mock_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/App.tsx" afterDir="false" />
+    <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: ゲーム登録画面を追加">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fe/ls-app/src/locales/ja/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/locales/ja/translation.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/pages/GameList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/pages/GameList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/pages/GameRegistration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/pages/GameRegistration.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +90,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.standard": "",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preference.GoLinterConfigurable",
+    "settings.editor.selected.configurable": "preferences.language.and.region",
     "ts.external.directory.path": "C:\\work\\program\\legend_score\\fe\\ls-app\\node_modules\\typescript\\lib"
   },
   "keyToStringList": {
@@ -104,7 +104,7 @@
       <recent name="C:\work\program\legend_score\be" />
     </key>
   </component>
-  <component name="RunManager" selected="Go テスト.go test be">
+  <component name="RunManager" selected="Go Remote.delve">
     <configuration name="delve" type="GoRemoteDebugConfigurationType" factoryName="Go Remote">
       <option name="disconnectOption" value="ASK" />
       <method v="2" />
@@ -247,27 +247,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Go テスト.go test be" />
-      <item itemvalue="Go テスト.TestJWTMiddleware (legend_score/infra/middleware 内)" />
-      <item itemvalue="Go テスト.TestToOne (legend_score/infra/database/models 内)" />
-      <item itemvalue="Go テスト.TestToOne/FrameToUserUsingUser (legend_score/infra/database/models 内)" />
-      <item itemvalue="Go テスト.go test models" />
-      <item itemvalue="Go リモート.delve" />
+      <item itemvalue="Go Remote.delve" />
+      <item itemvalue="Go Test.go test be" />
+      <item itemvalue="Go Test.TestJWTMiddleware (legend_score/infra/middleware 内)" />
+      <item itemvalue="Go Test.TestToOne (legend_score/infra/database/models 内)" />
+      <item itemvalue="Go Test.TestToOne/FrameToUserUsingUser (legend_score/infra/database/models 内)" />
+      <item itemvalue="Go Test.go test models" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Go テスト.TestJWTMiddleware (legend_score/infra/middleware 内)" />
-        <item itemvalue="Go テスト.go test models" />
-        <item itemvalue="Go テスト.TestToOne/FrameToUserUsingUser (legend_score/infra/database/models 内)" />
-        <item itemvalue="Go テスト.TestToOne (legend_score/infra/database/models 内)" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-gosdk-3b128438d3f6-34ac7aa8f6ab-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-251.23774.430" />
-        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-GO-251.23774.430" />
+        <option value="bundled-gosdk-3b128438d3f6-4b567d62c776-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-251.25410.140" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-GO-251.25410.140" />
       </set>
     </attachedChunks>
   </component>
@@ -297,7 +289,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: repositoryのテストコードを追加" />
     <MESSAGE value="feat: repositoryのテストコードを修正" />
     <MESSAGE value="feat: 開発環境で全テストコードを実行できるように調整" />
     <MESSAGE value="feat: なかったレイヤーのテストコードを追加" />
@@ -322,7 +313,8 @@
     <MESSAGE value="feat: ゲーム一覧画面を追加" />
     <MESSAGE value="feat: ゲーム一覧取得APIを用意" />
     <MESSAGE value="feat: テストコード追加" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: テストコード追加" />
+    <MESSAGE value="feat: ゲーム登録画面を追加" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: ゲーム登録画面を追加" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

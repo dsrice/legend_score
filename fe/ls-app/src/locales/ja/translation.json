@@ -45,7 +45,21 @@
   "gameRegistration": {
     "title": "ゲーム登録",
     "backToGames": "ゲーム一覧に戻る",
-    "register": "登録"
+    "register": "登録",
+    "submitting": "登録中...",
+    "reset": "リセット",
+    "gameDate": "ゲーム日",
+    "currentFrame": "現在のフレーム",
+    "currentThrow": "現在の投球",
+    "selectPins": "残ったピンを選択",
+    "submitPins": "投球を確定",
+    "strikeButton": "ストライク",
+    "frame": "フレーム",
+    "success": "ゲームが正常に登録されました",
+    "error": {
+      "incompleteGame": "ゲームが完了していません。すべてのフレームを投球してください。",
+      "submitFailed": "ゲームの登録に失敗しました"
+    }
   },
   "createUserDialog": {
     "title": "新規ユーザー作成",
