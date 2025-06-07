@@ -63,6 +63,11 @@ func (m *MockGameController) GetGameWithDetails(c echo.Context) error {
 	return args.Error(0)
 }
 
+func (m *MockGameController) RegisterThrow(c echo.Context) error {
+	args := m.Called(c)
+	return args.Error(0)
+}
+
 func TestNewServer(t *testing.T) {
 	// Create mock controllers
 	mockAuthController := new(MockAuthController)

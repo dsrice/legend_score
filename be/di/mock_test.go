@@ -79,3 +79,18 @@ func (m *mockGameRepository) GetByUserID(c echo.Context, userID int) ([]*models.
 func (m *mockGameRepository) GetWithDetails(c echo.Context, gameID int) (*models.Game, error) {
 	return nil, nil
 }
+
+// GetFrameByGameIDAndFrameCount mocks the GetFrameByGameIDAndFrameCount method
+func (m *mockGameRepository) GetFrameByGameIDAndFrameCount(c echo.Context, gameID, frameCount int) (*models.Frame, error) {
+	return nil, nil
+}
+
+// CreateFrame mocks the CreateFrame method
+func (m *mockGameRepository) CreateFrame(c echo.Context, frame *models.Frame) (int, error) {
+	return 0, nil
+}
+
+// RegisterThrow mocks the RegisterThrow method
+func (m *mockGameRepository) RegisterThrow(c echo.Context, throw *models.Throw) error {
+	return nil
+}
