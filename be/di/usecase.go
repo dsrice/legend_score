@@ -9,4 +9,5 @@ import (
 func provideUseCase(c *dig.Container) {
 	setProvide(c, usecases.NewAuthUseCase)
 	setProvide(c, usecases.NewUserUseCase)
+	setProvide(c, usecases.NewGameUseCase)
 }

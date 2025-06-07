@@ -100,43 +100,42 @@ func TestGameUseCaseMock(t *testing.T) {
 	gameUseCase := new(mock.GameUseCase)
 
 	// Create test data
-	gamesEntity := &entities.GamesEntity{
-		Games: []entities.GameEntity{
-			{ID: 1, UserID: 1},
-		},
+	getGamesEntity := &entities.GetGamesEntity{}
+	getGamesByUserIDEntity := &entities.GetGamesByUserIDEntity{
+		UserID: 1,
 	}
-	gameDetailEntity := &entities.GameDetailEntity{
-		Game: entities.GameEntity{
-			ID:     1,
-			UserID: 1,
-		},
-		Frames: []entities.FrameEntity{},
-		Throws: []entities.ThrowEntity{},
+	getGamesByUserIDEntityNotFound := &entities.GetGamesByUserIDEntity{
+		UserID: 999,
+	}
+	getGameWithDetailsEntity := &entities.GetGameWithDetailsEntity{
+		GameID: 1,
 	}
 
 	// Setup expectations
-	gameUseCase.On("GetGamesByUserID", mocklib.Anything, 1).Return(gamesEntity, nil)
-	gameUseCase.On("GetGamesByUserID", mocklib.Anything, 999).Return(nil, errors.New("not found"))
-	gameUseCase.On("GetGameDetails", mocklib.Anything, 1, 1).Return(gameDetailEntity, nil)
+	gameUseCase.On("GetGames", mocklib.Anything, getGamesEntity).Return(nil)
+	gameUseCase.On("GetGamesByUserID", mocklib.Anything, getGamesByUserIDEntity).Return(nil)
+	gameUseCase.On("GetGamesByUserID", mocklib.Anything, getGamesByUserIDEntityNotFound).Return(errors.New("not found"))
+	gameUseCase.On("GetGameWithDetails", mocklib.Anything, getGameWithDetailsEntity).Return(nil)
 
 	// Create a context for testing
 	e := echo.New()
 	ctx := e.NewContext(nil, nil)
 
-	// Test GetGamesByUserID with existing user
-	games, err := gameUseCase.GetGamesByUserID(ctx, 1)
+	// Test GetGames
+	err := gameUseCase.GetGames(ctx, getGamesEntity)
 	assert.NoError(t, err)
-	assert.Equal(t, gamesEntity, games)
+
+	// Test GetGamesByUserID with existing user
+	err = gameUseCase.GetGamesByUserID(ctx, getGamesByUserIDEntity)
+	assert.NoError(t, err)
 
 	// Test GetGamesByUserID with non-existent user
-	games, err = gameUseCase.GetGamesByUserID(ctx, 999)
+	err = gameUseCase.GetGamesByUserID(ctx, getGamesByUserIDEntityNotFound)
 	assert.Error(t, err)
-	assert.Nil(t, games)
 
-	// Test GetGameDetails
-	gameDetail, err := gameUseCase.GetGameDetails(ctx, 1, 1)
+	// Test GetGameWithDetails
+	err = gameUseCase.GetGameWithDetails(ctx, getGameWithDetailsEntity)
 	assert.NoError(t, err)
-	assert.Equal(t, gameDetailEntity, gameDetail)
 
 	// Verify all expectations were met
 	gameUseCase.AssertExpectations(t)

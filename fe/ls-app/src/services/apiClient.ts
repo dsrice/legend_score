@@ -1,7 +1,8 @@
 // apiClient.ts
 // This file provides a centralized way to make API requests with the base URL from environment variables
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { getToken } from './auth';
+import { getToken, handleUnauthorized } from './auth';
+import { navigate } from '../utils/navigation';
 
 /**
  * Get the API base URL from environment variables
@@ -34,6 +35,27 @@ apiClient.interceptors.request.use(
     return config;
   },
   (error) => {
+    return Promise.reject(error);
+  }
+);
+
+// Add a response interceptor to handle authentication errors
+apiClient.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    // Check if the error is due to an unauthorized request (401)
+    if (error.response && error.response.status === 401) {
+      console.warn('Unauthorized request detected, redirecting to login');
+
+      // Clear the token
+      handleUnauthorized();
+
+      // Redirect to login page
+      navigate('/');
+    }
+
     return Promise.reject(error);
   }
 );

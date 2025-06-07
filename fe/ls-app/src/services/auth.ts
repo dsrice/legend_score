@@ -56,3 +56,10 @@ export const removeToken = (): void => {
 export const isAuthenticated = (): boolean => {
   return !!getToken();
 };
+
+/**
+ * Handles unauthorized responses by clearing the token
+ */
+export const handleUnauthorized = (): void => {
+  removeToken();
+};
