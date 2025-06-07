@@ -9,4 +9,5 @@ type GameUseCase interface {
 	GetGames(c echo.Context, e *entities.GetGamesEntity) error
 	GetGamesByUserID(c echo.Context, e *entities.GetGamesByUserIDEntity) error
 	GetGameWithDetails(c echo.Context, e *entities.GetGameWithDetailsEntity) error
+	RegisterThrow(c echo.Context, e *entities.RegisterThrowEntity) error
 }

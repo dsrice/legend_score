@@ -1,15 +1,19 @@
 package controllers_test
 
 import (
+	"bytes"
 	"encoding/json"
 	"errors"
+	"github.com/go-playground/validator/v10"
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
 	mocklib "github.com/stretchr/testify/mock"
+	"legend_score/consts/ecode"
 	"legend_score/controllers"
 	"legend_score/controllers/response"
 	"legend_score/entities"
 	"legend_score/entities/db"
+	"legend_score/infra/server"
 	"legend_score/usecases/mock"
 	"net/http"
 	"net/http/httptest"
@@ -267,6 +271,130 @@ func TestGameController_GetGameWithDetails(t *testing.T) {
 
 			// Parse response
 			var response response.GetGameWithDetailsResponse
+			err = json.Unmarshal(rec.Body.Bytes(), &response)
+			assert.NoError(t, err)
+			assert.Equal(t, tc.expectedResult, response.Result)
+
+			// Verify mock expectations
+			mockGameUseCase.AssertExpectations(t)
+		})
+	}
+}
+
+func TestGameController_RegisterThrow(t *testing.T) {
+	// Setup
+	e := echo.New()
+	e.Validator = &server.CustomValidator{Validator: validator.New()}
+
+	// Create mock usecase
+	mockGameUseCase := new(mock.GameUseCase)
+
+	// Create controller with mock usecase
+	gameController := controllers.NewGameController(mockGameUseCase)
+
+	// Test cases
+	tests := []struct {
+		name           string
+		gameID         int
+		requestBody    map[string]interface{}
+		setupMock      func()
+		expectedStatus int
+		expectedResult bool
+	}{
+		{
+			name:   "Success",
+			gameID: 1,
+			requestBody: map[string]interface{}{
+				"frame_count": 1,
+				"throw_count": 1,
+				"pin_1":       1,
+				"pin_2":       1,
+				"pin_3":       1,
+				"pin_4":       0,
+				"pin_5":       1,
+				"pin_6":       0,
+				"pin_7":       1,
+				"pin_8":       0,
+				"pin_9":       1,
+				"pin_10":      0,
+			},
+			setupMock: func() {
+				// Setup expectations for RegisterThrow
+				mockGameUseCase.On("RegisterThrow", mocklib.Anything, mocklib.MatchedBy(func(entity *entities.RegisterThrowEntity) bool {
+					return entity.GameID == 1 && entity.FrameCount == 1 && entity.ThrowCount == 1
+				})).Return(nil)
+			},
+			expectedStatus: http.StatusOK,
+			expectedResult: true,
+		},
+		{
+			name:   "Invalid Request",
+			gameID: 1,
+			requestBody: map[string]interface{}{
+				"frame_count": "invalid", // Invalid type
+				"throw_count": 1,
+			},
+			setupMock:      func() {},
+			expectedStatus: http.StatusBadRequest,
+			expectedResult: false,
+		},
+		{
+			name:   "UseCase Error",
+			gameID: 1,
+			requestBody: map[string]interface{}{
+				"frame_count": 1,
+				"throw_count": 1,
+				"pin_1":       1,
+				"pin_2":       0,
+				"pin_3":       0,
+				"pin_4":       0,
+				"pin_5":       0,
+				"pin_6":       0,
+				"pin_7":       0,
+				"pin_8":       0,
+				"pin_9":       0,
+				"pin_10":      0,
+			},
+			setupMock: func() {
+				// Setup expectations for RegisterThrow to return an error
+				mockGameUseCase.On("RegisterThrow", mocklib.Anything, mocklib.MatchedBy(func(entity *entities.RegisterThrowEntity) bool {
+					return entity.GameID == 1 && entity.FrameCount == 1 && entity.ThrowCount == 1
+				})).Run(func(args mocklib.Arguments) {
+					entity := args.Get(1).(*entities.RegisterThrowEntity)
+					entity.Code = ecode.E0001
+				}).Return(errors.New("test error"))
+			},
+			expectedStatus: http.StatusBadRequest,
+			expectedResult: false,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			// Reset mocks
+			mockGameUseCase.ExpectedCalls = nil
+
+			// Setup mock expectations
+			tc.setupMock()
+
+			// Create request body
+			jsonBody, _ := json.Marshal(tc.requestBody)
+			req := httptest.NewRequest(http.MethodPost, "/game/"+strconv.Itoa(tc.gameID)+"/throw", bytes.NewReader(jsonBody))
+			req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
+			rec := httptest.NewRecorder()
+			c := e.NewContext(req, rec)
+			c.SetParamNames("game_id")
+			c.SetParamValues(strconv.Itoa(tc.gameID))
+
+			// Perform request
+			err := gameController.RegisterThrow(c)
+
+			// Assert
+			assert.NoError(t, err)
+			assert.Equal(t, tc.expectedStatus, rec.Code)
+
+			// Parse response
+			var response response.RegisterThrowResponse
 			err = json.Unmarshal(rec.Body.Bytes(), &response)
 			assert.NoError(t, err)
 			assert.Equal(t, tc.expectedResult, response.Result)

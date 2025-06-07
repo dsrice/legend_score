@@ -34,3 +34,8 @@ type GetGameWithDetailsResponse struct {
 	Result bool               `json:"result"`
 	Game   GameDetailResponse `json:"game"`
 }
+
+// RegisterThrowResponse represents the response for the RegisterThrow endpoint
+type RegisterThrowResponse struct {
+	Result bool `json:"result"`
+}

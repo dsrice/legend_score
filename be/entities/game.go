@@ -6,6 +6,27 @@ import (
 	"time"
 )
 
+// RegisterThrowEntity represents a request to register a throw
+type RegisterThrowEntity struct {
+	Code       string
+	GameID     int
+	FrameCount int
+	ThrowCount int
+	ThrowScore int
+	StrikeFlag bool
+	SpareFlag  bool
+	Pin1       int
+	Pin2       int
+	Pin3       int
+	Pin4       int
+	Pin5       int
+	Pin6       int
+	Pin7       int
+	Pin8       int
+	Pin9       int
+	Pin10      int
+}
+
 // GetGamesEntity represents a request to get all games
 type GetGamesEntity struct {
 	Code  string

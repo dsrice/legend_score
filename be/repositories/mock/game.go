@@ -47,3 +47,26 @@ func (m *GameRepository) GetWithDetails(c echo.Context, gameID int) (*models.Gam
 
 	return args.Get(0).(*models.Game), args.Error(1)
 }
+
+// GetFrameByGameIDAndFrameCount mocks the GetFrameByGameIDAndFrameCount method
+func (m *GameRepository) GetFrameByGameIDAndFrameCount(c echo.Context, gameID, frameCount int) (*models.Frame, error) {
+	args := m.Called(c, gameID, frameCount)
+
+	if args.Get(0) == nil {
+		return nil, args.Error(1)
+	}
+
+	return args.Get(0).(*models.Frame), args.Error(1)
+}
+
+// CreateFrame mocks the CreateFrame method
+func (m *GameRepository) CreateFrame(c echo.Context, frame *models.Frame) (int, error) {
+	args := m.Called(c, frame)
+	return args.Int(0), args.Error(1)
+}
+
+// RegisterThrow mocks the RegisterThrow method
+func (m *GameRepository) RegisterThrow(c echo.Context, throw *models.Throw) error {
+	args := m.Called(c, throw)
+	return args.Error(0)
+}

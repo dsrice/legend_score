@@ -32,3 +32,9 @@ func (m *GameUseCase) GetGameWithDetails(c echo.Context, e *entities.GetGameWith
 	args := m.Called(c, e)
 	return args.Error(0)
 }
+
+// RegisterThrow mocks the RegisterThrow method
+func (m *GameUseCase) RegisterThrow(c echo.Context, e *entities.RegisterThrowEntity) error {
+	args := m.Called(c, e)
+	return args.Error(0)
+}

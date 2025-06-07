@@ -6,4 +6,5 @@ type GameController interface {
     GetGames(c echo.Context) error
     GetGamesByUserID(c echo.Context) error
     GetGameWithDetails(c echo.Context) error
+    RegisterThrow(c echo.Context) error
 }

@@ -15,4 +15,13 @@ type GameRepository interface {
 
 	// GetWithDetails retrieves a game with its frames and throws
 	GetWithDetails(c echo.Context, gameID int) (*models.Game, error)
+
+	// GetFrameByGameIDAndFrameCount retrieves a frame by game ID and frame count
+	GetFrameByGameIDAndFrameCount(c echo.Context, gameID, frameCount int) (*models.Frame, error)
+
+	// CreateFrame creates a new frame
+	CreateFrame(c echo.Context, frame *models.Frame) (int, error)
+
+	// RegisterThrow registers a throw
+	RegisterThrow(c echo.Context, throw *models.Throw) error
 }

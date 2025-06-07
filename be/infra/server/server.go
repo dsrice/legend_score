@@ -96,4 +96,5 @@ func (s *Server) routing() {
 	g := v.Group("/game", customMiddleware.JWTMiddleware)
 	g.GET("", s.Game.GetGames)
 	g.GET("/:game_id", s.Game.GetGameWithDetails)
+	g.POST("/:game_id/throw", s.Game.RegisterThrow)
 }

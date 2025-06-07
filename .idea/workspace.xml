@@ -5,7 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c4b3f6a-ab64-44a5-b9d8-a42b601c02ac" name="変更" comment="feat: フレーム表示の調整">
-      <change beforePath="$PROJECT_DIR$/fe/ls-app/src/pages/GameRegistration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fe/ls-app/src/pages/GameRegistration.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0fef7373-840c-4563-9e60-08acf7209537.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0fef7373-840c-4563-9e60-08acf7209537.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/controllers/ci/game.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/controllers/ci/game.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/controllers/game.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/controllers/game.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/controllers/game_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/controllers/game_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/controllers/response/game.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/controllers/response/game.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/entities/game.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/entities/game.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/infra/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/infra/server/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/repositories/game.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/repositories/game.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/repositories/game_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/repositories/game_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/repositories/mock/game.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/repositories/mock/game.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/repositories/ri/game.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/repositories/ri/game.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/usecases/game.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/usecases/game.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/usecases/game_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/usecases/game_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/usecases/mock/game.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/usecases/mock/game.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be/usecases/ui/game.go" beforeDir="false" afterPath="$PROJECT_DIR$/be/usecases/ui/game.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +77,7 @@
     "Go テスト.TestUserRepository_Insert (legend_score/repositories 内) (1).executor": "Run",
     "Go テスト.TestUserRepository_Insert (legend_score/repositories 内).executor": "Run",
     "Go テスト.TestUserTokenRepository_Insert (legend_score/repositories 内).executor": "Run",
-    "Go テスト.go test be.executor": "Coverage",
+    "Go テスト.go test be.executor": "Run",
     "Go テスト.go test controllers.executor": "Run",
     "Go テスト.go test legend_score.executor": "Debug",
     "Go テスト.go test models.executor": "Run",
@@ -87,7 +103,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.standard": "",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.language.and.region",
+    "settings.editor.selected.configurable": "junie.project.settings",
     "ts.external.directory.path": "C:\\work\\program\\legend_score\\fe\\ls-app\\node_modules\\typescript\\lib"
   },
   "keyToStringList": {
@@ -101,7 +117,7 @@
       <recent name="C:\work\program\legend_score\be" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Remote.delve">
+  <component name="RunManager" selected="Go テスト.go test be">
     <configuration name="delve" type="GoRemoteDebugConfigurationType" factoryName="Go Remote">
       <option name="disconnectOption" value="ASK" />
       <method v="2" />
@@ -244,12 +260,12 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Go Remote.delve" />
-      <item itemvalue="Go Test.go test be" />
-      <item itemvalue="Go Test.TestJWTMiddleware (legend_score/infra/middleware 内)" />
-      <item itemvalue="Go Test.TestToOne (legend_score/infra/database/models 内)" />
-      <item itemvalue="Go Test.TestToOne/FrameToUserUsingUser (legend_score/infra/database/models 内)" />
-      <item itemvalue="Go Test.go test models" />
+      <item itemvalue="Go テスト.go test be" />
+      <item itemvalue="Go テスト.TestJWTMiddleware (legend_score/infra/middleware 内)" />
+      <item itemvalue="Go テスト.TestToOne (legend_score/infra/database/models 内)" />
+      <item itemvalue="Go テスト.TestToOne/FrameToUserUsingUser (legend_score/infra/database/models 内)" />
+      <item itemvalue="Go テスト.go test models" />
+      <item itemvalue="Go リモート.delve" />
     </list>
   </component>
   <component name="SharedIndexes">
